@@ -1,0 +1,21 @@
+
+.title_text{
+    padding: p(50) 0;
+
+    @include breakpoint(max){
+        padding: m(50) 0;
+    }
+
+    .holder{
+        max-width: 80%;
+        text-align: center;
+        margin: 0 auto;
+
+        h3, img{
+            margin-bottom: p(30);
+            @include breakpoint(max){
+                margin-bottom: m(30);
+            }
+        }
+    }
+}

@@ -1,0 +1,51 @@
+/*
+GLOBAL STYLES
+-------------------------------------------- */
+html {
+	overflow-x: hidden;
+}
+
+body {
+	overflow-x: hidden; position: relative;
+	-webkit-overflow-scrolling: touch;
+}
+
+strong{
+	font-weight: bold;
+}
+
+.has_bgr{
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.clearfix {
+    zoom:1;
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+img{
+    max-width: 100%; height: auto;
+}
+
+em, i{
+    font-style: italic;
+}
+
+.wrapper{
+    padding: 0 p(20) 0 p(20);
+    @include box-sizing();
+
+    @include breakpoint(max){
+        padding: 0 m(20) 0 m(20);
+    }
+}

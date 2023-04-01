@@ -1,0 +1,70 @@
+/*
+BUTTONS GLOBAL
+-------------------------------------------- */
+
+.btn{
+    display: inline-block;
+    min-width: p(280);
+    font-size: p(22); line-height: 1;
+    padding: p(13) p(50);
+    border-radius: 30px;
+    background-color: $blue;
+    text-decoration: none;
+    color: $white;
+    text-align: center;
+
+    @include breakpoint(max){
+        min-width: m(280);
+        font-size: m(22);
+        padding: m(13) m(50);
+    }
+
+    @include breakpoint(640){
+        font-size: 18px;
+    }
+}
+
+.buttons_section{
+    margin-bottom: p(30);
+
+    @include breakpoint(max){
+        margin-bottom: m(30);
+    }
+
+    .holder{
+        padding: p(60) 0;
+        @include box-sizing();
+        border-radius: 30px;
+
+        @include breakpoint(max){
+            padding: m(60) 0;
+        }
+    }
+
+    .text_above{
+        text-align: center;
+        margin-bottom: p(35);
+
+        @include breakpoint(max){
+            margin-bottom: m(35);
+        }
+    }
+
+    ul{
+        @include flexbox();
+        @include justify(center);
+        flex-wrap: wrap;
+
+        li{
+            margin-right: p(30);
+
+            @include breakpoint(max){
+                margin-right: m(30);
+            }
+
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+    }
+}

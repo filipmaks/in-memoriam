@@ -1,0 +1,26 @@
+.info_cards{
+    .cards{
+        @include flexbox();
+        @include justify(space-between);
+
+        li{
+            width: 32%;
+            padding: p(100) p(50) p(60) p(50);
+            @include box-sizing();
+            background-color: $bgr-color;
+            border-radius: 30px;
+
+            @include breakpoint(max){
+                padding: m(100) m(50) m(60) m(50);
+            }
+
+            h3{
+                margin-bottom: p(30);
+
+                @include breakpoint(max){
+                    margin-bottom: m(30);
+                }
+            }
+        }
+    }
+}

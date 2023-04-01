@@ -1,0 +1,15 @@
+.divider{
+
+    .mob{
+        display: none;
+    }
+
+    @include breakpoint(640){
+        .desk{
+            display: none;
+        }   
+        .mob{
+            display: block;
+        }
+    }
+}

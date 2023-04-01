@@ -1,0 +1,32 @@
+.textual_section{
+    margin-bottom: p(30);
+
+    @include breakpoint(max){
+        margin-bottom: m(30);
+    }
+    .holder{
+        background-color: $bgr-color;
+        padding: p(60) p(120);
+        @include box-sizing();
+        border-radius: 30px;
+
+        @include breakpoint(max){
+            padding: m(60) m(120);
+        }
+    }
+    article{
+        @include all-text{
+            margin-bottom: p(20);
+
+            @include breakpoint(max){
+                margin-bottom: m(20);
+            }
+        }
+        p{
+            .aligncenter{
+                display: block;
+                margin: 0 auto;
+            }
+        }
+    }
+}

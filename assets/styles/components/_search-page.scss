@@ -1,0 +1,36 @@
+.search_page{
+    .holder{
+        background-color: $bgr-color;
+        border-radius: 30px;
+        padding: p(60) 0;
+        @include box-sizing();
+    
+        @include breakpoint(max){
+            padding: m(60) 0;
+        }
+
+        article{
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+
+            img{
+                max-width: p(90);
+                margin-bottom: m(30);
+
+                @include breakpoint(max){
+                    max-width: m(90);
+                    margin-bottom: p(30);
+                }
+            }
+
+            h2{
+                margin-bottom: m(30);
+
+                @include breakpoint(max){
+                    margin-bottom: p(30);
+                }
+            }
+        }
+    }
+}

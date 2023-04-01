@@ -1,0 +1,90 @@
+/*
+IMPORT FONTS
+-------------------------------------------- */
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;800&display=swap');
+
+// $font-family: 'Montserrat', sans-serif;
+
+html, body{
+    // font-family: $font-family;
+}
+
+@include all-text{
+    line-height: 1;
+}
+
+h1{
+    font-size: p(110);
+    letter-spacing: -0.25px;
+
+    @include breakpoint(max){
+        font-size: m(110);
+    }
+}
+
+h2{
+    font-size: p(60); 
+    letter-spacing: -0.25px;
+
+    @include breakpoint(max){
+        font-size: m(60);
+    }
+}
+
+h3{
+    font-size: p(48); 
+    letter-spacing: -0.25px;
+
+    @include breakpoint(max){
+        font-size: m(48);
+    }
+}
+
+h4{
+    font-size: p(36); 
+    letter-spacing: -0.25px;
+
+    @include breakpoint(max){
+        font-size: m(36);
+    }
+}
+
+h5{
+    font-size: p(28); 
+
+    @include breakpoint(max){
+        font-size: m(28);
+    }
+}
+
+h6{
+    font-size: p(24); 
+
+    @include breakpoint(max){
+        font-size: m(24);
+    }
+}
+
+p{
+    font-size: p(24); 
+
+    @include breakpoint(max){
+        font-size: m(24);
+    }
+
+    &.big{
+        font-size: p(34);
+
+        @include breakpoint(max){
+            font-size: m(34);
+        }
+    }
+
+    &.mid{
+        font-size: p(30);
+
+        @include breakpoint(max){
+            font-size: m(30);
+        }
+    }
+}

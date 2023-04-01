@@ -1,0 +1,43 @@
+/*
+HEADER
+-------------------------------------------- */
+
+header{
+    padding: p(20) 0;
+    @include breakpoint(max){
+        padding: m(20) 0;
+    }
+    .holder{
+        @include flexbox();
+        @include justify(space-between);
+        align-items: center;
+        padding: 0 p(30);
+        @include box-sizing();
+
+        @include breakpoint(max){
+            padding: 0 m(30);
+        }
+
+        ul{
+            @include flexbox();
+            flex-wrap: wrap;
+
+            li{
+                margin-right: p(10);
+
+                @include breakpoint(max){
+                    margin-right: m(10);
+                }
+
+                &:last-child{
+                    margin-right: 0;
+                }
+
+                a{
+                    text-decoration: none;
+                    color: $black;
+                }
+            }
+        }
+    }
+}

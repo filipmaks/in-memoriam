@@ -1,0 +1,48 @@
+/*
+HERO
+-------------------------------------------- */
+
+.hero{
+    margin-bottom: p(30);
+
+    @include breakpoint(max){
+        margin-bottom: m(30);
+    }
+    .holder{
+        aspect-ratio: 16/6;
+        position: relative;
+        border-radius: 30px;
+        overflow: hidden;
+
+        article{
+            position: absolute;
+            color: $white;
+            width: 80%;
+            
+        }
+
+        img{
+            position: absolute;
+            bottom: p(100);
+            max-width: p(100);
+            @include breakpoint(max){
+                bottom: m(100);
+                max-width: m(100);
+            }
+        }
+
+        &.center{
+
+            article{
+                text-align: center;
+                top: 50%; left: 50%;
+                @include transform($x: -50%, $y: -50%);
+            }
+
+            img{
+                top: 85%; left: 50%;
+                @include transform($x: -50%, $y: -50%);
+            }
+        }
+    }
+}

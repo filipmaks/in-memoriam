@@ -1,0 +1,60 @@
+.cf_section{
+    form{
+        position: relative;
+        width: p(1400);
+        padding: p(60);
+        @include box-sizing();
+        border-radius: 30px;
+
+        @include breakpoint(max){
+            width: m(1000);
+            padding: m(60);
+        }
+    }
+
+    .more_info, .napomena{
+        @include flexbox();
+        align-items: center;
+        flex-wrap: wrap;
+        position: relative;
+        width: p(1400);
+        @include box-sizing();
+        border-radius: 30px;
+        background-color: $bgr-color;
+        margin: 0 auto p(30) auto;
+
+        @include breakpoint(max){
+            width: m(1400);
+            margin: 0 auto m(30) auto;
+        }
+    }
+
+    .more_info{
+        padding: p(90) p(60);
+        @include breakpoint(max){
+            padding: m(90) m(60);
+        }
+
+        .footer_logo, .phones, .emails{
+            width: calc(100% / 3);
+        }
+    }
+
+    .napomena{
+        padding: p(40);
+
+        @include breakpoint(max){
+            padding: m(40);
+        }
+
+        @include all-text{
+            margin-bottom: p(20);
+
+            @include breakpoint(max){
+                margin-bottom: m(20);
+            }
+            
+        }
+
+    }
+}
