@@ -17,6 +17,7 @@
     article{
         @include all-text{
             margin-bottom: p(20);
+            line-height: 1.2;
 
             @include breakpoint(max){
                 margin-bottom: m(20);

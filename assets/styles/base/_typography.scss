@@ -3,10 +3,11 @@ IMPORT FONTS
 -------------------------------------------- */
 // @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;800&display=swap');
 
-// $font-family: 'Montserrat', sans-serif;
+$font-libre: 'Libre Baskerville', Helvetica, Arial, sans-serif;
+$font-montserrat: 'Montserrat', Helvetica, Arial, sans-serif;
 
 html, body{
-    // font-family: $font-family;
+    font-family: $font-libre;
 }
 
 @include all-text{

@@ -13,6 +13,11 @@
     <link rel="alternate" type="text/xml" title="RSS .92" href="<?php bloginfo('rss_url'); ?>" />
     <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="<?php bloginfo('atom_url'); ?>" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+
 	<?php wp_head(); ?>
 
 </head>
@@ -22,9 +27,14 @@
 	<header>
         <div class="wrapper">
             <div class="holder">
+                <?php 
+                    $header_logo    = get_field('header_logo', 'option');
+                    if( $header_logo ) :
+                ?>
                 <div class="logo">
-                    <img src="#" alt="Logo">
+                    <img src="<?php echo $header_logo['url']; ?>" alt="Logo">
                 </div>
+                <?php endif; ?>
                 <ul class="main_nav">
                     <?php wp_nav_menu(array('menu' => 'Header Menu', 'container' => false, 'items_wrap' => '%3$s')); ?>
                 </ul>

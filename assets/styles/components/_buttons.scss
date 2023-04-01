@@ -6,17 +6,18 @@ BUTTONS GLOBAL
     display: inline-block;
     min-width: p(280);
     font-size: p(22); line-height: 1;
-    padding: p(13) p(50);
+    padding: p(15) p(50);
     border-radius: 30px;
     background-color: $blue;
     text-decoration: none;
     color: $white;
     text-align: center;
+    font-family: $font-montserrat;
 
     @include breakpoint(max){
         min-width: m(280);
         font-size: m(22);
-        padding: m(13) m(50);
+        padding: m(15) m(50);
     }
 
     @include breakpoint(640){

@@ -1,0 +1,7 @@
+.error_section{
+    padding: p(200) 0;
+
+    @include breakpoint(max){
+        padding: m(200) 0;
+    }
+}

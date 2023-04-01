@@ -51,7 +51,7 @@ footer{
 footer, .more_info{
 
     .footer_logo, .phones, .emails{
-        width: 20%;
+        width: 19%;
 
     }   
     
@@ -72,9 +72,11 @@ footer, .more_info{
             display: inline-block;
             color: $black;
             text-decoration: none;
+            font-size: p(17);
             margin-bottom: p(20);
 
             @include breakpoint(max){
+                font-size: m(17);
                 margin-bottom: m(20);
             }
 
@@ -110,6 +112,7 @@ footer, .more_info{
                 a{
                     color: $black;
                     text-decoration: none;
+                    font-family: $font-montserrat;
                 }
             }
         }

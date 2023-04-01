@@ -23,10 +23,10 @@ header{
             flex-wrap: wrap;
 
             li{
-                margin-right: p(10);
+                margin-right: p(30);
 
                 @include breakpoint(max){
-                    margin-right: m(10);
+                    margin-right: m(30);
                 }
 
                 &:last-child{
@@ -36,7 +36,14 @@ header{
                 a{
                     text-decoration: none;
                     color: $black;
+                    font-family: $font-montserrat;
                 }
+            }
+        }
+
+        .logo{
+            img{
+                width: p(300);
             }
         }
     }
