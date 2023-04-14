@@ -42,6 +42,9 @@ header{
         }
 
         .logo{
+            a{
+                display: inline-block;
+            }
             img{
                 width: p(300);
             }

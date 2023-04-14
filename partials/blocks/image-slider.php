@@ -30,7 +30,7 @@ if( !empty($block['className']) ) {
                         ?>
                         <li class="swiper-slide has_bgr" style="background-image: url(<?php echo $image['url']; ?>);">
                             <?php if ( $text ) : ?>
-                                <p><?php echo $text; ?></p>
+                                <h5><?php echo $text; ?></h5>
                             <?php endif; ?>
                         </li>
                     <?php endwhile; ?>

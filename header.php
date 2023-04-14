@@ -32,7 +32,9 @@
                     if( $header_logo ) :
                 ?>
                 <div class="logo">
-                    <img src="<?php echo $header_logo['url']; ?>" alt="Logo">
+                    <a href="<?php echo site_url(); ?>">
+                        <img src="<?php echo $header_logo['url']; ?>" alt="Logo">
+                    </a>
                 </div>
                 <?php endif; ?>
                 <ul class="main_nav">

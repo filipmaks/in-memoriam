@@ -4,21 +4,48 @@
         @include justify(space-between);
 
         li{
+            position: relative;
             width: 32%;
-            padding: p(100) p(50) p(60) p(50);
+            padding: p(190) p(50) p(60) p(50);
             @include box-sizing();
             background-color: $bgr-color;
             border-radius: 30px;
 
             @include breakpoint(max){
-                padding: m(100) m(50) m(60) m(50);
+                padding: m(190) m(50) m(60) m(50);
             }
 
-            h3{
+            img{
+                position: absolute;
+                top: 0; left: 0;
+                opacity: 0.1;
+            }
+
+            .num{
+                display: block;
+                font-size: p(160);
+                margin-bottom: p(30);
+                color: $num_color;
+
+                @include breakpoint(max){
+                    font-size: m(160);
+                    margin-bottom: m(30);
+                }
+            }
+
+            h4{
                 margin-bottom: p(30);
 
                 @include breakpoint(max){
                     margin-bottom: m(30);
+                }
+            }
+
+            p{
+                font-size: p(16);
+
+                @include breakpoint(max){
+                    font-size: m(16);
                 }
             }
         }

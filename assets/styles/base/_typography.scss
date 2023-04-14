@@ -67,25 +67,25 @@ h6{
 }
 
 p{
-    font-size: p(24); 
+    font-size: p(20); line-height: 1.5;
 
     @include breakpoint(max){
-        font-size: m(24);
+        font-size: m(20);
     }
 
     &.big{
-        font-size: p(34);
-
-        @include breakpoint(max){
-            font-size: m(34);
-        }
-    }
-
-    &.mid{
         font-size: p(30);
 
         @include breakpoint(max){
             font-size: m(30);
+        }
+    }
+
+    &.mid{
+        font-size: p(26);
+
+        @include breakpoint(max){
+            font-size: m(26);
         }
     }
 }

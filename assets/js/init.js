@@ -13,6 +13,9 @@
                 fadeEffect: { 
                     crossFade: true 
                 },
+                autoplay: {
+                    delay: 2500,
+                },
                 pagination: {
                     el: currPag[0],
                 },

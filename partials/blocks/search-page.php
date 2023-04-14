@@ -30,8 +30,8 @@ $add_text   = get_field('additional_text');
                     <img src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
                 <?php endif; ?>
 
-                <?php if ( $title ) : ?>
-                    <h2><?php echo $title; ?></h2>
+                <?php if ( $title ) : ?> 
+                    <h3><?php echo $title; ?></h3>
                 <?php endif; ?>
 
                 <div class="form">

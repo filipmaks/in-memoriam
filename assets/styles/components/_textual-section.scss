@@ -15,6 +15,8 @@
         }
     }
     article{
+        text-align: justify;
+        color: $blue;
         @include all-text{
             margin-bottom: p(20);
             line-height: 1.2;

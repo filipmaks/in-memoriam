@@ -1,0 +1,26 @@
+.image_slider{
+    padding: p(50) 0;
+
+    @include breakpoint(max){
+        padding: m(50) 0;
+    }
+
+    .gallery_slider {
+        ul{
+            li{
+                aspect-ratio: 16/5;
+                border-radius: 30px;
+                overflow: hidden;
+
+                h5{
+                    color: $white;
+                    position: absolute;
+                    bottom: 10%; left: 50%;
+                    @include transform($x: -50%);
+                    max-width: 80%;
+                    text-align: center; font-style: italic;
+                }
+            }
+        }
+    }
+}

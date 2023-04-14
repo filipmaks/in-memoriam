@@ -24,7 +24,7 @@ if ( $image ) :
     <div class="wrapper">
         <div class="holder">
             <figure>
-                <img src="<?php echo  ?>" alt="">
+                <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
                 <?php echo $text; ?>
             </figure>
         </div>

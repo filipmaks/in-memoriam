@@ -9,8 +9,12 @@
             padding: m(60) 0;
         }
 
+        form{
+            width: 100%;
+        }
+
         article{
-            width: 80%;
+            width: 50%;
             margin: 0 auto;
             text-align: center;
 
@@ -24,11 +28,19 @@
                 }
             }
 
-            h2{
+            h3{
                 margin-bottom: m(30);
 
                 @include breakpoint(max){
                     margin-bottom: p(30);
+                }
+            }
+
+            p{
+                font-size: p(14);
+
+                @include breakpoint(max){
+                    font-size: m(14);
                 }
             }
         }

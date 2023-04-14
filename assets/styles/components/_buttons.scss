@@ -4,9 +4,9 @@ BUTTONS GLOBAL
 
 .btn{
     display: inline-block;
-    min-width: p(280);
-    font-size: p(22); line-height: 1;
-    padding: p(15) p(50);
+    min-width: p(260);
+    font-size: p(20); line-height: 1;
+    padding: p(14) p(35);
     border-radius: 30px;
     background-color: $blue;
     text-decoration: none;
@@ -15,9 +15,9 @@ BUTTONS GLOBAL
     font-family: $font-montserrat;
 
     @include breakpoint(max){
-        min-width: m(280);
-        font-size: m(22);
-        padding: m(15) m(50);
+        min-width: m(260);
+        font-size: m(20);
+        padding: m(14) m(35);
     }
 
     @include breakpoint(640){

@@ -35,13 +35,18 @@ if( !empty($block['className']) ) {
                             <img src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
                         <?php endif; ?>
 
-                        <?php if ( $title ) : ?>
-                           <h3><?php echo $title; ?></h3>
-                        <?php endif; ?>
+                        <article>
 
-                        <?php if ( $text ) : ?>
-                           <p><?php echo $text; ?></p>
-                        <?php endif; ?>
+                            <span class="num"><?php echo get_row_index(); ?>.</span>
+
+                            <?php if ( $title ) : ?>
+                               <h4><?php echo $title; ?></h4>
+                            <?php endif; ?>
+    
+                            <?php if ( $text ) : ?>
+                               <p><?php echo $text; ?></p>
+                            <?php endif; ?>
+                        </article>
 
                     </li>
                 <?php endwhile; ?>
