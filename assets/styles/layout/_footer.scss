@@ -32,6 +32,7 @@ footer{
     }
 
     .holder{
+        position: relative;
         @include flexbox();
         align-items: center;
         flex-wrap: wrap;
@@ -39,10 +40,33 @@ footer{
         .copyright{
             width: 100%;
             text-align: center;
-            margin: p(100) 0 p(60) 0;
+            margin: p(100) 0 p(10) 0;
+
+            p{
+                font-family: $font-montserrat;
+                font-size: p(10);
+    
+                @include breakpoint(max){
+                    font-size: m(10);
+                }
+            }
 
             @include breakpoint(max){
-                margin: m(100) 0 m(60) 0;
+                margin: m(100) 0 m(10) 0;
+            }
+        }
+
+        .bgr_logo{
+            width: p(550);
+            position: absolute;
+            top: 0; right: 0;
+            z-index: 1;
+            @include transform($x: p(20), $y: p(-20));
+            opacity: 0.5;
+
+            @include breakpoint(max){
+                width: m(550);
+                @include transform($x: m(20), $y: m(-20));
             }
         }
     }
@@ -50,12 +74,31 @@ footer{
 
 footer, .more_info{
 
-    .footer_logo, .phones, .emails{
-        width: 19%;
-
-    }   
-    
     .phones, .emails{
+        width: 20%;
+        position: relative;
+
+        &:before, &:after{
+            display: block;
+            content: "";
+            width: 1px; height: p(210);
+            position: absolute;
+            top: 0;
+            background-color: $blue;
+
+            @include breakpoint(max){
+                height: m(210);
+            }
+        }
+
+        &:before{
+            left: 0;
+        }
+
+        &:after{
+            right: 0;
+        }
+
         padding: 0 p(40);
         @include box-sizing(border-box);
         // border-left: 3px solid $blue;
@@ -66,23 +109,47 @@ footer, .more_info{
 
         .col_title{
             margin-bottom: p(20);
+            color: $blue;
+            font-family: $font-montserrat;
+            font-size: p(14);
+
+            @include breakpoint(max){
+                font-size: m(14);
+            }
         }
 
         a{
             display: inline-block;
             color: $black;
+            font-family: $font-montserrat;
             text-decoration: none;
-            font-size: p(17);
-            margin-bottom: p(20);
+            font-size: p(14); font-weight: 400;
+            margin-bottom: p(12);
 
             @include breakpoint(max){
-                font-size: m(17);
-                margin-bottom: m(20);
+                font-size: m(14);
+                margin-bottom: m(12);
             }
 
             &:last-child{
                 margin-bottom: 0;
             }
+        }
+
+    }  
+
+    .emails{
+        &:before, &:after{
+            content: none;
+        }
+    }
+
+    .footer_logo{
+        width: 15%;
+        margin-right: 5%;
+
+        img{
+            width: 100%;
         }
     }
 
@@ -92,6 +159,8 @@ footer, .more_info{
 
     .footer_nav{
         flex: 1;
+        position: relative;
+        z-index: 2;
 
         .nav_holder{
             @include flexbox();
@@ -110,9 +179,25 @@ footer, .more_info{
                 }
 
                 a{
-                    color: $black;
+                    color: $blue;
                     text-decoration: none;
                     font-family: $font-montserrat;
+                    font-size: p(12); font-weight: 600;
+
+                    @include breakpoint(max){
+                        font-size: m(12);
+                    }
+                }
+
+                &.search{
+                    svg{
+                        width: p(16); height: p(16);
+                        fill: $blue;
+
+                        @include breakpoint(max){
+                            width: m(16); height: m(16);
+                        }
+                    }
                 }
             }
         }

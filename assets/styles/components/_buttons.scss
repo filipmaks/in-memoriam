@@ -5,7 +5,7 @@ BUTTONS GLOBAL
 .btn{
     display: inline-block;
     min-width: p(260);
-    font-size: p(20); line-height: 1;
+    font-size: p(18); line-height: 1; font-weight: 600;
     padding: p(14) p(35);
     border-radius: 30px;
     background-color: $blue;
@@ -16,12 +16,12 @@ BUTTONS GLOBAL
 
     @include breakpoint(max){
         min-width: m(260);
-        font-size: m(20);
+        font-size: m(18);
         padding: m(14) m(35);
     }
 
     @include breakpoint(640){
-        font-size: 18px;
+        font-size: 17px;
     }
 }
 

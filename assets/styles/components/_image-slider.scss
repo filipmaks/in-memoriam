@@ -1,4 +1,5 @@
 .image_slider{
+    position: relative;
     padding: p(50) 0;
 
     @include breakpoint(max){
@@ -22,5 +23,8 @@
                 }
             }
         }
+    }
+    .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
+        bottom: 20px;
     }
 }

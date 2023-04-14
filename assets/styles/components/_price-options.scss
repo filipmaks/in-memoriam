@@ -81,6 +81,11 @@
             }
 
             .second_text{
+                ul, ol{
+                    li{
+                        font-family: Helvetica, Arial, sans-serif;
+                    }
+                }
                 ul{
                     margin-top: p(20);
 
@@ -90,7 +95,7 @@
 
                     li{
                         position: relative;
-                        font-size: p(18);
+                        font-size: p(18); line-height: 1.2;
                         margin-bottom: p(8);
                         padding-left: 20px;
 

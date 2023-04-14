@@ -34,7 +34,7 @@ if ( $image ) :
                 <?php endif; ?>
 
                 <?php if ( $text ) : ?>
-                    <p><?php echo $title; ?></p>
+                    <p><?php echo $text; ?></p>
                 <?php endif; ?>
                 
             </article>

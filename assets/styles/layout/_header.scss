@@ -3,7 +3,13 @@ HEADER
 -------------------------------------------- */
 
 header{
+    position: fixed;
+    top: 0; left: 0;
     padding: p(20) 0;
+    width: 100%;
+    background-color: $white;
+    z-index: 999;
+
     @include breakpoint(max){
         padding: m(20) 0;
     }
@@ -35,8 +41,24 @@ header{
 
                 a{
                     text-decoration: none;
-                    color: $black;
+                    color: $blue;
+                    font-size: p(12); font-weight: 600;
                     font-family: $font-montserrat;
+
+                    @include breakpoint(max){
+                        font-size: m(12);
+                    }
+                }
+
+                &.search{
+                    svg{
+                        width: p(16); height: p(16);
+                        fill: $blue;
+
+                        @include breakpoint(max){
+                            width: m(16); height: m(16);
+                        }
+                    }
                 }
             }
         }

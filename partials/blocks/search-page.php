@@ -38,6 +38,9 @@ $add_text   = get_field('additional_text');
                     <form action="/" method="get">
                         <input type="text" class="text_field" name="s" id="search" value="<?php the_search_query(); ?>" />
                         <input type="image" class="search_icon" alt="Search" src="<?php bloginfo( 'template_url' ); ?>" />
+                        <div class="search_icon">
+                            <?php echo file_get_contents(get_template_directory().'/assets/icons/lupa2.svg'); ?>
+                        </div>
                     </form>
                 </div>
 

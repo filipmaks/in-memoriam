@@ -17,5 +17,13 @@
                 margin-bottom: m(30);
             }
         }
+
+        p{
+            font-size: p(18);
+
+            @include breakpoint(max){
+                font-size: m(18);
+            }
+        }
     }
 }

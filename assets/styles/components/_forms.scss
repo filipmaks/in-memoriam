@@ -32,12 +32,26 @@ form{
         }
 
         &.search_icon{
-            position: absolute;
-            top: 50%; right: p(20);
-            @include transform($y: -50%);
+            display: none;
+        }
+    }
+
+    .search_icon{
+        position: absolute;
+        top: 50%; right: p(20);
+        @include transform($y: -50%);
+        cursor: pointer;
+
+        @include breakpoint(max){
+            right: m(20);
+        }
+
+        svg{
+            width: p(20); height: p(20);
+            fill: $blue;
 
             @include breakpoint(max){
-                right: m(20);
+                width: m(20); height: m(20);
             }
         }
     }

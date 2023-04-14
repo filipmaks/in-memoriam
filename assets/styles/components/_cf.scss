@@ -35,8 +35,16 @@
             padding: m(90) m(60);
         }
 
-        .footer_logo, .phones, .emails{
+        .phones, .emails{
             width: calc(100% / 3);
+        }
+
+        .footer_logo{
+            width: 15%;
+
+            img{
+                width: 100%;
+            }
         }
     }
 

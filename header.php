@@ -16,7 +16,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
 	<?php wp_head(); ?>
 
@@ -39,6 +39,9 @@
                 <?php endif; ?>
                 <ul class="main_nav">
                     <?php wp_nav_menu(array('menu' => 'Header Menu', 'container' => false, 'items_wrap' => '%3$s')); ?>
+                    <li class="search">
+                        <?php echo file_get_contents(get_template_directory().'/assets/icons/lupa2.svg'); ?>
+                    </li>
                 </ul>
             </div>
         </div>

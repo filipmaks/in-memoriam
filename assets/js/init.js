@@ -1,8 +1,12 @@
 (function ($) {
     $(document).ready(function () {
+
+        /* Form */
+        $('.form .search_icon').on('click', function () {
+            $( ".form #search" ).focus();
+        });
        
         /* Swiper */
-        
         $('.gallery_slider').each(function(){
             var curr = $(this),
                 currPag = curr.find('.swiper-pagination');
@@ -23,4 +27,5 @@
         });
 
     });
+
 }(jQuery));

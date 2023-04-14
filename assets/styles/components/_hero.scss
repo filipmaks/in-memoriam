@@ -18,7 +18,19 @@ HERO
             position: absolute;
             color: $white;
             width: 80%;
+            padding-left: p(60);
+
+            @include breakpoint(max){
+                padding-left: m(60);
+            }
             
+            h1{
+                margin-bottom: p(40);
+
+                @include breakpoint(max){
+                    margin-bottom: m(40);
+                }
+            }
         }
 
         img{
@@ -42,6 +54,30 @@ HERO
             img{
                 top: 85%; left: 50%;
                 @include transform($x: -50%, $y: -50%);
+            }
+        }
+
+        &.left{
+            @include flexbox();
+            align-content: center;
+            
+            article{
+                position: relative;
+                @include flexbox();
+                flex-wrap: wrap;
+                align-content: center;
+
+                h1{
+                    width: 100%;
+                }
+            }
+
+            img{
+                left: p(60);
+
+                @include breakpoint(max){
+                    left: m(60);
+                }
             }
         }
     }

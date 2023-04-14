@@ -48,16 +48,20 @@
 					<ul class="nav_holder">
 						<?php wp_nav_menu(array('menu' => 'Footer Menu', 'container' => false, 'items_wrap' => '%3$s')); ?>
 						<li class="search">
-							<img src="#" alt="Search">
+							<?php echo file_get_contents(get_template_directory().'/assets/icons/lupa2.svg'); ?>
 						</li>
 					</ul>
 				</div>
 
 				<?php if ( $copyright ) : ?>
 					<div class="copyright">
-						<p>C <?php echo $copyright; ?> <?php echo date("Y"); ?>. In Memoriam Srbija</p>
+						<p>© <?php echo date("Y"); ?> <?php echo $copyright; ?></p>
 					</div>
 				<?php endif; ?>
+
+				<div class="bgr_logo">
+					<?php echo file_get_contents(get_template_directory().'/assets/icons/logo-footer.svg'); ?>
+				</div>
 
 			</div>
 		</div>

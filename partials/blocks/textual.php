@@ -16,12 +16,13 @@ if( !empty($block['className']) ) {
 }
 
 $text       = get_field('text');
+$bgr_color  = get_field('card_background_color');
 if ( $text ) :
 ?>
 
 <section class="<?php echo esc_attr($className); ?>">
     <div class="wrapper">
-        <div class="holder">
+        <div class="holder" style="background-color: <?php echo $bgr_color; ?>">
             <article>
                 <?php echo $text; ?>
             </article>
