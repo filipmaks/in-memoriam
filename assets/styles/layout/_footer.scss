@@ -125,6 +125,22 @@ footer, .more_info{
             text-decoration: none;
             font-size: p(14); font-weight: 400;
             margin-bottom: p(12);
+            position: relative;
+
+            &:before{
+                content: "";
+                width: 0; height: 1px;
+                background-color: $blue;
+                position: absolute;
+                bottom: -1px; left: 0;
+                @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+            }
+
+            &:hover{
+                &:before{
+                    width: 100%;
+                }
+            }
 
             @include breakpoint(max){
                 font-size: m(14);
@@ -183,6 +199,22 @@ footer, .more_info{
                     text-decoration: none;
                     font-family: $font-montserrat;
                     font-size: p(12); font-weight: 600;
+                    position: relative;
+
+                    &:before{
+                        content: "";
+                        width: 0; height: 1px;
+                        background-color: $blue;
+                        position: absolute;
+                        bottom: -1px; left: 0;
+                        @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+                    }
+
+                    &:hover{
+                        &:before{
+                            width: 100%;
+                        }
+                    }
 
                     @include breakpoint(max){
                         font-size: m(12);
@@ -190,6 +222,7 @@ footer, .more_info{
                 }
 
                 &.search{
+                    cursor: pointer;
                     svg{
                         width: p(16); height: p(16);
                         fill: $blue;

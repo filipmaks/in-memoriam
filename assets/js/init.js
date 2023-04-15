@@ -1,9 +1,20 @@
 (function ($) {
     $(document).ready(function () {
 
-        /* Form */
+        /* Search Form */
         $('.form .search_icon').on('click', function () {
             $( ".form #search" ).focus();
+        });
+
+        $('header .search').on('click', function () {
+            $('.aside_search_popup').toggleClass('active');
+            $('.aside_search_popup input').focus();
+            $('.main_nav li:not(.search)').toggleClass('hide');
+        });
+
+        $('.aside_search_popup .exit_popup').on('click', function () {
+            $('.aside_search_popup').removeClass('active');
+            $('.main_nav li:not(.search)').removeClass('hide');
         });
        
         /* Swiper */

@@ -13,6 +13,11 @@ BUTTONS GLOBAL
     color: $white;
     text-align: center;
     font-family: $font-montserrat;
+    @include transition(opacity, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940)); 
+
+    &:hover{
+        opacity: 0.8;
+    }
 
     @include breakpoint(max){
         min-width: m(260);

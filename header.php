@@ -43,6 +43,14 @@
                         <?php echo file_get_contents(get_template_directory().'/assets/icons/lupa2.svg'); ?>
                     </li>
                 </ul>
+
+                <div class="aside_search_popup">
+                    <div class="search_holder">
+                        <input type="text" name="search_aside" id="search_aside" placeholder="Marko Markovic">
+                        <div class="exit_popup"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </header>
