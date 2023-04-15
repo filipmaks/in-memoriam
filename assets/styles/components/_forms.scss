@@ -89,7 +89,11 @@ form{
                 }
 
                 textarea{
-                    height: 200px;
+                    height: p(180);
+
+                    @include breakpoint(max){
+                        height: m(180);
+                    }
                 }
 
                 textarea, input{
@@ -112,6 +116,8 @@ form{
                 
                 .btn{
                     cursor: pointer;
+                    border: none;
+                    outline: none;
                 }
 
                 &.btn_holder{
@@ -130,6 +136,24 @@ form{
                     text-align: center;
                     margin-bottom: 0;
                 }
+            }
+        }
+        .wpcf7-not-valid-tip{
+            font-size: p(16);
+            padding-left: p(12);
+
+            @include breakpoint(max){
+                font-size: m(16);
+                padding-left: m(12);
+            }
+        }
+
+        .wpcf7-response-output{
+            font-size: p(16);
+            font-family: Helvetica, Arial, sans-serif;
+
+            @include breakpoint(max){
+                font-size: m(16);
             }
         }
     }

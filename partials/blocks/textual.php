@@ -23,7 +23,7 @@ if ( $text ) :
 <section class="<?php echo esc_attr($className); ?>">
     <div class="wrapper">
         <div class="holder" style="background-color: <?php echo $bgr_color; ?>">
-            <article>
+            <article class="animated anim_y">
                 <?php echo $text; ?>
             </article>
         </div>

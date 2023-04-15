@@ -10,7 +10,7 @@
 		$copyright			= get_field('copyright', 'option');
 	?>
 	
-	<section class="pre_footer">
+	<section class="pre_footer animated">
 		<div class="wrapper">
 			<div class="holder has_bgr" style="background-image: url(<?php echo $prefooter_image['url']; ?>);">
 				<?php if ( $prefooter_text ) : ?>
@@ -22,13 +22,13 @@
 	
 	<footer>
 		<div class="wrapper">
-			<div class="holder">
-				<div class="footer_logo">
+			<div class="holder set_animation slower">
+				<div class="footer_logo animated anim_y">
 					<?php if ( $footer_icon ) : ?>
 						<img src="<?php echo $footer_icon['url']; ?>" alt="<?php echo $footer_icon['alt']; ?>">
 					<?php endif; ?>
 				</div>
-				<div class="phones">
+				<div class="phones animated anim_y">
 					<article>
 						<p class="col_title"><strong>Telefoni</strong></p>
 						<?php if ( $telefoni ) : ?>
@@ -36,7 +36,7 @@
 						<?php endif; ?>
 					</article>
 				</div>
-				<div class="emails">
+				<div class="emails animated anim_y">
 					<article>
 						<p class="col_title"><strong>E-mail Kontakt</strong></p>
 						<?php if ( $email_kontakt ) : ?>
@@ -44,17 +44,25 @@
 						<?php endif; ?>
 					</article>
 				</div>
-				<div class="footer_nav">
+				<div class="footer_nav animated anim_y">
 					<ul class="nav_holder">
 						<?php wp_nav_menu(array('menu' => 'Footer Menu', 'container' => false, 'items_wrap' => '%3$s')); ?>
 						<li class="search">
 							<?php echo file_get_contents(get_template_directory().'/assets/icons/lupa2.svg'); ?>
 						</li>
 					</ul>
+					<?php /* ?>
+					<div class="aside_search_popup">
+						<div class="search_holder">
+							<input type="text" name="search_aside" id="search_aside" placeholder="Marko Markovic">
+							<div class="exit_popup"></div>
+						</div>
+					</div>
+					<?php */ ?>
 				</div>
 
 				<?php if ( $copyright ) : ?>
-					<div class="copyright">
+					<div class="copyright animated anim_y">
 						<p>© <?php echo date("Y"); ?> <?php echo $copyright; ?></p>
 					</div>
 				<?php endif; ?>

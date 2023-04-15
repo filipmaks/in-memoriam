@@ -26,6 +26,7 @@ FOOTER
 
 footer{
     padding-top: p(150);
+    overflow: hidden;
 
     @include breakpoint(max){
         padding-top: m(150);
@@ -182,6 +183,7 @@ footer, .more_info{
             @include flexbox();
             @include justify(flex-end);
             flex-wrap: wrap;
+            overflow: hidden;
 
             li{
                 margin-right: p(30);
@@ -231,6 +233,11 @@ footer, .more_info{
                             width: m(16); height: m(16);
                         }
                     }
+                }
+
+                &.hide{
+                    @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+                    opacity: 0; pointer-events: none;
                 }
             }
         }

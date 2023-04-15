@@ -19,7 +19,7 @@ if( !empty($block['className']) ) {
 
 <section class="<?php echo esc_attr($className); ?>">
     <div class="wrapper">
-        <div class="holder">
+        <div class="holder animated">
             <?php if( have_rows('gallery_slider') ): ?>
                 <div class="gallery_slider">
                     <ul class="slides swiper-wrapper">

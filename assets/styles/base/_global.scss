@@ -57,3 +57,44 @@ em, i{
         padding: 0 m(20) 0 m(20);
     }
 }
+
+// anim_x_m - animate x minus
+.animated{
+    @include transition(all, 2s, 0.2s, ease);
+    opacity: 0;
+
+    &.anim_x_m{
+        @include transform($x: -50px);
+    }
+    &.anim_x{
+        @include transform($x: 50px);
+    }
+    &.anim_y{
+        @include transform($y: 50px);
+    }
+    &.anim_y_m{
+        @include transform($y: -50px);
+    }
+    &.in_view{
+        opacity: 1;
+        @include transform();
+    }   
+    &.show_onload{
+        opacity: 1;
+        @include transform();
+    }
+}
+
+.loading_holder{
+    z-index: 99999;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: $white;
+    opacity: 1;
+    &.finished{
+        @include transition(all, 0.3s, 0s, ease);
+        opacity: 0;
+        pointer-events: none;
+    }
+}

@@ -22,7 +22,7 @@ if ( $image ) :
 
 <section class="<?php echo esc_attr($className); ?>">
     <div class="wrapper">
-        <div class="holder">
+        <div class="holder animated anim_y">
             <figure>
                 <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
                 <?php echo $text; ?>

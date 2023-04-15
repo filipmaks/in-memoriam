@@ -55,4 +55,6 @@
         </div>
     </header>
 
+    <div class="loading_holder"></div>
+
     <div id="main">

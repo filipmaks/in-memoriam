@@ -103,55 +103,59 @@ header{
             }
         }
 
-        .aside_search_popup{
+    }
+}
+
+.aside_search_popup{
+    position: absolute;
+    bottom: 0; right: 0;
+    @include transform($x: 100%);
+    opacity: 0;
+    @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+    
+    &.active{
+        right: p(60);
+        @include transform();
+        opacity: 1;
+
+        @include breakpoint(max){
+            right: m(60);
+        }
+    }
+
+    input{
+        width: p(300); height: p(30);
+        border: 0;
+        border-bottom: 1px solid $blue;
+        outline: none;
+        font-size: p(14); font-weight: 600;
+        font-family: $font-montserrat;
+        padding: 0 5px 3px 5px;
+        @include box-sizing();
+
+        @include breakpoint(max){
+            width: m(300); height: m(30);
+            font-size: m(14);
+        }
+    }
+
+    .exit_popup{
+        width: p(30); height: p(30);
+        position: absolute;
+        top: 0; right: 0;
+        cursor: pointer;
+
+        &:after, &:before{
+            content: "";
+            height: 1px; width: 60%;
+            background-color: $blue;
             position: absolute;
-            bottom: 0; right: 0;
-            @include transform($x: 100%);
-            opacity: 0;
-            @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
-            
-            &.active{
-                right: p(60);
-                @include transform();
-                opacity: 1;
+            top: 50%; left: 50%;
+            @include transform($x: -50%, $y: -50%, $r: 45deg);
+        }
 
-                @include breakpoint(max){
-                    right: m(60);
-                }
-            }
-
-            input{
-                width: p(200); height: p(30);
-                border: 0;
-                border-bottom: 1px solid $blue;
-                outline: none;
-                padding: 0 5px 3px 5px;
-                @include box-sizing();
-
-                @include breakpoint(max){
-                    width: m(200); height: m(30);
-                }
-            }
-
-            .exit_popup{
-                width: p(30); height: p(30);
-                position: absolute;
-                top: 0; right: 0;
-                cursor: pointer;
-
-                &:after, &:before{
-                    content: "";
-                    height: 1px; width: 60%;
-                    background-color: $blue;
-                    position: absolute;
-                    top: 50%; left: 50%;
-                    @include transform($x: -50%, $y: -50%, $r: 45deg);
-                }
-
-                &:before{
-                    @include transform($x: -50%, $y: -50%, $r: -45deg);
-                }
-            }
+        &:before{
+            @include transform($x: -50%, $y: -50%, $r: -45deg);
         }
     }
 }

@@ -18,6 +18,14 @@
             }
         }
 
+        img{
+            width: p(100);
+
+            @include breakpoint(max){
+                width: m(100);
+            }
+        }
+
         p{
             font-size: p(18);
 

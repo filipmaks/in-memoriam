@@ -22,14 +22,14 @@ if( !empty($block['className']) ) {
         <div class="holder">
 
             <?php if( have_rows('cards') ): ?>
-                <ul class="cards">
+                <ul class="cards set_animation slower">
                     <?php 
                     while( have_rows('cards') ): the_row(); 
                         $icon   = get_sub_field('icon_top');
                         $title  = get_sub_field('title');
                         $text   = get_sub_field('text');
                 ?>
-                    <li>
+                    <li class="animated anim_y">
 
                         <?php if ( $icon ) : ?>
                             <img src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
