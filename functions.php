@@ -123,4 +123,14 @@ add_theme_support('post-thumbnails');
 	}
 	add_filter('acf/fields/flexible_content/layout_title', 'my_layout_title', 10, 4);
 
+	function enable_rest_api_for_membership_post() {
+		register_post_type('membership-post', array(
+			'show_in_rest' => true,
+			'rest_base' => 'membership-posts',
+			'rest_controller_class' => 'WP_REST_Posts_Controller',
+		));
+	  }
+	add_action('init', 'enable_rest_api_for_membership_post');
+	  
+
 ?>

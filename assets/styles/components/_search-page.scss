@@ -37,10 +37,92 @@
             }
 
             p{
+                position: relative;
                 font-size: p(14);
+                z-index: 1;
 
                 @include breakpoint(max){
                     font-size: m(14);
+                }
+            }
+        }
+
+        .form{
+            z-index: 2;
+            position: relative;
+
+            .search_results{
+                width: 100%; height: auto; min-height: p(100);
+                position: absolute;
+                top: 100%; left: 0;
+                border: 1px solid rgba($color: $blue, $alpha: 0.2);
+                background-color: $white;
+                @include transform($y: 50px);
+                opacity: 0; pointer-events: none;
+                @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+                margin-top: p(10);
+                border-radius: 30px;
+                padding: p(30);
+                @include box-sizing();
+
+                &.active{
+                    @include transform();
+                    opacity: 1; pointer-events: all;
+                }
+
+                @include breakpoint(max){
+                    min-height: m(100);
+                    margin-top: m(10);
+                }
+
+                ul{
+                    li{
+                        margin-bottom: p(20);
+
+                        &:last-child{
+                            margin-bottom: 0;
+                        }
+
+                        a{
+                            @include flexbox();
+                            color: $blue;
+                            align-items: center;
+                            text-decoration: none;
+
+                            &:hover{
+                                p{
+                                    &:after{
+                                        width: 100%;
+                                    }
+                                }
+                            }
+
+                            p{
+                                position: relative;
+                                font-size: p(16);
+
+                                @include breakpoint(max){
+                                    font-size: m(16);
+                                }
+
+                                &:after{
+                                    content: "";
+                                    width: 0; height: 1px;
+                                    background-color: $blue;
+                                    position: absolute;
+                                    bottom: -1px; left: 0;
+                                    @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+                                }
+                            }
+
+                            img{
+                                margin: 0;
+                                width: p(50); height: p(50);
+                                object-fit: cover;
+                                margin-right: p(20);
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -113,6 +113,76 @@
             });
         });
 
+        /* Form members search */
+        var $search_input = $('.search_page input[type="text"]'),
+            $searchResults = $('.search_results ul'),
+            doneTypingInterval = 1000;
+        
+        var debouncedSearch = _.debounce(function(query) {
+            // make ajax request to search WP posts
+            $.ajax({
+                url: '/wp-json/wp/v2/posts',
+                data: {
+                    search: query,
+                    per_page: 10, // limit results to 10
+                    _embed: true  // request embedded data for featured image
+                },
+                success: function(results) {
+                    // remove previous search results
+                    $searchResults.empty();
+
+                    // check if results are empty
+                    if (results.length === 0) {
+                        // display 'no results' message
+                        $searchResults.append('<li>Osoba nije pronadjena.</li>');
+                    } else {
+
+                        // append new search results
+                        results.forEach(function(result) {
+                            var title = result.title.rendered,
+                                link = result.link;
+            
+                            // retrieve the featured image
+                            var featuredImage = '';
+                            if (result._embedded['wp:featuredmedia']) {
+                                featuredImage = result._embedded['wp:featuredmedia'][0].source_url;
+                            }
+            
+                            var html = '<li>';
+                            html += '<a href="' + link + '">';
+                            // include the featured image
+                            if (featuredImage) {
+                                html += '<img src="' + featuredImage + '" alt="' + title + '">';
+                            }
+                            html += '<p>' + title + '</p></a>';
+                            html += '</li>';
+            
+                            $searchResults.append(html);
+                        });
+
+                    }
+        
+                }
+            });
+        }, doneTypingInterval);
+        
+        $search_input.on('input', function() {
+            var query = $(this).val().trim();
+        
+            // check if query has at least 3 characters
+            if (query.length < 3) {
+                $('.search_results').removeClass('active');
+                // remove search results
+                $searchResults.empty();
+                return;
+            } else {
+                // debounce the search function
+                $('.search_results').addClass('active');
+                debouncedSearch(query);
+            }
+        
+        });
+          
     });
 
      /* On scroll logic */

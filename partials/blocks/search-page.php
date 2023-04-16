@@ -42,6 +42,9 @@ $add_text   = get_field('additional_text');
                             <?php echo file_get_contents(get_template_directory().'/assets/icons/lupa2.svg'); ?>
                         </div>
                     </form>
+                    <div class="search_results">
+                        <ul></ul>
+                    </div>
                 </div>
 
                 <?php if ( $add_text ) : ?>
