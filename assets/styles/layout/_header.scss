@@ -108,7 +108,7 @@ header{
 
 .aside_search_popup{
     position: absolute;
-    bottom: 0; right: 0;
+    top: -5px; right: 0;
     @include transform($x: 100%);
     opacity: 0;
     @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
@@ -121,6 +121,10 @@ header{
         @include breakpoint(max){
             right: m(60);
         }
+    }
+
+    form{
+        width: auto;
     }
 
     input{

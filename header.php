@@ -46,7 +46,9 @@
 
                 <div class="aside_search_popup">
                     <div class="search_holder">
-                        <input type="text" name="search_aside" id="search_aside" placeholder="Marko Markovic">
+                        <form action="/" method="get">
+                            <input type="text" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="Marko Markovic"/>
+                        </form>
                         <div class="exit_popup"></div>
                     </div>
                 </div>

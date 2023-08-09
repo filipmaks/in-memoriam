@@ -131,6 +131,17 @@ add_theme_support('post-thumbnails');
 		));
 	  }
 	add_action('init', 'enable_rest_api_for_membership_post');
-	  
 
+	// Get content
+	function get_clean_content() {
+		// Get the content
+		$content = get_the_content();
+	
+		// Strip the HTML tags
+		$clean_content = strip_tags($content);
+	
+		// Return the first 200 characters
+		return substr($clean_content, 0, 200);
+	}
+	
 ?>
