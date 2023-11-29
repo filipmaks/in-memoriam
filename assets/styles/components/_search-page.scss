@@ -44,6 +44,14 @@
                 @include breakpoint(max){
                     font-size: m(14);
                 }
+                
+                @include breakpoint(1024){
+                    font-size: 14px;
+                }
+
+                @include breakpoint(640){
+                    // font-size: 13px;
+                }
             }
         }
 

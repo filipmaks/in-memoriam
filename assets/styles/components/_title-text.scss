@@ -11,6 +11,14 @@
         text-align: center;
         margin: 0 auto;
 
+        @include breakpoint(1024){
+            max-width: 60%;
+        }
+    
+        @include breakpoint(640){
+            max-width: 100%;
+        }
+
         h3, img{
             margin-bottom: p(30);
             @include breakpoint(max){
@@ -31,6 +39,14 @@
 
             @include breakpoint(max){
                 font-size: m(18);
+            }
+
+            @include breakpoint(1024){
+                font-size: 18px
+            }
+        
+            @include breakpoint(640){
+                font-size: 16px
             }
         }
     }

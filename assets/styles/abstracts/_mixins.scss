@@ -26,7 +26,7 @@
             @media (max-width: 1320px){@content ;}
 
         } @else if $point == 1024{
-            @media (max-width: 1200px){@content ;}
+            @media (max-width: 1280px){@content ;}
 
         } @else if $point == 768{
             @media (max-width: 1000px){@content ;}

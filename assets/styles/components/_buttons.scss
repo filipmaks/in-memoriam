@@ -25,8 +25,13 @@ BUTTONS GLOBAL
         padding: m(14) m(35);
     }
 
+    @include breakpoint(1024){
+        font-size: 22px;
+        padding: 14px 35px;
+    }
+
     @include breakpoint(640){
-        font-size: 17px;
+        font-size: 18px;
     }
 }
 
@@ -37,6 +42,14 @@ BUTTONS GLOBAL
         margin-bottom: m(30);
     }
 
+    @include breakpoint(1024){
+        margin-bottom: 25px;
+    }
+
+    @include breakpoint(640){
+        margin-bottom: 20px;
+    }
+
     .holder{
         padding: p(60) 0;
         @include box-sizing();
@@ -44,6 +57,14 @@ BUTTONS GLOBAL
 
         @include breakpoint(max){
             padding: m(60) 0;
+        }
+
+        @include breakpoint(1024){
+            padding: 50px 0;
+        }
+    
+        @include breakpoint(640){
+            padding: 30px 0;
         }
     }
 

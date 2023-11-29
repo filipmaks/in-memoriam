@@ -29,11 +29,26 @@ header{
             @include flexbox();
             flex-wrap: wrap;
 
+            @include breakpoint(1024){
+                position: fixed;
+                align-content: baseline;
+                top: 0; right: 0;
+                width: 300px; height: 100vh;
+                @include transform($x: 100%);
+                @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+            }
+
             li{
                 margin-right: p(30);
 
                 @include breakpoint(max){
                     margin-right: m(30);
+                }
+
+                @include breakpoint(1024){
+                    width: 100%;
+                    margin-bottom: 20px;
+                    margin-right: 0;
                 }
 
                 &:last-child{
@@ -54,6 +69,14 @@ header{
                     font-size: p(12); font-weight: 600;
                     font-family: $font-montserrat;
                     position: relative;
+
+                    @include breakpoint(max){
+                        font-size: m(12);
+                    }
+
+                    @include breakpoint(1024){
+                        font-size: 22px;
+                    }
 
                     &:before{
                         content: "";
@@ -100,9 +123,35 @@ header{
             }
             img{
                 width: p(300);
+
+                @include breakpoint(max){
+                    width: m(300);
+                }
+
+                @include breakpoint(1024){
+                    width: 140px;
+                }
             }
         }
 
+    }
+
+    .hamburger{
+        display: none;
+        width: 20px; height: 20px;
+
+
+        @include breakpoint(1024){
+            display: block;
+        }
+    }
+
+    &.active{
+        .holder{
+            ul{
+                @include transform();
+            }
+        }
     }
 }
 

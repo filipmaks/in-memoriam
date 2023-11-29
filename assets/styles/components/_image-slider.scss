@@ -13,6 +13,10 @@
                 border-radius: 30px;
                 overflow: hidden;
 
+                @include breakpoint(1024){
+                    aspect-ratio: 16/9;
+                }
+
                 h5{
                     color: $white;
                     position: absolute;

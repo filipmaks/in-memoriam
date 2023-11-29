@@ -44,6 +44,8 @@
                     </li>
                 </ul>
 
+                <div class="hamburger"></div>
+
                 <div class="aside_search_popup">
                     <div class="search_holder">
                         <form action="/" method="get">
