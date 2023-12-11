@@ -12,6 +12,10 @@ form{
         margin: 0 auto m(30) auto;
     }
 
+    @include breakpoint(640){
+        margin-bottom: 25px;
+    }
+
     input{
 
         &.text_field{
@@ -28,6 +32,12 @@ form{
             @include breakpoint(max){
                 padding: m(20) m(30);
                 font-size: m(20);
+            }
+
+            @include breakpoint(640){
+                font-size: 18px; line-height: 1;
+                padding: 5px 15px;    
+                height: 42px;
             }
         }
 
@@ -46,12 +56,20 @@ form{
             right: m(20);
         }
 
+        @include breakpoint(640){
+            right: 10px;
+        }
+
         svg{
             width: p(20); height: p(20);
             fill: $blue;
 
             @include breakpoint(max){
                 width: m(20); height: m(20);
+            }
+
+            @include breakpoint(640){
+                width: 15px; height: 15px;
             }
         }
     }

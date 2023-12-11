@@ -8,6 +8,11 @@ HERO
     @include breakpoint(max){
         margin-bottom: m(30);
     }
+
+    @include breakpoint(640){
+        margin-bottom: 30px;    
+    }
+    
     .holder{
         aspect-ratio: 16/6;
         position: relative;
@@ -16,6 +21,11 @@ HERO
 
         @include breakpoint(1024){
             aspect-ratio: 16/9;
+        }
+
+        @include breakpoint(640){
+            aspect-ratio: unset;
+            min-height: 90vh;
         }
 
         article{
@@ -27,12 +37,31 @@ HERO
             @include breakpoint(max){
                 padding-left: m(60);
             }
+
+            @include breakpoint(640){
+                width: 100%;  
+                padding: 0 20px;  
+            }
             
             h1{
                 margin-bottom: p(40);
 
                 @include breakpoint(max){
                     margin-bottom: m(40);
+                }
+
+                @include breakpoint(640){
+                    margin-bottom: 30px;
+                    br{
+                        display: none;
+                    }
+                }
+            }
+            p{
+                @include breakpoint(640){
+                    br{
+                        display: none;
+                    }
                 }
             }
         }
@@ -44,6 +73,13 @@ HERO
             @include breakpoint(max){
                 bottom: m(100);
                 max-width: m(100);
+            }
+
+            @include breakpoint(640){
+                position: relative;
+                bottom: auto; max-width: 50px;  
+                margin-left: 20px;  
+                margin-top: 30px;
             }
         }
 
@@ -58,13 +94,21 @@ HERO
             img{
                 top: 85%; left: 50%;
                 @include transform($x: -50%, $y: -50%);
+
+                @include breakpoint(640){
+                    top: auto; left: auto;
+                }
             }
         }
 
         &.left{
             @include flexbox();
             align-content: center;
-            
+
+            @include breakpoint(640){
+                flex-wrap: wrap;
+            }            
+
             article{
                 position: relative;
                 @include flexbox();
@@ -81,6 +125,10 @@ HERO
 
                 @include breakpoint(max){
                     left: m(60);
+                }
+
+                @include breakpoint(640){
+                    left: auto;
                 }
             }
         }

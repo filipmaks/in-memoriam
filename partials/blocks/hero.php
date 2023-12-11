@@ -40,7 +40,7 @@ if ( $image ) :
             </article>
 
             <?php if ( $icon ) : ?>
-                <img class="animated" src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
+                <img class="animated anim_y" src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
             <?php endif; ?>
 
         </div>

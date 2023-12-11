@@ -6,6 +6,10 @@
         padding: m(50) 0;
     }
 
+    @include breakpoint(640){
+        padding: 40px 0;  
+    }
+    
     .holder{
         max-width: 40%;
         text-align: center;

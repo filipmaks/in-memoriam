@@ -9,6 +9,10 @@ FOOTER
         overflow: hidden;
         aspect-ratio: 16/5;
 
+        @include breakpoint(640){
+            aspect-ratio: 1/1;
+        }
+
         h3{
             color: $white;
             position: absolute;
@@ -19,6 +23,10 @@ FOOTER
 
             @include breakpoint(max){
                 padding-left: m(150);
+            }
+
+            @include breakpoint(640){
+                padding-left: 30px;
             }
         }
     }
@@ -83,6 +91,11 @@ footer, .more_info{
             width: calc(50% - 100px);
         }
 
+        @include breakpoint(640){
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
         &:before, &:after{
             display: block;
             content: "";
@@ -106,6 +119,10 @@ footer, .more_info{
 
         &:after{
             right: 0;
+
+            @include breakpoint(640){
+                content: none;
+            }
         }
 
         padding: 0 p(40);
@@ -114,6 +131,10 @@ footer, .more_info{
 
         @include breakpoint(max){
             padding: 0 m(40);
+        }
+
+        @include breakpoint(640){
+            padding: 0 20px;
         }
 
         .col_title{
@@ -132,6 +153,7 @@ footer, .more_info{
 
             @include breakpoint(640){
                 font-size: 14px;
+                margin-bottom: 20px;
             }
         }
 
@@ -185,6 +207,12 @@ footer, .more_info{
         &:before, &:after{
             content: none;
         }
+
+        @include breakpoint(640){
+            &:before{
+                content: "";
+            }
+        }
     }
 
     .footer_logo{
@@ -194,6 +222,11 @@ footer, .more_info{
         @include breakpoint(1024){
             width: 140px;
             margin-right: 20px;
+        }
+
+        @include breakpoint(640){
+            width: 70%;
+            margin-bottom: 30px; margin-right: 0;
         }
 
         img{
@@ -231,8 +264,16 @@ footer, .more_info{
                     margin-right: 20px;
                 }
 
+                @include breakpoint(640){
+                    width: 100%;
+                    margin-right: 0; margin-bottom: 15px;
+                }
+
                 &:last-child{
                     margin-right: 0;
+                    @include breakpoint(640){
+                        margin-bottom: 0;
+                    }
                 }
 
                 a{

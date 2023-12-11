@@ -12,6 +12,7 @@
     @include breakpoint(640){
         margin: 20px 0;
     }
+
     .holder{
         padding: p(60) p(320);
         @include box-sizing();
@@ -26,7 +27,7 @@
         }
     
         @include breakpoint(640){
-            padding: 40px 60px;
+            padding: 30px 0px;
         }
     }
     article{
@@ -64,7 +65,7 @@
             }
         
             @include breakpoint(640){
-                font-size: 16px
+                font-size: 16px; line-height: 1.3;
             }
         }
     }

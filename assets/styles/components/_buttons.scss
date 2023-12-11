@@ -32,6 +32,7 @@ BUTTONS GLOBAL
 
     @include breakpoint(640){
         font-size: 18px;
+        padding: 10px 30px;
     }
 }
 
@@ -89,8 +90,19 @@ BUTTONS GLOBAL
                 margin-right: m(30);
             }
 
+            @include breakpoint(640){
+                margin-right: 0;
+                margin-bottom: 20px;
+                min-width: 60%;
+                text-align: center;
+            }
+
             &:last-child{
                 margin-right: 0;
+
+                @include breakpoint(640){
+                    margin-bottom: 0;
+                }
             }
         }
     }

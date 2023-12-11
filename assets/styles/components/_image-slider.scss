@@ -6,6 +6,10 @@
         padding: m(50) 0;
     }
 
+    @include breakpoint(640){
+        padding: 30px 0;
+    }
+
     .gallery_slider {
         ul{
             li{
@@ -17,6 +21,10 @@
                     aspect-ratio: 16/9;
                 }
 
+                @include breakpoint(640){
+                    aspect-ratio: 16/10;
+                }
+
                 h5{
                     color: $white;
                     position: absolute;
@@ -24,11 +32,19 @@
                     @include transform($x: -50%);
                     max-width: 80%;
                     text-align: center; font-style: italic;
+
+                    @include breakpoint(640){
+                        max-width: 100%;
+                        bottom: 30px;
+                    }
                 }
             }
         }
     }
     .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction{
         bottom: 20px;
+        @include breakpoint(640){
+            bottom: 10px;
+        }
     }
 }
