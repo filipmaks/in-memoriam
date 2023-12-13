@@ -6,31 +6,31 @@
  */
 
 
-// Custom post type People
-// function create_testimonials_cpt(){
-//     $labels = array(
-//         'name'                  => __('Testimonials'),
-//         'singular_name'         => __('Testimonials'),
-//         'add_new'               => __('Add Testimonial'),
-//         'add_new_item'          => __('Add New Testimonial'),
-//         'edit_item'             => __('Edit Testimonial'),
-//         'new_item'              => __('New Testimonial'),
-//         'all_items'             => __('All Testimonials'),
-//         'view_item'             => __('View Testimonials'),
-//         'search_items'          => __('Search Testimonials'),
-//         'not_found'             => __('No Testimonials found'),
-//         'not_found_in_trash'    => __('No Testimonials found in the Trash'),
-//         'menu_name'             => 'Testimonials',
-//         );
-//     $args = array(
-//         'labels'        => $labels,
-//         'public'        => true,
-//         'menu_position' => 24,
-//         'menu_icon'     => __( 'dashicons-groups' ),
-//         'supports'      => array('title',  'thumbnail', 'editor'),
-// 		'show_in_rest' 	=> true,
-//         'exclude_from_search' => false
-//     );
-//     register_post_type('testimonials', $args);
-// }
-// add_action('init', 'create_testimonials_cpt');
+// Custom post type Memorials
+function create_memorials_cpt(){
+    $labels = array(
+        'name'                  => __('Memorials'),
+        'singular_name'         => __('Memorials'),
+        'add_new'               => __('Add Memorial'),
+        'add_new_item'          => __('Add New Memorial'),
+        'edit_item'             => __('Edit Memorial'),
+        'new_item'              => __('New Memorial'),
+        'all_items'             => __('All Memorials'),
+        'view_item'             => __('View Memorials'),
+        'search_items'          => __('Search Memorials'),
+        'not_found'             => __('No Memorials found'),
+        'not_found_in_trash'    => __('No Memorials found in the Trash'),
+        'menu_name'             => 'Memorials',
+    );
+    $args = array(
+        'labels'                => $labels,
+        'public'                => true,
+        'menu_position'         => 24,
+        'menu_icon'             => __( 'dashicons-groups' ),
+        'supports'              => array('title',  'thumbnail'),
+		'show_in_rest' 	        => true,
+        'exclude_from_search'   => false
+    );
+    register_post_type('memorials', $args);
+}
+add_action('init', 'create_memorials_cpt');
