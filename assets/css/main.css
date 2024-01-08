@@ -472,6 +472,102 @@ em, i {
   text-decoration: none;
 }
 
+.single-memoriam-content .inner-content {
+  background-color: #F1F4F9;
+  padding: 1.5625vw;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 25px;
+  overflow: hidden;
+}
+@media (min-width: 2560px) {
+  .single-memoriam-content .inner-content {
+    padding: 40px;
+  }
+}
+.single-memoriam-content .row {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -ms-flex-pack: space-between;
+  gap: 1.5625vw;
+  padding-bottom: 1.5625vw;
+}
+@media (min-width: 2560px) {
+  .single-memoriam-content .row {
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+}
+.single-memoriam-content .row:last-child {
+  padding-bottom: 0;
+}
+.single-memoriam-content .row .card {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  border-radius: 25px;
+  overflow: hidden;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+.single-memoriam-content .row .card div {
+  width: 100%;
+}
+.single-memoriam-content .row .card p {
+  font-family: "Libre Baskerville", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+.single-memoriam-content .card-bottom {
+  width: 100%;
+  padding: 1.5625vw 1.5625vw 3.125vw 1.5625vw;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  align-self: flex-end;
+}
+@media (min-width: 2560px) {
+  .single-memoriam-content .card-bottom {
+    padding: 40px 40px 80px 40px;
+  }
+}
+.single-memoriam-content .quote-card, .single-memoriam-content .text-card {
+  padding: 2.6041666667vw 1.5625vw 0vw 1.5625vw;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@media (min-width: 2560px) {
+  .single-memoriam-content .quote-card, .single-memoriam-content .text-card {
+    padding: 66.6666666667px 40px 0px 40px;
+  }
+}
+.single-memoriam-content .quote-card .card-bottom, .single-memoriam-content .text-card .card-bottom {
+  padding-left: 0;
+  padding-right: 0;
+}
+.single-memoriam-content .video-holder video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/5;
+}
+.single-memoriam-content .text-card.center {
+  align-self: flex-end;
+}
+
 /*
 BUTTONS GLOBAL
 -------------------------------------------- */

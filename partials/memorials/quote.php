@@ -9,8 +9,8 @@
 
     <?php if( $quote ): ?>
 
-        <blockquote class=<?= echo esc_attr($quote_position['value']); ?>>
-            <p><?= $quote ?></p>
+        <blockquote class=<?php echo esc_attr($quote_position['value']); ?>>
+            <p><em>"<?php echo $quote ?>"</em></p>
         </blockquote>
 
     <?php endif; ?>
@@ -18,11 +18,11 @@
     <div class="card-bottom">
 
         <?php if( $quote_description ): ?>
-            <p><strong><?= $quote_description ?></strong></p>
+            <p><strong><?php echo $quote_description ?></strong></p>
         <?php endif; ?>
 
         <?php if( $date ): ?>
-            <p><strong><?= $date ?></strong></p>
+            <p>- <?php echo $date ?></p>
         <?php endif; ?>
 
     </div>

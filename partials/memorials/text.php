@@ -9,8 +9,8 @@
 
     <?php if( $text ): ?>
 
-        <article class=<?= echo esc_attr($text_position['value']); ?>>
-            <p><?= $quote ?></p>
+        <article class=<?php echo esc_attr($text_position['value']); ?>>
+            <p><?php echo $text ?></p>
         </article>
 
     <?php endif; ?>
@@ -18,11 +18,11 @@
     <div class="card-bottom">
 
         <?php if( $text_description ): ?>
-            <p><strong><?= $text_description ?></strong></p>
+            <p><strong><?php echo $text_description ?></strong></p>
         <?php endif; ?>
 
         <?php if( $date ): ?>
-            <p><strong><?= $date ?></strong></p>
+            <p>- <?php echo $date ?></p>
         <?php endif; ?>
 
     </div>

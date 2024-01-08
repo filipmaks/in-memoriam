@@ -9,7 +9,7 @@
     <?php if( $image ): ?>
 
         <figure class="memorials__image">
-            <img src="<?= $image['url'] ?>" alt="<?= $image['alt'] ?>" />
+            <img src="<?php echo $image['url'] ?>" alt="<?php echo $image['alt'] ?>" />
         </figure>
 
     <?php endif; ?>
@@ -17,11 +17,11 @@
     <div class="card-bottom">
 
         <?php if( $image_description ): ?>
-            <p><strong><?= $image_description ?></strong></p>
+            <p><strong><?php echo $image_description ?></strong></p>
         <?php endif; ?>
 
         <?php if( $date ): ?>
-            <p><strong><?= $date ?></strong></p>
+            <p>- <?php echo $date ?></p>
         <?php endif; ?>
     </div>
     

@@ -26,47 +26,47 @@
     <div class="wrapper">
         <?php
             // check if the nested repeater field has rows of data
-            if( have_rows('row_content') ):
+            if (have_rows('row_content')):
 
                 echo '<div class="inner-content">';
-
-                while ( have_rows('row_content') ) : the_row();
-
+            
+                while (have_rows('row_content')) : the_row();
+            
                     // check if the flexible content field has rows of data
-                    if( have_rows('profile_content') ): 
-
+                    if (have_rows('profile_content')): 
+            
                         echo '<div class="row">';
                     
                         // loop through the rows of data
-                        while ( have_rows('profile_content') ) : the_row();
-
-                            if( get_row_layout() == 'image' ):
-                                include 'partials/memorials/image.php';
-                            endif;
-                            if( get_row_layout() == 'video' ): 
-                                include 'partials/memorials/video.php';
-                            endif;
-                            if( get_row_layout() == 'quote' ): 
-                                include 'partials/memorials/quote.php';
-                            endif;
-                            if( get_row_layout() == 'text' ): 
-                                include 'partials/memorials/text.php';
-                            endif;
-                            if( get_row_layout() == 'long_text' ): 
-                                include 'partials/memorials/long-text.php';
+                        while (have_rows('profile_content')) : the_row();
+            
+                            $layout = get_row_layout();
+            
+                            if ($layout == 'image'):
+                                get_template_part('partials/memorials/image');
+                            elseif ($layout == 'video'): 
+                                get_template_part('partials/memorials/video');
+                            elseif ($layout == 'quote'): 
+                                get_template_part('partials/memorials/quote');
+                            elseif ($layout == 'text'): 
+                                get_template_part('partials/memorials/text');
+                            elseif ($layout == 'long_text'): 
+                                get_template_part('partials/memorials/long-text');
                             endif;
                             
                         endwhile;
-
+            
                         echo '</div>';
-
+            
                     endif;
-
+            
                 endwhile;
-
+            
                 echo '</div>';
-
+            
             endif;
+            
+            
         ?>
     </div>
 </section>

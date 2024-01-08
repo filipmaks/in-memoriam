@@ -61,6 +61,10 @@
 
         contentLoaded = true;
 
+        console.log('test');
+
+        
+
         setTimeout(() => {
 
             if( contentLoaded ) {
