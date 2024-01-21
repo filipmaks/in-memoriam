@@ -61,10 +61,6 @@
 
         contentLoaded = true;
 
-        console.log('test');
-
-        
-
         setTimeout(() => {
 
             if( contentLoaded ) {
@@ -185,6 +181,15 @@
                 debouncedSearch(query);
             }
         
+        });
+
+        /* Single Membership */
+        $('.three-dots').on('click', function(){
+            var curr = $(this),
+                currShare = curr.next(),
+                currShareCard = curr.parent();
+
+                currShareCard.addClass('active');
         });
           
     });

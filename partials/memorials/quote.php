@@ -26,5 +26,13 @@
         <?php endif; ?>
 
     </div>
+
+    <div class="share-card">
+        <span class="three-dots"><span></span><span></span><span></span></span>
+        <div class="share-content">
+            <p>postavio <?php echo get_the_date( 'd.m.Y.' ); ?> <span class="author_name">Petar Petric</span></p>
+            <p class="share-row">podeli Secanje <span class="share-icon"><?php echo file_get_contents(get_template_directory().'/assets/icons/icons8-share.svg'); ?></span></p>
+        </div>
+    </div>
     
 </div><!-- Quote Card -->

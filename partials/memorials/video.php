@@ -10,8 +10,8 @@
 
         <div class="video-holder">
             <video width="320" height="240" controls >
-                <source src="<?php echo $video; ?>" type="video/mp4">
-                <source src="<?php echo $video; ?>" type="video/ogg">
+                <source src="<?php echo $video['url']; ?>" type="video/mp4">
+                <source src="<?php echo $video['url']; ?>" type="video/ogg">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -27,6 +27,14 @@
         <?php if( $date ): ?>
             <p>- <?php echo $date ?></p>
         <?php endif; ?>
+    </div>
+
+    <div class="share-card">
+        <span class="three-dots"><span></span><span></span><span></span></span>
+        <div class="share-content">
+            <p>postavio <?php echo get_the_date( 'd.m.Y.' ); ?> <span class="author_name">Petar Petric</span></p>
+            <p class="share-row">podeli Secanje <span class="share-icon"><?php echo file_get_contents(get_template_directory().'/assets/icons/icons8-share.svg'); ?></span></p>
+        </div>
     </div>
     
 </div><!-- Video Card -->

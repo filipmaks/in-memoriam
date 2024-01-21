@@ -510,6 +510,7 @@ em, i {
   padding-bottom: 0;
 }
 .single-memoriam-content .row .card {
+  position: relative;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -530,6 +531,163 @@ em, i {
 .single-memoriam-content .row .card p {
   font-family: "Libre Baskerville", Helvetica, Arial, sans-serif;
   line-height: 1.5;
+}
+.single-memoriam-content .row .card.image-card .memorials_image {
+  display: block;
+  width: 100%;
+}
+.single-memoriam-content .row .card.image-card .memorials_image img {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  object-fit: cover;
+}
+.single-memoriam-content .row .card.image-card.full-card-height .full-height-card-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  color: #ffffff;
+}
+.single-memoriam-content .row .share-card .share-content {
+  opacity: 0;
+  pointer-events: none;
+  width: 97%;
+  position: absolute;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -ms-flex-pack: space-between;
+  bottom: 1.5%;
+  left: 1.5%;
+  padding: 0 1.5625vw;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  -webkit-transition: opacity 0.3s 0s ease 1000ms 0ms ease-in-out;
+  -moz-transition: opacity 0.3s 0s ease 1000ms 0ms ease-in-out;
+  -ms-transition: opacity 0.3s 0s ease 1000ms 0ms ease-in-out;
+  -o-transition: opacity 0.3s 0s ease 1000ms 0ms ease-in-out;
+  transition: opacity 0.3s 0s ease 1000ms 0ms ease-in-out;
+}
+@media (min-width: 2560px) {
+  .single-memoriam-content .row .share-card .share-content {
+    padding: 0 40px;
+  }
+}
+@media (max-width: 700px) {
+  .single-memoriam-content .row .share-card .share-content {
+    padding: 0 20px;
+  }
+}
+.single-memoriam-content .row .share-card .share-content p {
+  font-size: 0.6770833333vw;
+  line-height: 3;
+  color: #afb6bf;
+}
+@media (min-width: 2560px) {
+  .single-memoriam-content .row .share-card .share-content p {
+    font-size: 17.3333333333px;
+  }
+}
+@media (max-width: 700px) {
+  .single-memoriam-content .row .share-card .share-content p {
+    font-size: 10px;
+  }
+}
+.single-memoriam-content .row .share-card .share-content p.share-row {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
+.single-memoriam-content .row .share-card .share-content .share-icon {
+  display: inline-block;
+  width: 1.0416666667vw;
+  height: 1.0416666667vw;
+  margin-left: 0.5208333333vw;
+}
+@media (min-width: 2560px) {
+  .single-memoriam-content .row .share-card .share-content .share-icon {
+    width: 26.6666666667px;
+    height: 26.6666666667px;
+    margin-left: 13.3333333333px;
+  }
+}
+@media (max-width: 700px) {
+  .single-memoriam-content .row .share-card .share-content .share-icon {
+    width: 15px;
+    height: 15px;
+    margin-left: 10px;
+  }
+}
+.single-memoriam-content .row .share-card .share-content .share-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: #afb6bf;
+  cursor: pointer;
+  -webkit-transition: all 0.3s 0s ease;
+  -moz-transition: all 0.3s 0s ease;
+  -ms-transition: all 0.3s 0s ease;
+  -o-transition: all 0.3s 0s ease;
+  transition: all 0.3s 0s ease;
+}
+.single-memoriam-content .row .share-card .three-dots {
+  position: absolute;
+  bottom: 0;
+  right: 1.5625vw;
+  height: 2.5vw;
+  cursor: pointer;
+  -webkit-transition: opacity 0.3s 0s ease 1000ms 0ms ease-in-out;
+  -moz-transition: opacity 0.3s 0s ease 1000ms 0ms ease-in-out;
+  -ms-transition: opacity 0.3s 0s ease 1000ms 0ms ease-in-out;
+  -o-transition: opacity 0.3s 0s ease 1000ms 0ms ease-in-out;
+  transition: opacity 0.3s 0s ease 1000ms 0ms ease-in-out;
+}
+@media (min-width: 2560px) {
+  .single-memoriam-content .row .share-card .three-dots {
+    height: 64px;
+    right: 40px;
+  }
+}
+@media (max-width: 700px) {
+  .single-memoriam-content .row .share-card .three-dots {
+    height: 40px;
+    right: 30px;
+  }
+}
+.single-memoriam-content .row .share-card .three-dots span {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: #afb6bf;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.single-memoriam-content .row .share-card .three-dots span:last-child {
+  margin-right: 0;
+}
+.single-memoriam-content .row .share-card.active .share-content {
+  opacity: 1;
+  pointer-events: all;
+}
+.single-memoriam-content .row .share-card.active .three-dots {
+  opacity: 0;
+  pointer-events: none;
 }
 .single-memoriam-content .card-bottom {
   width: 100%;
@@ -563,9 +721,67 @@ em, i {
   width: 100%;
   height: auto;
   aspect-ratio: 16/5;
+  object-fit: cover;
 }
 .single-memoriam-content .text-card.center {
   align-self: flex-end;
+}
+.single-memoriam-content .video-card .share-card .share-content, .single-memoriam-content .image-card .share-card .share-content {
+  width: 99%;
+  left: 0.5%;
+}
+
+.single-memorials .hero .holder.left article {
+  align-content: flex-end;
+  margin-bottom: 1.5625vw;
+}
+@media (min-width: 2560px) {
+  .single-memorials .hero .holder.left article {
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 700px) {
+  .single-memorials .hero .holder.left article {
+    margin-bottom: 30px;
+  }
+}
+.single-memorials .hero .holder.left article h5, .single-memorials .hero .holder.left article p {
+  width: 100%;
+}
+.single-memorials .hero .holder.left article p {
+  font-family: "Libre Baskerville", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  margin-bottom: 1.5625vw;
+}
+@media (min-width: 2560px) {
+  .single-memorials .hero .holder.left article p {
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 700px) {
+  .single-memorials .hero .holder.left article p {
+    margin-bottom: 25px;
+  }
+}
+.single-memorials .hero .holder.left article h5 {
+  margin-bottom: 2.0833333333vw;
+}
+@media (min-width: 2560px) {
+  .single-memorials .hero .holder.left article h5 {
+    margin-bottom: 53.3333333333px;
+  }
+}
+@media (max-width: 700px) {
+  .single-memorials .hero .holder.left article h5 {
+    margin-bottom: 30px;
+  }
+}
+.single-memorials .hero .holder.left article img {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
 }
 
 /*
