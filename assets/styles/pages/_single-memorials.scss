@@ -10,6 +10,10 @@
         @include breakpoint(max){
             padding: m(30);
         }
+
+        @include breakpoint(640){
+            padding: 15px 15px 0 15px;
+        }
     }
 
     .row{
@@ -17,10 +21,39 @@
         @include justify(space-between);
         gap: p(30);
         padding-bottom: p(30);
+        flex-wrap: wrap;
 
         @include breakpoint(max){
             gap: m(30);
             padding-bottom: m(30);
+        }
+
+        @include breakpoint(1024){
+            &.two-columns, &.three-columns, &.four-columns, &.five-columns{
+                .card{
+                    flex-basis: calc(50% - p(30));
+                }
+            }
+            &.three-columns, &.five-columns{
+                .card{
+                    &:last-child{
+                        flex-basis: 100%;
+                    }
+                }
+            }
+        }
+
+        @include breakpoint(768){
+            &.two-columns, &.three-columns, &.four-columns, &.five-columns{
+                .card{
+                    flex-basis: 100%;
+                }
+            }
+        }
+
+        @include breakpoint(640){
+            gap: 0;
+            margin-bottom: 15px;
         }
 
         &:last-child{
@@ -38,6 +71,11 @@
             -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
             -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
             box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+
+            @include breakpoint(768){
+                flex-basis: 100%;
+                margin-bottom: 15px;
+            }
 
             div{
                 width: 100%;
@@ -67,6 +105,12 @@
                     }
                 }
             }
+
+            &:last-child{
+                @include breakpoint(768){
+                    margin-bottom: 0;
+                }
+            }
         }
 
         .share-card{
@@ -91,7 +135,10 @@
                 }
             
                 @include breakpoint(640){
+                    width: 95%;
+                    left: 10px; bottom: 5px;
                     padding: 0 20px;
+                    background-color: $white;
                 }
         
                 p{
@@ -149,9 +196,13 @@
                     right: m(30);
                 }
 
+                @include breakpoint(1024){
+                    height: m(30); 
+                }
+
                 @include breakpoint(640){
                     height: 40px;
-                    right: 30px;
+                    right: 20px;
                 }
                 span{
                     display: inline-block;
@@ -178,6 +229,11 @@
             }
     
         }
+
+        &.one-column{
+
+        }
+
     }
 
     .card-bottom{
@@ -189,6 +245,10 @@
         @include breakpoint(max){
             padding: m(30) m(30) m(60) m(30);
         }
+
+        @include breakpoint(640){
+            padding: 20px;
+        }
     }
 
     .quote-card, .text-card{
@@ -199,8 +259,16 @@
             padding: m(50) m(30) m(0) m(30);
         }
 
+        @include breakpoint(640){
+            padding: 20px;
+        }
+
         .card-bottom{
             padding-left: 0; padding-right: 0;
+
+            @include breakpoint(640){
+                padding: 40px 0 0 0;
+            }
         }
     }
     
@@ -209,6 +277,10 @@
             width: 100%; height: auto;
             aspect-ratio: 16/5;
             object-fit: cover;
+
+            @include breakpoint(640){
+                aspect-ratio: 16/9;
+            }
         }
     }
 
@@ -229,7 +301,11 @@
 
 .single-memorials {
     .hero {
+        margin-bottom: 15px;
         .holder{
+            @include breakpoint(640){
+                min-height: 60vh;
+            }
             &.left {
                 article{
                     align-content: flex-end;
@@ -273,6 +349,16 @@
                         position: relative;
                         top: auto; left: auto; right: auto; bottom: auto;
                     }
+                }
+            }
+            img{
+                @include breakpoint(640){
+                    margin: 0;
+                }
+            }
+            h5{
+                @include breakpoint(640){
+                    font-size: 18px;
                 }
             }
         }

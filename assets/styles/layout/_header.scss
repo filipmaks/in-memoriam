@@ -41,6 +41,13 @@ header{
                 width: 300px; height: 100vh;
                 @include transform($x: 100%);
                 @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+                background-color: $white;
+            }
+
+            @include breakpoint(640){
+                width: 100%;
+                text-align: center;
+                padding-top: 100px;
             }
 
             li{
@@ -157,6 +164,7 @@ header{
             position: absolute;
             top: 50%; left: 0;
             @include transform($y: -50%);
+            @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
 
             &:nth-child(1){
                 top: 0;
@@ -183,6 +191,33 @@ header{
     }
 
     &.active{
+        .holder{
+            ul{
+                @include transform();
+            }
+        }
+    }
+
+    &.nav-open{
+        .hamburger{
+            span{
+                &:nth-child(1){
+                    top: 50%;
+                    @include transform($y: -50%, $r: 45deg);
+                }
+
+                &:nth-child(3){
+                    top: 50%;
+                    @include transform($y: -50%, $r: -45deg);
+                }
+
+                &:nth-child(2){
+                    opacity: 0;
+                    @include transform($x: -50px, $y: 50%);
+                }
+            }
+        }
+
         .holder{
             ul{
                 @include transform();

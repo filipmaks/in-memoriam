@@ -25,7 +25,12 @@ HERO
 
         @include breakpoint(640){
             aspect-ratio: unset;
-            min-height: 90vh;
+            min-height: 70vh;
+            @include flexbox();
+            align-items: center;
+            @include justify(center);
+            flex-wrap: wrap;
+            align-content: flex-end;
         }
 
         article{
@@ -39,6 +44,7 @@ HERO
             }
 
             @include breakpoint(640){
+                position: relative;
                 width: 100%;  
                 padding: 0 20px;  
             }
@@ -80,6 +86,7 @@ HERO
                 bottom: auto; max-width: 50px;  
                 margin-left: 20px;  
                 margin-top: 30px;
+                margin-bottom: 40px;
             }
         }
 
@@ -107,6 +114,7 @@ HERO
 
             @include breakpoint(640){
                 flex-wrap: wrap;
+                align-content: flex-end;
             }            
 
             article{

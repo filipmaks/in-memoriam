@@ -10,6 +10,15 @@
             width: m(1000);
             padding: m(60);
         }
+
+        @include breakpoint(768){
+            width: 100%;
+            padding: 30px 50px
+        }
+
+        @include breakpoint(640){
+            padding: 30px 20px;
+        }
     }
 
     .more_info, .napomena{
@@ -27,6 +36,11 @@
             width: m(1400);
             margin: 0 auto m(30) auto;
         }
+
+        @include breakpoint(768){
+            width: 100%;
+            margin: 0 auto 30px auto;
+        }
     }
 
     .more_info{
@@ -35,13 +49,36 @@
             padding: m(90) m(60);
         }
 
+        @include breakpoint(640){
+            padding: 40px 20px 20px 20px;
+        }
+
         .phones, .emails{
             width: calc(100% / 3);
+
+            @include breakpoint(768){
+                width: calc(50% - 100px);
+            }
+
+            @include breakpoint(640){
+                width: 100%;
+                margin-bottom: 20px;
+            }
         }
 
         .footer_logo{
             // width: 15%;
             width: 28%;
+
+            @include breakpoint(768){
+                width: 140px;
+                margin-right: 20px;
+            }
+    
+            @include breakpoint(640){
+                width: 70%;
+                margin-bottom: 30px; margin-right: 0;
+            }
 
             img{
                 width: 100%;

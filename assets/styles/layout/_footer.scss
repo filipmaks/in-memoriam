@@ -26,7 +26,7 @@ FOOTER
             }
 
             @include breakpoint(640){
-                padding-left: 30px;
+                padding-left: 30px; max-width: 90%;
             }
         }
     }

@@ -191,7 +191,37 @@
 
                 currShareCard.addClass('active');
         });
-          
+
+        $('.hamburger').on('click', function(){
+           	var curr = $(this), 
+				header = $('header'),
+            	currNav = $('.main_nav');
+
+				header.toggleClass('nav-open');
+        });
+
+		$('.single-memoriam-content .row').each(function(){
+			var curr = $(this),	
+				currChildren = curr.children().length;
+
+				switch (currChildren) {
+					case 1:
+						curr.addClass('one-column');
+						break;
+					case 2:
+						curr.addClass('two-columns');
+						break;
+					case 3:
+						curr.addClass('three-columns');
+						break;
+					case 4:
+						curr.addClass('four-columns');
+						break;
+					case 5:
+						curr.addClass('five-columns');
+						break;
+				}
+		});
     });
 
      /* On scroll logic */

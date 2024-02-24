@@ -28,6 +28,10 @@
             @include breakpoint(max){
                 margin-bottom: m(30);
             }
+
+            @include breakpoint(640){
+                margin-bottom: 20px;
+            }
         }
 
         img{
@@ -35,6 +39,10 @@
 
             @include breakpoint(max){
                 width: m(100);
+            }
+
+            @include breakpoint(640){
+                width: 80px;
             }
         }
 

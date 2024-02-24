@@ -47,6 +47,10 @@
         
             @include breakpoint(640){
                 margin-bottom: 15px;
+                
+                br{
+                    display: none;
+                }
             }
         }
         .aligncenter{

@@ -18,6 +18,11 @@
             padding: m(60) m(30) m(30) m(80);
         }
 
+        @include breakpoint(640){
+            padding: 15px;
+            flex-wrap: wrap;
+        }
+
         .big_num{
             h3{
                 position: relative;
@@ -25,6 +30,10 @@
 
                 @include breakpoint(max){
                     font-size: m(120);
+                }
+
+                @include breakpoint(640){
+                    font-size: 50px;
                 }
 
                 span{
@@ -53,9 +62,17 @@
                 padding-bottom: m(20);
             }
 
+            @include breakpoint(640){
+                padding-bottom: 0; padding-left: 20px;
+            }
+
             .btn{
                 position: absolute;
                 bottom: 0; right: 0;
+
+                @include breakpoint(640){
+                    position: relative;
+                }
             }
 
             h3, .first_text{
@@ -63,6 +80,10 @@
 
                 @include breakpoint(max){
                     margin-bottom: m(20);
+                }
+
+                @include breakpoint(640){
+                    margin-bottom: 15px;
                 }
             }
 
@@ -93,6 +114,10 @@
                         margin-top: m(20);
                     }
 
+                    @include breakpoint(640){
+                        margin-top: 15px;
+                    }
+
                     li{
                         position: relative;
                         font-size: p(18); line-height: 1.2;
@@ -102,6 +127,11 @@
                         @include breakpoint(max){
                             font-size: m(18);
                             margin-bottom: m(8);
+                        }
+
+                        @include breakpoint(640){
+                            font-size: 15px;
+                            margin-bottom: 5px;
                         }
 
                         &:before{
@@ -119,6 +149,12 @@
                     }
                 }
             }
+
+            .link_holder{
+                @include breakpoint(640){
+                    margin-top: 30px;
+                }
+            }
         }
 
         .note{
@@ -131,11 +167,23 @@
             @include transform($x: -50%, $y: 100%);
             text-align: center;
 
+            @include breakpoint(640){
+                position: relative;
+                width: 100%; padding: 20px 10px;
+                @include transform();
+                bottom: auto; left: auto;
+                margin-top: 30px;
+            }
+
             .top_note, .bottom_note{
                 margin-bottom: p(25);
 
                 @include breakpoint(max){
                     margin-bottom: m(25);
+                }
+
+                @include breakpoint(640){
+                    margin-bottom: 10px;
                 }
             }
 
