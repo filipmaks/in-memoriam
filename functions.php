@@ -10,6 +10,7 @@ require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'inits' . DIRECTORY_SEPAR
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'inits' . DIRECTORY_SEPARATOR . 'shortcodes.php';
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'inits' . DIRECTORY_SEPARATOR . 'blocks.php';
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'inits' . DIRECTORY_SEPARATOR . 'enable-blocks.php';
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'inits' . DIRECTORY_SEPARATOR . 'registration.php';
 
 /**
  * Register widget area.
@@ -144,4 +145,105 @@ add_theme_support('post-thumbnails');
 		return substr($clean_content, 0, 200);
 	}
 	
-?>
+	function add_memorials_capabilities_to_roles() {
+		$role = get_role('members');
+		
+		if ($role) {
+			$role->add_cap('edit_memorial');
+			$role->add_cap('read_memorial');
+			$role->add_cap('delete_memorial');
+			$role->add_cap('edit_memorials');
+			$role->add_cap('edit_others_memorials');
+			$role->add_cap('publish_memorials');
+			$role->add_cap('read_private_memorials');
+		}
+	}
+	add_action('init', 'add_memorials_capabilities_to_roles');
+	
+	function show_only_own_posts($query) {
+		global $pagenow;
+	
+		$post_type = 'memorials'; // your custom post type
+		$current_user = wp_get_current_user();
+	
+		if (is_admin() && $pagenow == 'edit.php' && isset($query->query['post_type']) && $query->query['post_type'] == $post_type && in_array('members', $current_user->roles)) {
+			$query->set('author', $current_user->ID);
+		}
+	
+		return $query;
+	}
+	add_filter('pre_get_posts', 'show_only_own_posts');
+	
+	function hide_admin_menus_for_members() {
+		if (in_array('members', wp_get_current_user()->roles)) {
+			remove_menu_page('index.php');                  // Dashboard
+			remove_menu_page('edit.php');                   // Posts
+			remove_menu_page('upload.php');                 // Media
+			remove_menu_page('edit.php?post_type=page');    // Pages
+			remove_menu_page('wpcf7');    					// WPCF7
+			remove_menu_page('theme-general-settings' );	// Theme Settings
+			remove_menu_page('edit-comments.php');          // Comments
+			remove_menu_page('themes.php');                 // Appearance
+			remove_menu_page('plugins.php');                // Plugins
+			remove_menu_page('users.php');                  // Users
+			remove_menu_page('profile.php');          		// Profile
+			remove_menu_page('tools.php');                  // Tools
+			remove_menu_page('options-general.php');        // Settings
+			remove_menu_page('post-new.php');
+		}
+	}
+	add_action('admin_menu', 'hide_admin_menus_for_members', 999);	
+
+
+	// Check if the current user has created a 'memorials' post
+	function user_has_memorials_post($user_id) {
+		$args = array(
+			'author' => $user_id,
+			'post_type' => 'memorials',
+			'posts_per_page' => 1,
+			'post_status' => 'any',
+		);
+		
+		$query = new WP_Query($args);
+		return $query->have_posts();
+	}
+
+	// Remove "Add Memorial" button on the front end
+	function remove_add_memorial_button() {
+		if (is_user_logged_in() && current_user_can('members')) {
+			$user_id = get_current_user_id();
+			$user_select = get_field('subscribe_level', 'user_' . $user_id);
+			if (user_has_memorials_post($user_id)) {
+				// Remove button by its class or ID
+				echo '<style>
+					.page-title-action, .menupop{
+						display: none !important;
+					}
+				</style>';
+			}
+		}
+	}
+	add_action('admin_menu', 'remove_add_memorial_button', 999);
+
+	// Remove "Add Memorial" from admin menu
+	function remove_add_memorial_menu() {
+		if (current_user_can('members')) {
+			$user_id = get_current_user_id();
+			if (user_has_memorials_post($user_id)) {
+				global $menu;
+				global $submenu;
+
+				// Remove "Add New" under "Memorials" post type
+				foreach ($submenu as $key => $value) {
+					if ($key == 'edit.php?post_type=memorials') {
+						foreach ($value as $subkey => $submenu_item) {
+							if ($submenu_item[2] == 'post-new.php?post_type=memorials') {
+								unset($submenu[$key][$subkey]);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	add_action('admin_menu', 'remove_add_memorial_menu', 999);

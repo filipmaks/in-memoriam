@@ -29,7 +29,7 @@ function create_memorials_cpt(){
         'menu_icon'             => __( 'dashicons-groups' ),
         'supports'              => array('title',  'thumbnail'),
 		'show_in_rest' 	        => true,
-        'exclude_from_search'   => false
+        'exclude_from_search'   => false,
     );
     register_post_type('memorials', $args);
 }

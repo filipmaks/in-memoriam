@@ -7,6 +7,7 @@
     function all_allowed_block_types( $allowed_block_types, $post ) {
 
         return array(
+            'core/shortcode',
             'acf/hero',
             'acf/title-text',
             'acf/textual',

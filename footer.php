@@ -75,7 +75,17 @@
 		</div>
 	</footer>
 	
-	<?php wp_footer(); ?>
+	<?php 
+        
+        if ( is_page( 'member-create-post' ) ) {
+            
+            
+        }else{
+            
+             wp_footer();
+        }
+        
+        ?>
 
 </body>
 </html>
