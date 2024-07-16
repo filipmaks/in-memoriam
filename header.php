@@ -39,6 +39,10 @@
                 <?php endif; ?>
                 <ul class="main_nav">
                     <?php wp_nav_menu(array('menu' => 'Header Menu', 'container' => false, 'items_wrap' => '%3$s')); ?>
+                    
+                    <li class="my-profile for-log-in">
+                        My Profile
+                    </li>
                     <li class="search">
                         <?php echo file_get_contents(get_template_directory().'/assets/icons/lupa2.svg'); ?>
                     </li>
