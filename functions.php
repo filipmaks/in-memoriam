@@ -107,41 +107,13 @@ add_theme_support('post-thumbnails');
 
 	}
 
-	// ACF title change
-	function my_layout_title($title, $field, $layout, $i) {
-		if($value = get_sub_field('describe_title')) {
-			return $value;
-		} else {
-			foreach($layout['sub_fields'] as $sub) {
-				if($sub['name'] == 'describe_title') {
-					$key = $sub['key'];
-					if(array_key_exists($i, $field['value']) && $value = $field['value'][$i][$key])
-						return $value;
-				}
-			}
-		}
-		return $title;
-	}
-	add_filter('acf/fields/flexible_content/layout_title', 'my_layout_title', 10, 4);
-
-	function enable_rest_api_for_membership_post() {
-		register_post_type('membership-post', array(
-			'show_in_rest' => true,
-			'rest_base' => 'membership-posts',
-			'rest_controller_class' => 'WP_REST_Posts_Controller',
-		));
-	  }
-	add_action('init', 'enable_rest_api_for_membership_post');
-
 	// Get content
 	function get_clean_content() {
-		// Get the content
+
 		$content = get_the_content();
 	
-		// Strip the HTML tags
 		$clean_content = strip_tags($content);
 	
-		// Return the first 200 characters
 		return substr($clean_content, 0, 200);
 	}
 	
@@ -247,3 +219,186 @@ add_theme_support('post-thumbnails');
 		}
 	}
 	add_action('admin_menu', 'remove_add_memorial_menu', 999);
+
+	// function limit_acf_rows_by_subscription_level( $value, $post_id, $field ) {
+	// 	// Get the current user ID
+	// 	$current_user_id = get_current_user_id();
+		
+	// 	// Get the user's subscription level
+	// 	$subscribe_level = get_field('subscribe_level', 'user_' . $current_user_id);
+		
+	// 	// Determine the maximum number of rows based on subscription level
+	// 	$max_rows = 6; // default to the highest level
+	// 	if ($subscribe_level === 'lvl3') {
+	// 		$max_rows = 4;
+	// 	} elseif ($subscribe_level === 'lvl2') {
+	// 		$max_rows = 5;
+	// 	}
+	
+	// 	// Check if the number of rows exceeds the maximum allowed
+	// 	if (is_array($value) && count($value) > $max_rows) {
+	// 		// Trim the array to the maximum allowed rows
+	// 		$value = array_slice($value, 0, $max_rows);
+	// 	}
+	
+	// 	return $value;
+	// }
+	// add_filter('acf/update_value/name=row_content', 'limit_acf_rows_by_subscription_level', 10, 3);
+
+	// function validate_acf_rows_by_subscription_level( $valid, $value, $field, $input ) {
+	// 	if (!$valid) {
+	// 		return $valid;
+	// 	}
+	
+	// 	// Get the current user ID
+	// 	$current_user_id = get_current_user_id();
+		
+	// 	// Get the user's subscription level
+	// 	$subscribe_level = get_field('subscribe_level', 'user_' . $current_user_id);
+		
+	// 	// Determine the maximum number of rows based on subscription level
+	// 	$max_rows = 6; // default to the highest level
+	// 	if ($subscribe_level === 'lvl3') {
+	// 		$max_rows = 4;
+	// 	} elseif ($subscribe_level === 'lvl2') {
+	// 		$max_rows = 5;
+	// 	}
+	
+	// 	// Check if the number of rows exceeds the maximum allowed
+	// 	if (is_array($value) && count($value) > $max_rows) {
+	// 		$valid = sprintf('Dozvoljeno vam je da dodate do %d redova u okviru vaseg nivoa pretplate.', $max_rows);
+	// 	}
+	
+	// 	return $valid;
+	// }
+	// add_filter('acf/validate_value/name=row_content', 'validate_acf_rows_by_subscription_level', 10, 4);
+
+
+	// OVO RADI
+	function limit_acf_rows_and_flexible_content_by_subscription_level($value, $post_id, $field) {
+		// Get the current user ID
+		$current_user_id = get_current_user_id();
+		
+		// Get the user's subscription level
+		$subscribe_level = get_field('subscribe_level', 'user_' . $current_user_id);
+		
+		// Determine the maximum number of rows based on subscription level
+		$max_rows = 6; // default to the highest level
+		if ($subscribe_level === 'lvl3') {
+			$max_rows = 4;
+		} elseif ($subscribe_level === 'lvl2') {
+			$max_rows = 5;
+		}
+	
+		// Define the block limits based on subscription level
+		$limits = [
+			'lvl1' => ['image' => 1, 'video' => 1, 'quote' => 1, 'text' => 1, 'long_text' => 1],
+			'lvl2' => ['image' => 2, 'video' => 2, 'quote' => 2, 'text' => 2, 'long_text' => 2],
+			'lvl3' => ['image' => 3, 'video' => 3, 'quote' => 3, 'text' => 3, 'long_text' => 3],
+		];
+		
+		// Get the limits for the current user
+		$max_blocks = $limits[$subscribe_level] ?? $limits['lvl3'];
+		
+		// Count the current blocks across all rows
+		$block_counts = [
+			'image' => 0,
+			'video' => 0,
+			'quote' => 0,
+			'text' => 0,
+			'long_text' => 0,
+		];
+	
+		// Enforce row limits
+		if (is_array($value) && count($value) > $max_rows) {
+			$value = array_slice($value, 0, $max_rows);
+		}
+	
+		// Enforce flexible content limits across all rows
+		if (is_array($value)) {
+			foreach ($value as &$row) {
+				if (isset($row['profile_content']) && is_array($row['profile_content'])) {
+					foreach ($row['profile_content'] as $key => $block) {
+						if (isset($block_counts[$block['acf_fc_layout']])) {
+							$block_counts[$block['acf_fc_layout']]++;
+							if ($block_counts[$block['acf_fc_layout']] > $max_blocks[$block['acf_fc_layout']]) {
+								unset($row['profile_content'][$key]);
+							}
+						}
+					}
+					// Re-index the profile_content array to avoid gaps
+					$row['profile_content'] = array_values($row['profile_content']);
+				}
+			}
+		}
+	
+		return $value;
+	}
+	add_filter('acf/update_value/name=row_content', 'limit_acf_rows_and_flexible_content_by_subscription_level', 10, 3);
+	
+	function validate_acf_rows_and_flexible_content_by_subscription_level($valid, $value, $field, $input) {
+		if (!$valid) {
+			return $valid;
+		}
+	
+		// Get the current user ID
+		$current_user_id = get_current_user_id();
+		
+		// Get the user's subscription level
+		$subscribe_level = get_field('subscribe_level', 'user_' . $current_user_id);
+		
+		// Determine the maximum number of rows based on subscription level
+		$max_rows = 6; // default to the highest level
+		if ($subscribe_level === 'lvl3') {
+			$max_rows = 4;
+		} elseif ($subscribe_level === 'lvl2') {
+			$max_rows = 5;
+		}
+	
+		// Check if the number of rows exceeds the maximum allowed
+		if (is_array($value) && count($value) > $max_rows) {
+			return sprintf('You are allowed to add up to %d rows based on your subscription level.', $max_rows);
+		}
+	
+		// Define the block limits based on subscription level
+		$limits = [
+			'lvl1' => ['image' => 1, 'video' => 1, 'quote' => 1, 'text' => 1, 'long_text' => 1],
+			'lvl2' => ['image' => 2, 'video' => 2, 'quote' => 2, 'text' => 2, 'long_text' => 2],
+			'lvl3' => ['image' => 3, 'video' => 3, 'quote' => 3, 'text' => 3, 'long_text' => 3],
+		];
+		
+		// Get the limits for the current user
+		$max_blocks = $limits[$subscribe_level] ?? $limits['lvl3'];
+		
+		// Count the current blocks across all rows
+		$block_counts = [
+			'image' => 0,
+			'video' => 0,
+			'quote' => 0,
+			'text' => 0,
+			'long_text' => 0,
+		];
+		
+		if (is_array($value)) {
+			foreach ($value as $row) {
+				if (isset($row['profile_content']) && is_array($row['profile_content'])) {
+					foreach ($row['profile_content'] as $block) {
+						if (isset($block_counts[$block['acf_fc_layout']])) {
+							$block_counts[$block['acf_fc_layout']]++;
+							if ($block_counts[$block['acf_fc_layout']] > $max_blocks[$block['acf_fc_layout']]) {
+								return sprintf(
+									'You have exceeded the maximum number of %s blocks. You are allowed %d %s blocks based on your subscription level.',
+									$block['acf_fc_layout'],
+									$max_blocks[$block['acf_fc_layout']],
+									$block['acf_fc_layout']
+								);
+							}
+						}
+					}
+				}
+			}
+		}
+	
+		return $valid;
+	}
+	add_filter('acf/validate_value/name=row_content', 'validate_acf_rows_and_flexible_content_by_subscription_level', 10, 4);
