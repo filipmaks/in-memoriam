@@ -62,8 +62,8 @@ add_shortcode('custom_registration_form', 'custom_registration_form_shortcode');
 function custom_registration_form_shortcode() {
     global $registration_errors, $username, $email, $phone_number, $subscribe_level;
 
-    // Redirect logged-in users to their profile page
-    if (is_user_logged_in()) {
+    // Redirect logged-in non-admin users to their profile page
+    if (is_user_logged_in() && !current_user_can('administrator')) {
         wp_redirect(get_author_posts_url(get_current_user_id()));
         exit;
     }
@@ -192,8 +192,8 @@ add_shortcode('custom_login_form', 'custom_login_form_shortcode');
 function custom_login_form_shortcode() {
     global $login_errors, $username;
 
-    // Redirect logged-in users to their profile page
-    if (is_user_logged_in()) {
+    // Redirect logged-in non-admin users to their profile page
+    if (is_user_logged_in() && !current_user_can('administrator')) {
         wp_redirect(get_author_posts_url(get_current_user_id()));
         exit;
     }

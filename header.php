@@ -41,6 +41,7 @@
                     <?php wp_nav_menu(array('menu' => 'Header Menu', 'container' => false, 'items_wrap' => '%3$s')); ?>
                     
                     <li class="my-profile for-log-in">
+                        
                         <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
                             <ellipse cx="8.99955" cy="7.57171" rx="5.64408" ry="5.71429" stroke="black" stroke-width="2"></ellipse>
                             <path d="M1 20.9997C2.63828 18.9481 5.77641 18.1426 9 18.1426C12.2236 18.1426 15.3617 18.9481 17 20.9997" stroke="black" stroke-width="2"></path>
