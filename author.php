@@ -26,11 +26,20 @@ $author = get_userdata($author_id);
 
 <?php get_header(); ?>
 
+<section class="title_text mt-100">
+    <div class="wrapper">
+        <div class="holder">
+            <article class="animated anim_y in_view">
+                <h1>Profile of <?php echo esc_html($author->display_name); ?></h1>
+            </article>
+        </div>
+    </div>
+</section>
+
 <section class="author-profile">
     <div class="wrapper">
         <div class="holder">
             <div class="author-info">
-                <h1>Profile of <?php echo esc_html($author->display_name); ?></h1>
 
                 <?php if ($is_own_profile || $is_admin): ?>
                     <?php

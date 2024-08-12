@@ -28,6 +28,8 @@
         <div class="wrapper">
             <div class="holder">
                 <?php 
+                    $current_user = wp_get_current_user();
+
                     $header_logo    = get_field('header_logo', 'option');
                     if( $header_logo ) :
                 ?>
@@ -41,14 +43,21 @@
                     <?php wp_nav_menu(array('menu' => 'Header Menu', 'container' => false, 'items_wrap' => '%3$s')); ?>
                     
                     <li class="my-profile for-log-in">
-                        
-                        <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
-                            <ellipse cx="8.99955" cy="7.57171" rx="5.64408" ry="5.71429" stroke="black" stroke-width="2"></ellipse>
-                            <path d="M1 20.9997C2.63828 18.9481 5.77641 18.1426 9 18.1426C12.2236 18.1426 15.3617 18.9481 17 20.9997" stroke="black" stroke-width="2"></path>
-                        </svg>
+                        <a href="<?php echo site_url(); ?>/author/<?php echo $current_user->display_name; ?>">
+                            <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
+                                <ellipse cx="8.99955" cy="7.57171" rx="5.64408" ry="5.71429" stroke="black" stroke-width="2"></ellipse>
+                                <path d="M1 20.9997C2.63828 18.9481 5.77641 18.1426 9 18.1426C12.2236 18.1426 15.3617 18.9481 17 20.9997" stroke="black" stroke-width="2"></path>
+                            </svg>
+                        </a>
                     </li>
                     <li class="search">
                         <?php echo file_get_contents(get_template_directory().'/assets/icons/lupa2.svg'); ?>
+                        <div class="mobile-form">
+                            <form action="/" method="get">
+                                <input type="text" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="Marko Markovic"/>
+                                <input type="submit" id="searchsubmit" value="Trazi" />
+                            </form>
+                        </div>
                     </li>
                 </ul>
 

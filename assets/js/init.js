@@ -79,18 +79,25 @@
         $('header .search').on('click', function () {
             $('header .aside_search_popup').toggleClass('active');
             $('header .aside_search_popup input').focus();
-            $('header .main_nav li:not(.search)').toggleClass('hide');
+            if( $('html').hasClass('desktop') ) {
+                $('header .main_nav li:not(.search)').toggleClass('hide');
+            }
         });
 
         $('footer .search').on('click', function () {
             $('footer .aside_search_popup').toggleClass('active');
             $('footer .aside_search_popup input').focus();
-            $('footer .nav_holder li:not(.search)').toggleClass('hide');
+            if( $('html').hasClass('desktop') ) {
+                $('footer .nav_holder li:not(.search)').toggleClass('hide');
+            }
         });
 
         $('.aside_search_popup .exit_popup').on('click', function () {
             $('.aside_search_popup').removeClass('active');
-            $('.main_nav li:not(.search), .nav_holder li:not(.search)').removeClass('hide');
+            if( $('html').hasClass('desktop') ) {
+                $('.main_nav li:not(.search), .nav_holder li:not(.search)').removeClass('hide');
+
+            }
         });
        
         /* Swiper */

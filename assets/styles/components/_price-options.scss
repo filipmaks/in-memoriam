@@ -66,6 +66,20 @@
                 padding-bottom: 0; padding-left: 20px;
             }
 
+            article{
+                &:last-of-type{
+                    padding-bottom: p(70);
+    
+                    @include breakpoint(max){
+                        padding-bottom: m(70);
+                    }
+    
+                    @include breakpoint(640){
+                        padding-bottom: 0px;
+                    }
+                }
+            }
+
             .btn{
                 position: absolute;
                 bottom: 0; right: 0;

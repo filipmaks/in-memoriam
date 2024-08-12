@@ -126,7 +126,7 @@ footer, .more_info{
         }
 
         padding: 0 p(40);
-        @include box-sizing(border-box);
+        @include box-sizing();
         // border-left: 3px solid $blue;
 
         @include breakpoint(max){

@@ -39,9 +39,11 @@ header{
                 align-content: baseline;
                 top: 0; right: 0;
                 width: 300px; height: 100vh;
+                padding: 40px;
                 @include transform($x: 100%);
                 @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
                 background-color: $white;
+                @include box-sizing();
             }
 
             @include breakpoint(640){
@@ -75,6 +77,23 @@ header{
                     }
                 }
 
+                &.my-profile{
+                    svg{
+                        width: p(16); height: auto;
+
+                        @include breakpoint(max){
+                            width: m(16);
+                        }
+
+                        @include breakpoint(1024){
+                            width: 20px;
+                        }
+
+                        @include breakpoint(640){
+
+                        }
+                    }
+                }
                 a{
                     text-decoration: none;
                     color: $blue;
@@ -112,12 +131,34 @@ header{
 
                 &.search{
                     cursor: pointer;
+                    @include breakpoint(1024){
+                        margin-bottom: 0;
+                        @include flexbox();
+                        align-items: center;
+                        @include justify(center);
+                    }
                     svg{
                         width: p(16); height: p(16);
                         fill: $blue;
 
                         @include breakpoint(max){
                             width: m(16); height: m(16);
+                        }
+
+                        @include breakpoint(1024){
+                            width: 20px; height: auto;
+                        }
+                    }
+                    .mobile-form{
+                        display: none;
+
+                        form{
+                            margin: 0;
+                        }
+                        
+                        @include breakpoint(1024){
+                            display: inline-block;
+                            margin-left: 20px;
                         }
                     }
                 }
@@ -232,6 +273,10 @@ header{
     @include transform($x: 100%);
     opacity: 0;
     @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+
+    @include breakpoint(1024){
+        display: none;
+    }
     
     &.active{
         right: p(60);
@@ -240,26 +285,6 @@ header{
 
         @include breakpoint(max){
             right: m(60);
-        }
-    }
-
-    form{
-        width: auto;
-    }
-
-    input{
-        width: p(300); height: p(30);
-        border: 0;
-        border-bottom: 1px solid $blue;
-        outline: none;
-        font-size: p(14); font-weight: 600;
-        font-family: $font-montserrat;
-        padding: 0 5px 3px 5px;
-        @include box-sizing();
-
-        @include breakpoint(max){
-            width: m(300); height: m(30);
-            font-size: m(14);
         }
     }
 
@@ -280,6 +305,43 @@ header{
 
         &:before{
             @include transform($x: -50%, $y: -50%, $r: -45deg);
+        }
+    }
+}
+
+.aside_search_popup, .mobile-form{
+    form{
+        width: auto;
+    }
+
+    input{
+        width: p(300); height: p(30);
+        border: 0;
+        border-bottom: 1px solid $blue;
+        outline: none;
+        font-size: p(14); font-weight: 600;
+        font-family: $font-montserrat;
+        padding: 0 5px 3px 5px;
+        @include box-sizing();
+
+        &[type=submit]{
+            border: 0px;
+            width: auto; height: auto;
+            display: inline-block;
+            border-radius: 2px;
+            padding: 4px 11px;
+            border-radius: 50px;
+            background-color: $blue; color: $white;
+        }
+
+        @include breakpoint(max){
+            width: m(300); height: m(30);
+            font-size: m(14);
+        }
+
+        @include breakpoint(1024){
+            width: 170px; height: auto;
+            font-size: 14px;
         }
     }
 }
