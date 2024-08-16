@@ -402,3 +402,11 @@ add_theme_support('post-thumbnails');
 		return $valid;
 	}
 	add_filter('acf/validate_value/name=row_content', 'validate_acf_rows_and_flexible_content_by_subscription_level', 10, 4);
+
+
+	function disable_toolbar_for_non_admins() {
+		if ( ! current_user_can( 'administrator' ) && ! is_admin() ) {
+			show_admin_bar( false );
+		}
+	}
+	add_action( 'after_setup_theme', 'disable_toolbar_for_non_admins' );	

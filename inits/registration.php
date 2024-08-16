@@ -48,6 +48,18 @@ function custom_user_registration() {
                 update_field('phone_number', $phone_number, 'user_' . $user_id);
                 update_field('subscribe_level', $subscribe_level, 'user_' . $user_id);
 
+                // Send email to the user
+                $subject = 'Thank you for your registration to the site XXXX';
+                $message = sprintf(
+                    "Thank you for your registration to the site XXXX.\n\nYour username: %s\nPassword: %s\nEmail: %s\nSubscribe level: %s\nPhone number: %s\n\nWe will contact you at your phone or email as soon as we can.",
+                    $username,
+                    $password,
+                    $email,
+                    $subscribe_level,
+                    $phone_number
+                );
+                wp_mail($email, $subject, $message);
+                
                 // Redirect to success page
                 wp_redirect(home_url('/uspesna-registracija/'));
                 exit;
