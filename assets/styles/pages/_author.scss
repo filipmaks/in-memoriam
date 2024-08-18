@@ -4,4 +4,23 @@
             max-width: 70%;
         }
     }   
+
+    .success-message{
+        width: p(1400); 
+        margin: 0 auto; padding: p(60);
+
+        @include breakpoint(max){
+            width: m(1000);
+            padding: m(60);
+        }
+
+        @include breakpoint(768){
+            width: 100%;
+            padding: 30px 50px
+        }
+    
+        @include breakpoint(640){
+            padding: 30px 20px;
+        }
+    }
 }

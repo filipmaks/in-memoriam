@@ -30,7 +30,7 @@ $author = get_userdata($author_id);
     <div class="wrapper">
         <div class="holder">
             <article class="animated anim_y in_view">
-                <h1>Profile of <?php echo esc_html($author->display_name); ?></h1>
+                <h1>Ovo je vaš profil "<?php echo esc_html($author->display_name); ?>"</h1>
             </article>
         </div>
     </div>
@@ -49,7 +49,7 @@ $author = get_userdata($author_id);
                         $last_name = sanitize_text_field($_POST['last_name']);
                         $email = sanitize_email($_POST['email']);
                         $phone_number = sanitize_text_field($_POST['phone_number']);
-                        $subscribe_level = sanitize_text_field($_POST['subscribe_level']);
+                        // $subscribe_level = sanitize_text_field($_POST['subscribe_level']);
 
                         wp_update_user([
                             'ID' => $author_id,
@@ -59,7 +59,7 @@ $author = get_userdata($author_id);
                         ]);
 
                         update_user_meta($author_id, 'phone_number', $phone_number);
-                        update_user_meta($author_id, 'subscribe_level', $subscribe_level);
+                        // update_user_meta($author_id, 'subscribe_level', $subscribe_level);
 
                         echo '<div class="success-message">Profil uspesno updatovan.</div>';
                     }
@@ -69,7 +69,7 @@ $author = get_userdata($author_id);
                     $last_name = get_user_meta($author_id, 'last_name', true);
                     $email = $author->user_email;
                     $phone_number = get_user_meta($author_id, 'phone_number', true);
-                    $subscribe_level = get_user_meta($author_id, 'subscribe_level', true);
+                    // $subscribe_level = get_user_meta($author_id, 'subscribe_level', true);
                     ?>
                     <div class="author-form custom-forms">
                         <form id="update-profile-form" action="" method="post">
@@ -91,6 +91,7 @@ $author = get_userdata($author_id);
                                 <label for="phone_number">Broj Telefona</label>
                                 <input type="text" name="phone_number" id="phone_number" value="<?php echo esc_attr($phone_number); ?>" required>
                             </p>
+                            <?php /* ?>
                             <p class="half animated anim_y">
                                 <label for="subscribe_level">Nivo pretplate*</label>
                                 <select name="subscribe_level" id="subscribe_level" required>
@@ -99,8 +100,9 @@ $author = get_userdata($author_id);
                                     <option value="lvl3" <?php selected($subscribe_level, 'lvl3'); ?>>Level 3</option>
                                 </select>
                             </p>
+                            <?php */ ?>
                             <p class="btn-holder animated anim_y">
-                                <input class="btn" type="submit" name="submit" value="Update Profile">
+                                <input class="btn" type="submit" name="submit" value="Izmenite Profil">
                             </p>
                         </form>
                     </div>
@@ -109,7 +111,7 @@ $author = get_userdata($author_id);
                     <p><strong>Prezime:</strong> <?php echo esc_html($last_name); ?></p>
                     <p><strong>Email:</strong> <?php echo esc_html($email); ?></p>
                     <p><strong>Broj Telefona:</strong> <?php echo esc_html($phone_number); ?></p>
-                    <p><strong>Nivo pretplate:</strong> <?php echo esc_html($subscribe_level); ?></p>
+                    <?php /* ?><p><strong>Nivo pretplate:</strong> <?php echo esc_html($subscribe_level); ?></p><?php */ ?>
                 <?php endif; ?>
             </div>
         </div>

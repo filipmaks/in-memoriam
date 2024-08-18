@@ -80,4 +80,4 @@
 
     <div class="loading_holder"></div>
 
-    <div id="main">
+    <div id="main" class="main">

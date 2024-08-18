@@ -9,11 +9,15 @@
     <?php if( $video ): ?>
 
         <div class="video-holder">
-            <video width="320" height="240" controls >
+            <video width="320" height="240" loop>
                 <source src="<?php echo $video['url']; ?>" type="video/mp4">
                 <source src="<?php echo $video['url']; ?>" type="video/ogg">
                 Your browser does not support the video tag.
             </video>
+            <div class="play-btn">
+                <span class="play"></span>
+                <span class="pause"></span>
+            </div>
         </div>
 
     <?php endif; ?>
@@ -25,15 +29,15 @@
         <?php endif; ?>
 
         <?php if( $date ): ?>
-            <p>- <?php echo $date ?></p>
+            <p><em>- <?php echo $date ?></em></p>
         <?php endif; ?>
     </div>
 
     <div class="share-card">
         <span class="three-dots"><span></span><span></span><span></span></span>
         <div class="share-content">
-            <p>postavio <?php echo get_the_date( 'd.m.Y.' ); ?> <span class="author_name">Petar Petric</span></p>
-            <p class="share-row">podeli Secanje <span class="share-icon"><?php echo file_get_contents(get_template_directory().'/assets/icons/icons8-share.svg'); ?></span></p>
+            <p>postavio <?php echo get_the_date( 'd.m.Y.' ); ?> <span class="author_name"><?php the_title(); ?></span></p>
+            <p class="share-row"><i>podeli Secanje</i> <span class="share-icon"><?php echo file_get_contents(get_template_directory().'/assets/icons/icons8-share.svg'); ?></span></p>
         </div>
     </div>
     

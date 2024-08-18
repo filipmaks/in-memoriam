@@ -25,7 +25,6 @@ if ( $image ) :
         <div class="holder animated anim_y">
             <figure>
                 <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
-                <?php echo $text; ?>
             </figure>
         </div>
     </div>

@@ -4,7 +4,7 @@ ob_start();
 // CUSTOM REGISTRATION //
 add_action('init', 'custom_user_registration');
 function custom_user_registration() {
-    global $registration_errors, $username, $email, $phone_number, $subscribe_level;
+    global $registration_errors, $username, $email, $phone_number, $subscribe_level, $first_name, $last_name;
     
     $registration_errors = new WP_Error();
 
@@ -15,6 +15,8 @@ function custom_user_registration() {
         $confirm_password = isset($_POST['confirm_password']) ? $_POST['confirm_password'] : '';
         $phone_number = isset($_POST['phone_number']) ? sanitize_text_field($_POST['phone_number']) : '';
         $subscribe_level = isset($_POST['subscribe_level']) ? sanitize_text_field($_POST['subscribe_level']) : '';
+        $first_name = isset($_POST['first_name']) ? sanitize_text_field($_POST['first_name']) : '';
+        $last_name = isset($_POST['last_name']) ? sanitize_text_field($_POST['last_name']) : '';
 
         // Validate username
         if (empty($username) || !validate_username($username) || username_exists($username)) {
@@ -39,11 +41,26 @@ function custom_user_registration() {
             $registration_errors->add('subscribe_level', 'Nivo pretplate je obavezno polje.');
         }
 
+        if (empty($first_name)) {
+            $registration_errors->add('first_name', 'Ime je obavezno polje.');
+        }
+
+        if (empty($last_name)) {
+            $registration_errors->add('last_name', 'Prezime je obavezno polje.');
+        }
+
         if (empty($registration_errors->errors)) {
             // Create user
             $user_id = wp_create_user($username, $password, $email);
 
             if (!is_wp_error($user_id)) {
+                // Update standard WordPress user fields
+                wp_update_user([
+                    'ID' => $user_id,
+                    'first_name' => $first_name,
+                    'last_name' => $last_name
+                ]);
+
                 // Update ACF fields
                 update_field('phone_number', $phone_number, 'user_' . $user_id);
                 update_field('subscribe_level', $subscribe_level, 'user_' . $user_id);
@@ -51,10 +68,12 @@ function custom_user_registration() {
                 // Send email to the user
                 $subject = 'Thank you for your registration to the site XXXX';
                 $message = sprintf(
-                    "Thank you for your registration to the site XXXX.\n\nYour username: %s\nPassword: %s\nEmail: %s\nSubscribe level: %s\nPhone number: %s\n\nWe will contact you at your phone or email as soon as we can.",
+                    "Thank you for your registration to the site XXXX.\n\nYour username: %s\nPassword: %s\nEmail: %s\nFirst Name: %s\nLast Name: %s\nSubscribe level: %s\nPhone number: %s\n\nWe will contact you at your phone or email as soon as we can.",
                     $username,
                     $password,
                     $email,
+                    $first_name,
+                    $last_name,
                     $subscribe_level,
                     $phone_number
                 );
@@ -72,7 +91,7 @@ function custom_user_registration() {
 
 add_shortcode('custom_registration_form', 'custom_registration_form_shortcode');
 function custom_registration_form_shortcode() {
-    global $registration_errors, $username, $email, $phone_number, $subscribe_level;
+    global $registration_errors, $username, $email, $phone_number, $subscribe_level, $first_name, $last_name;
 
     // Redirect logged-in non-admin users to their profile page
     if (is_user_logged_in() && !current_user_can('administrator')) {
@@ -126,14 +145,14 @@ function custom_registration_form_shortcode() {
                             <?php endif; ?>
                         </p>
                         <p class="half animated anim_y">
-                            <label for="password">Sifra*</label>
+                            <label for="password">Šifra*</label>
                             <input type="password" name="password" id="password" class="<?php echo $registration_errors->get_error_message('password') ? 'error-field' : ''; ?>" required>
                             <?php if ($registration_errors->get_error_message('password')): ?>
                                 <span class="error-message"><?php echo $registration_errors->get_error_message('password'); ?></span>
                             <?php endif; ?>
                         </p>
                         <p class="half animated anim_y">
-                            <label for="confirm_password">Ponovite Sifru*</label>
+                            <label for="confirm_password">Ponovite Šifru*</label>
                             <input type="password" name="confirm_password" id="confirm_password" class="<?php echo $registration_errors->get_error_message('password') ? 'error-field' : ''; ?>" required>
                         </p>
                         <p class="half animated anim_y">
@@ -168,6 +187,7 @@ function custom_registration_form_shortcode() {
     <?php
     return ob_get_clean();
 }
+
 
 // CUSTOM LOGIN //
 add_action('init', 'custom_user_login');
@@ -235,7 +255,7 @@ function custom_login_form_shortcode() {
                             <?php endif; ?>
                         </p>
                         <p class=" animated anim_y">
-                            <label for="password">Sifra</label>
+                            <label for="password">Šifra</label>
                             <input type="password" name="password" id="password" class="<?php echo $login_errors->get_error_message('login') ? 'error-field' : ''; ?>" required>
                         </p>
                         <p class="btn-holder animated anim_y">

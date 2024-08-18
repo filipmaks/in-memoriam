@@ -99,7 +99,59 @@
 
             }
         });
+
+        $(".long-text-card article").each(function() {
+            
+            var founded = false,
+                curr = $(this);
+
+                curr.find("*").each(function() {
+                
+                    var html = $(this).html();
+        
+                    if (html.length > 0 && !founded) {
+                        var firstChar = html.charAt(0);
+                        var restOfHtml = html.slice(1);
+                        $(this).html("<sup>" + firstChar + "</sup>" + restOfHtml);
+                        founded = true;
+                    }
+                
+                });
+        });
+
+        $('.play-btn').on('click', function() {
+                    
+            var currParent = $(this).parents('.video-holder'),
+                curr = currParent.find('video').get(0);
+
+                if (curr.paused) {
+                    curr.play();
+                    currParent.addClass('playing');
+                } else {
+                    curr.pause();
+                    currParent.removeClass('playing');
+                }
+        });
        
+        $('.share-icon').on('click', function(){
+            var curr = $(this),
+                currParent = curr.parents('.share-card'),
+                sharePostH = $('.post-share');
+
+                sharePostH.addClass('active');
+
+                setTimeout(() => {
+                    currParent.removeClass('active');
+                }, 2000);
+        });
+
+        $('.post-share .exit').on('click', function(){
+            var curr = $(this),
+                sharePostH = $('.post-share');
+
+                sharePostH.removeClass('active');
+        });
+
         /* Swiper */
         $('.gallery_slider').each(function(){
             var curr = $(this),

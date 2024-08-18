@@ -393,6 +393,26 @@
                             "display": "block",
                             "sub_fields": [
                                 {
+                                    "key": "field_6578d40e65668",
+                                    "label": "Text Title",
+                                    "name": "text_title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                },
+                                {
                                     "key": "field_6578d40e65667",
                                     "label": "Text",
                                     "name": "text",
@@ -411,44 +431,6 @@
                                     "toolbar": "full",
                                     "media_upload": 1,
                                     "delay": 0
-                                },
-                                {
-                                    "key": "field_6578d40e65668",
-                                    "label": "Text Description",
-                                    "name": "text_description",
-                                    "aria-label": "",
-                                    "type": "text",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "default_value": "",
-                                    "maxlength": "",
-                                    "placeholder": "",
-                                    "prepend": "",
-                                    "append": ""
-                                },
-                                {
-                                    "key": "field_6578d40e65669",
-                                    "label": "Date",
-                                    "name": "date",
-                                    "aria-label": "",
-                                    "type": "date_picker",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "display_format": "d.m.Y",
-                                    "return_format": "d.m.Y",
-                                    "first_day": 1
                                 }
                             ],
                             "min": "",
@@ -481,5 +463,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1723798858
+    "modified": 1723810939
 }

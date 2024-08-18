@@ -1,10 +1,13 @@
 <?php 
-    $text   = get_sub_field('text');
-    $text_description      = get_sub_field('text_description');
-    $date    = get_sub_field('date');
+    $text_title = get_sub_field('text_title');
+    $text       = get_sub_field('text');
 ?>
 
 <div class="card long-text-card">
+
+    <?php if( $text_title ): ?>
+        <h3 class="card-title"><?php echo $text_title; ?></h3>
+    <?php endif; ?>
 
     <?php if( $text ): ?>
 
@@ -14,22 +17,11 @@
 
     <?php endif; ?>
 
-    <div class="card-bottom">
-
-        <?php if( $text_description ): ?>
-            <p><strong><?php echo $text_description; ?></strong></p>
-        <?php endif; ?>
-
-        <?php if( $date ): ?>
-            <p><strong><?php echo $date; ?></strong></p>
-        <?php endif; ?>
-
-    </div>
-
     <div class="share-card">
         <span class="three-dots"><span></span><span></span><span></span></span>
         <div class="share-content">
-            <p>postavio <?php echo get_the_date( 'D M j' ); ?></p>
+        <p>postavio <?php echo get_the_date( 'd.m.Y.' ); ?> <span class="author_name"><?php the_title(); ?></span></p>
+            <p class="share-row"><i>podeli Secanje</i> <span class="share-icon"><?php echo file_get_contents(get_template_directory().'/assets/icons/icons8-share.svg'); ?></span></p>
         </div>
     </div>
     

@@ -22,7 +22,7 @@
 	
 	<footer>
 		<div class="wrapper">
-			<div class="holder set_animation slower">
+			<div class="holder set_animation">
 				<div class="footer_logo animated anim_y">
 					<?php if ( $footer_icon ) : ?>
 						<img src="<?php echo $footer_icon['url']; ?>" alt="<?php echo $footer_icon['alt']; ?>">
@@ -47,9 +47,11 @@
 				<div class="footer_nav animated anim_y">
 					<ul class="nav_holder">
 						<?php wp_nav_menu(array('menu' => 'Footer Menu', 'container' => false, 'items_wrap' => '%3$s')); ?>
+						<?php /* ?>
 						<li class="search">
 							<?php echo file_get_contents(get_template_directory().'/assets/icons/lupa2.svg'); ?>
 						</li>
+						<?php */ ?>
 					</ul>
 					<?php /* ?>
 					<div class="aside_search_popup">
@@ -62,7 +64,7 @@
 				</div>
 
 				<?php if ( $copyright ) : ?>
-					<div class="copyright animated anim_y">
+					<div class="copyright">
 						<p>© <?php echo date("Y"); ?> <?php echo $copyright; ?></p>
 					</div>
 				<?php endif; ?>
