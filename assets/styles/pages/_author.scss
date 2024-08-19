@@ -23,4 +23,16 @@
             padding: 30px 20px;
         }
     }
+
+    .author-form{
+        .btn-holder{
+            .kreiraj{
+                margin-left: p(20);
+
+                @include breakpoint(max){
+                    margin-left: m(20);
+                }
+            }
+        }
+    }
 }

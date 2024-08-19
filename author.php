@@ -103,6 +103,7 @@ $author = get_userdata($author_id);
                             <?php */ ?>
                             <p class="btn-holder animated anim_y">
                                 <input class="btn" type="submit" name="submit" value="Izmenite Profil">
+                                <a href="<?php echo site_url(); ?>/wp-admin/edit.php?post_type=memorials" class="btn kreiraj">Kreiraj spomen stranu</a>
                             </p>
                         </form>
                     </div>

@@ -127,6 +127,9 @@
                         z-index: 1;
                         color: $white;
                     }
+                    .memorials_image{
+                        height: 100%;
+                    }
                 }
             }
 
@@ -401,7 +404,7 @@
         video{
             display: block;
             width: 100%; height: auto; max-height: 70vh;
-            // aspect-ratio: 16/5;
+            aspect-ratio: 16/9;
             object-fit: cover;
 
             @include breakpoint(640){
@@ -602,6 +605,7 @@
         @include transform($y: -50%, $x: 100%);
         width: p(90); 
         @include transition(transform, 0.3s, 0s, ease);
+        z-index: 999;
 
         &.active{
             @include transform($y: -50%, $x: 0%);

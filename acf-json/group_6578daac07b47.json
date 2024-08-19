@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_6578daf1b42b9",
-            "label": "Subtitle",
+            "label": "Podnaslov",
             "name": "subtitle",
             "aria-label": "",
             "type": "textarea",
@@ -24,7 +24,7 @@
         },
         {
             "key": "field_6578daa9b42b7",
-            "label": "Birth date",
+            "label": "Datum Rodjenja",
             "name": "birth_date",
             "aria-label": "",
             "type": "date_picker",
@@ -42,7 +42,7 @@
         },
         {
             "key": "field_6578dae1b42b8",
-            "label": "Death date",
+            "label": "Datum smrti",
             "name": "death_date",
             "aria-label": "",
             "type": "date_picker",
@@ -77,5 +77,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1723798857
+    "modified": 1724103579
 }

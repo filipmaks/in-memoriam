@@ -9,18 +9,18 @@
 // Custom post type Memorials
 function create_memorials_cpt(){
     $labels = array(
-        'name'                  => __('Memorials'),
-        'singular_name'         => __('Memorials'),
-        'add_new'               => __('Add Memorial'),
-        'add_new_item'          => __('Add New Memorial'),
-        'edit_item'             => __('Edit Memorial'),
-        'new_item'              => __('New Memorial'),
-        'all_items'             => __('All Memorials'),
-        'view_item'             => __('View Memorials'),
-        'search_items'          => __('Search Memorials'),
-        'not_found'             => __('No Memorials found'),
-        'not_found_in_trash'    => __('No Memorials found in the Trash'),
-        'menu_name'             => 'Memorials',
+        'name'                  => __('Spomen Strane'),
+        'singular_name'         => __('Spomen Strane'),
+        'add_new'               => __('Kreiraj spomen stranu'),
+        'add_new_item'          => __('Kreiraj spomen stranu'),
+        'edit_item'             => __('Izmeni spomen stranu'),
+        'new_item'              => __('Nova spomen strana'),
+        'all_items'             => __('Tvoje spomen strane'),
+        'view_item'             => __('Vidi spomen strane'),
+        'search_items'          => __('Pretrazi spomen strane'),
+        'not_found'             => __('Spomen strana nije pronadjena'),
+        'not_found_in_trash'    => __('Spomen strana nije pronadjena u smecu'),
+        'menu_name'             => 'Spomen Strane',
     );
     $args = array(
         'labels'                => $labels,

@@ -6,6 +6,11 @@
     $birth_date = get_field('birth_date');
     $death_date = get_field('death_date');
     $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
+    $backup_ft_img_url = get_field('backup_featured_image');
+
+    if( empty($featured_img_url) ) {
+        $featured_img_url = $backup_ft_img_url;
+    }
 
     global $post;
     

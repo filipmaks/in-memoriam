@@ -118,7 +118,7 @@ add_theme_support('post-thumbnails');
 	}
 	
 	function add_memorials_capabilities_to_roles() {
-		$role = get_role('members');
+		$role = get_role('contributor');
 		
 		if ($role) {
 			$role->add_cap('edit_memorial');
@@ -128,6 +128,9 @@ add_theme_support('post-thumbnails');
 			$role->add_cap('edit_others_memorials');
 			$role->add_cap('publish_memorials');
 			$role->add_cap('read_private_memorials');
+			$role->add_cap('edit_posts');
+			$role->add_cap('edit_published_posts');
+			$role->remove_cap('publish_posts');
 		}
 	}
 	add_action('init', 'add_memorials_capabilities_to_roles');
@@ -138,8 +141,8 @@ add_theme_support('post-thumbnails');
 		$post_type = 'memorials'; // your custom post type
 		$current_user = wp_get_current_user();
 	
-		if (is_admin() && $pagenow == 'edit.php' && isset($query->query['post_type']) && $query->query['post_type'] == $post_type && in_array('members', $current_user->roles)) {
-			$query->set('author', $current_user->ID);
+		if (is_admin() && $pagenow == 'edit.php') {
+			$query->set('contributor', $current_user->ID);
 		}
 	
 		return $query;
@@ -147,7 +150,7 @@ add_theme_support('post-thumbnails');
 	add_filter('pre_get_posts', 'show_only_own_posts');
 	
 	function hide_admin_menus_for_members() {
-		if (in_array('members', wp_get_current_user()->roles)) {
+		if (in_array('contributor', wp_get_current_user()->roles)) {
 			remove_menu_page('index.php');                  // Dashboard
 			remove_menu_page('edit.php');                   // Posts
 			remove_menu_page('upload.php');                 // Media
@@ -182,13 +185,20 @@ add_theme_support('post-thumbnails');
 
 	// Remove "Add Memorial" button on the front end
 	function remove_add_memorial_button() {
-		if (is_user_logged_in() && current_user_can('members')) {
+		if (is_user_logged_in() && current_user_can('contributor')) {
 			$user_id = get_current_user_id();
 			$user_select = get_field('subscribe_level', 'user_' . $user_id);
 			if (user_has_memorials_post($user_id)) {
 				// Remove button by its class or ID
 				echo '<style>
-					.page-title-action, .menupop{
+					.page-title-action, .menupop, #wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-top-secondary, #screen-meta-links, .author-other{
+						display: none !important;
+					}
+				</style>';
+			} else {
+				// Remove button by its class or ID
+				echo '<style>
+					#wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-top-secondary, #screen-meta-links, .author-other{
 						display: none !important;
 					}
 				</style>';
@@ -199,7 +209,7 @@ add_theme_support('post-thumbnails');
 
 	// Remove "Add Memorial" from admin menu
 	function remove_add_memorial_menu() {
-		if (current_user_can('members')) {
+		if (current_user_can('contributor')) {
 			$user_id = get_current_user_id();
 			if (user_has_memorials_post($user_id)) {
 				global $menu;

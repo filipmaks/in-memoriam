@@ -54,11 +54,12 @@ function custom_user_registration() {
             $user_id = wp_create_user($username, $password, $email);
 
             if (!is_wp_error($user_id)) {
-                // Update standard WordPress user fields
+                // Update standard WordPress user fields add role contributor
                 wp_update_user([
                     'ID' => $user_id,
                     'first_name' => $first_name,
-                    'last_name' => $last_name
+                    'last_name' => $last_name,
+                    'role' => 'contributor',
                 ]);
 
                 // Update ACF fields
@@ -66,21 +67,20 @@ function custom_user_registration() {
                 update_field('subscribe_level', $subscribe_level, 'user_' . $user_id);
 
                 // Send email to the user
-                $subject = 'Thank you for your registration to the site XXXX';
-                $message = sprintf(
-                    "Thank you for your registration to the site XXXX.\n\nYour username: %s\nPassword: %s\nEmail: %s\nFirst Name: %s\nLast Name: %s\nSubscribe level: %s\nPhone number: %s\n\nWe will contact you at your phone or email as soon as we can.",
-                    $username,
-                    $password,
-                    $email,
-                    $first_name,
-                    $last_name,
-                    $subscribe_level,
-                    $phone_number
-                );
-                wp_mail($email, $subject, $message);
+
+                $s_e_to = $email;
+                $s_e_subject = 'In Memoriam - Uspešna registracija';
+                $s_e_message = "<h1>Poštovani/a," . $first_name . " " . $last_name . "</h1><br><p>Uspešno ste se registrovali na našem sajtu. Vaši podaci su:</p><br><p>Username: " . $username . "</p><br><p>Email: " . $email . "</p><br><p>Sifra: vasa odabrana.</p><p>Nivo pretplate:" . $subscribe_level . "</p><br><p>Stupicemo u kontakt sa Vama putem telefona ili email-a što pre možemo.</p>";
+                $s_e_message .= "<br><p>Hvala Vam na poverenju.</p>";
+
+                $s_e_headers = array('Content-Type: text/html; charset=UTF-8');
+
+                if ( wp_mail($s_e_to, $s_e_subject, $s_e_message, $s_e_headers) ) {
+                    wp_redirect(home_url('/uspesna-registracija/'));
+                } else {
+                    wp_redirect(home_url('/neeeeuspesna-registracija/'));
+                }
                 
-                // Redirect to success page
-                wp_redirect(home_url('/uspesna-registracija/'));
                 exit;
             } else {
                 $registration_errors->add('registration', $user_id->get_error_message());

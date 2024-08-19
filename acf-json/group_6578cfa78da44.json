@@ -26,7 +26,7 @@
             "sub_fields": [
                 {
                     "key": "field_6578d1f693e27",
-                    "label": "Profile Content",
+                    "label": "Sadrzaj profila",
                     "name": "profile_content",
                     "aria-label": "",
                     "type": "flexible_content",
@@ -47,7 +47,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_6578d24e93e28",
-                                    "label": "Image",
+                                    "label": "Slika",
                                     "name": "image",
                                     "aria-label": "",
                                     "type": "image",
@@ -72,7 +72,7 @@
                                 },
                                 {
                                     "key": "field_6578d2ae93e29",
-                                    "label": "Image Description",
+                                    "label": "Opis slike",
                                     "name": "image_description",
                                     "aria-label": "",
                                     "type": "text",
@@ -92,7 +92,7 @@
                                 },
                                 {
                                     "key": "field_6578d2bb93e2a",
-                                    "label": "Date",
+                                    "label": "Datum slike",
                                     "name": "date",
                                     "aria-label": "",
                                     "type": "date_picker",
@@ -110,7 +110,7 @@
                                 },
                                 {
                                     "key": "field_65ad6b608e280",
-                                    "label": "Full Height Image",
+                                    "label": "Slika preko cele kartice",
                                     "name": "full_height_image",
                                     "aria-label": "",
                                     "type": "true_false",
@@ -122,7 +122,7 @@
                                         "class": "",
                                         "id": ""
                                     },
-                                    "message": "Make this image full card height?",
+                                    "message": "Da li zelite da slika prekrije celu karticu?",
                                     "default_value": 0,
                                     "ui": 0,
                                     "ui_on_text": "",
@@ -160,7 +160,7 @@
                                 },
                                 {
                                     "key": "field_6578d3e065664",
-                                    "label": "Video Description",
+                                    "label": "Opis videa",
                                     "name": "video_description",
                                     "aria-label": "",
                                     "type": "text",
@@ -180,7 +180,7 @@
                                 },
                                 {
                                     "key": "field_6578d3e065665",
-                                    "label": "Date",
+                                    "label": "Datum videa",
                                     "name": "date",
                                     "aria-label": "",
                                     "type": "date_picker",
@@ -208,7 +208,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_6578d3546565b",
-                                    "label": "Quote",
+                                    "label": "Citat",
                                     "name": "quote",
                                     "aria-label": "",
                                     "type": "textarea",
@@ -228,7 +228,7 @@
                                 },
                                 {
                                     "key": "field_6578ec9890f89",
-                                    "label": "Quote Description",
+                                    "label": "Opis citata",
                                     "name": "quote_description",
                                     "aria-label": "",
                                     "type": "text",
@@ -248,7 +248,7 @@
                                 },
                                 {
                                     "key": "field_6578d50d6566a",
-                                    "label": "Quote position",
+                                    "label": "Pozicija citata",
                                     "name": "quote_position",
                                     "aria-label": "",
                                     "type": "radio",
@@ -261,9 +261,9 @@
                                         "id": ""
                                     },
                                     "choices": {
-                                        "top": "Top",
-                                        "center": "Center",
-                                        "bottom": "Bottom"
+                                        "top": "Vrh kartice",
+                                        "center": "Centar kartice",
+                                        "bottom": "Dno kartice"
                                     },
                                     "default_value": "center",
                                     "return_format": "array",
@@ -274,7 +274,7 @@
                                 },
                                 {
                                     "key": "field_6578d3546565d",
-                                    "label": "Date",
+                                    "label": "Datum citata",
                                     "name": "date",
                                     "aria-label": "",
                                     "type": "date_picker",
@@ -302,7 +302,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_6578d3bb6565f",
-                                    "label": "Text",
+                                    "label": "Tekst",
                                     "name": "text",
                                     "aria-label": "",
                                     "type": "textarea",
@@ -322,7 +322,7 @@
                                 },
                                 {
                                     "key": "field_6578d52e6566b",
-                                    "label": "Text Position",
+                                    "label": "Pozicija teksta",
                                     "name": "text_position",
                                     "aria-label": "",
                                     "type": "button_group",
@@ -335,9 +335,9 @@
                                         "id": ""
                                     },
                                     "choices": {
-                                        "top": "Top",
-                                        "center": "Center",
-                                        "bottom": "Bottom"
+                                        "top": "Vrh kartice",
+                                        "center": "Centar kartice",
+                                        "bottom": "Dno kartice"
                                     },
                                     "default_value": "center",
                                     "return_format": "array",
@@ -346,7 +346,7 @@
                                 },
                                 {
                                     "key": "field_6578d3bb65660",
-                                    "label": "Text Description",
+                                    "label": "Opis kartice",
                                     "name": "text_description",
                                     "aria-label": "",
                                     "type": "text",
@@ -366,7 +366,7 @@
                                 },
                                 {
                                     "key": "field_6578d3bb65661",
-                                    "label": "Date",
+                                    "label": "Datum teksta",
                                     "name": "date",
                                     "aria-label": "",
                                     "type": "date_picker",
@@ -394,7 +394,7 @@
                             "sub_fields": [
                                 {
                                     "key": "field_6578d40e65668",
-                                    "label": "Text Title",
+                                    "label": "Naslov iznad teksta",
                                     "name": "text_title",
                                     "aria-label": "",
                                     "type": "text",
@@ -414,7 +414,7 @@
                                 },
                                 {
                                     "key": "field_6578d40e65667",
-                                    "label": "Text",
+                                    "label": "Tekst",
                                     "name": "text",
                                     "aria-label": "",
                                     "type": "wysiwyg",
@@ -463,5 +463,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1723810939
+    "modified": 1724099003
 }

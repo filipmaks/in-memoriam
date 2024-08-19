@@ -5,7 +5,7 @@
     $date    = get_sub_field('date');
 ?>
 
-<div class="card text-card">
+<div class="card text-card <?php echo $text_position['value'] ?>">
 
     <?php if( $text ): ?>
 

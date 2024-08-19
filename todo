@@ -3,15 +3,15 @@
 2.1. Odmah zatim stize sledeci mail gde ce mu se precizirati nacin uplate, koja je svota, racun itd, dodati broj telefona na koji moze da kontaktira Gocu
 2.2. Goca ih svakako kontaktira i daje dodatne informacija.
 3. kada je uplata zavrsena, Goca dolazi na profil i cekira opciju da je korisnik uplatio.
-4. Napravi to polje na profilu koje Goca cekira
+==DONE==4. Napravi to polje na profilu koje Goca cekira
 5. Korisnik ima (u zavisnosti od nivoa) opciju da postuje odredjen broj redova (3/6/9)
-5.1. Kada se post prvi put objavi, on ide u Draft
+==DONE==5.1. Kada se post prvi put objavi, on ide u Draft
 5.2. adminu stize mail "Korisnik XYZ je objavio post ____ u vreme XX:XX dana XX, idite na link {link} i pregledajte post..."
-5.3. admin odobri post, korisniku se skida jedan post sa liste i post je published
+==DONE==5.3. admin odobri post, korisniku se skida jedan post sa liste i post je published
 6. Svaki put kada korisnik edituje post, a post je published, adminu takodje dolazi mail da proveri. Medjutim post ce ostati published. 
 6.1. Admin uvek moze da post prebaci u draft i korisnika obavesti telefonom/mailom da je potrebno da ispravi post i razlog.
 7. Ostaviti na profilu korisnika opciju da Admin ubaci opciju da objavi jos jednu stranicu recimo
-
+8. Srediti opciju za pozicioniranje teksta u karticama
 
 Strane:
 1. 
