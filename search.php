@@ -4,11 +4,18 @@
         <div class="wrapper">
             <div class="holder">
 
-                <?php if(have_posts() ): ?>
+                <?php
+                $args = array(
+                    'post_type' => 'memorials',
+                    'post_status' => 'publish',
+                    's' => get_search_query(),
+                );
+                $custom_query = new WP_Query($args);
+
+                if($custom_query->have_posts() ): ?>
                     <div class="search-list">
 
-                        <?php while (have_posts()) : ?>
-                            <?php the_post(); ?>
+                        <?php while ($custom_query->have_posts()) : $custom_query->the_post(); ?>
 
                             <div class="item">
 
@@ -16,7 +23,7 @@
                                     <a href="<?php the_permalink(); ?>">
                                         <?php if ( has_post_thumbnail() ) { ?>
                                             <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title();?>">
-                                        <? } else { ?>
+                                        <?php } else { ?>
                                             <span></span>
                                         <?php } ?>
                                     </a>
@@ -32,12 +39,15 @@
                         <?php endwhile; else: ?>
 
                         <div class="no-results">
-                            <p><strong>There are no search Results for '<?php the_search_query(); ?>'</strong></p>
+                            <h2><strong>Nema rezultata pretrage za "<?php the_search_query(); ?>"</strong></h2>
                         </div>
 
                     </div>
                             
-                <?php endif; ?>
+                <?php endif; 
+                // Reset post data after custom query
+                wp_reset_postdata();
+                ?>
 
             </div>
         </div>

@@ -180,7 +180,7 @@
         var debouncedSearch = _.debounce(function(query) {
             // make ajax request to search WP posts
             $.ajax({
-                url: '/wp-json/wp/v2/posts',
+                url: '/wp-json/wp/v2/memorials',
                 data: {
                     search: query,
                     per_page: 10, // limit results to 10
