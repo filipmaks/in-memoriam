@@ -103,7 +103,7 @@ function custom_user_registration() {
     }
 }
 
-add_shortcode('custom_registration_form', 'custom_registration_form_shortcode');
+add_shortcode('custom_login_form', 'custom_registration_form_shortcode');
 function custom_registration_form_shortcode() {
     global $registration_errors, $username, $email, $phone_number, $subscribe_level, $first_name, $last_name;
 

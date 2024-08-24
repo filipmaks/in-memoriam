@@ -5,6 +5,16 @@
     $subtitle   = get_field('subtitle');
     $birth_date = get_field('birth_date');
     $death_date = get_field('death_date');
+    $locale = 'sr_RS';
+
+    $formatter = new IntlDateFormatter($locale, IntlDateFormatter::LONG, IntlDateFormatter::NONE);
+
+    $birth_date_translated = $formatter->format(new DateTime($birth_date));
+    $death_date_translated = $formatter->format(new DateTime($death_date));
+
+    $birth_date_latin = transliterator_transliterate('Any-Latin; Latin-ASCII', $birth_date_translated);
+    $death_date_latin = transliterator_transliterate('Any-Latin; Latin-ASCII', $death_date_translated);
+
     $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'large');
     $backup_ft_img_url = get_field('backup_featured_image');
 
@@ -22,7 +32,7 @@
             <article class="set_animation">
                 <h1 class="animated anim_y"><?php echo $page_title; ?></h1>
                 <p class="animated anim_y"><?php echo $subtitle; ?></p>
-                <h5 class="animated anim_y"><?php echo $birth_date; ?> - <?php echo $death_date; ?></h5>             
+                <h5 class="animated anim_y"><?php echo $birth_date_latin; ?> - <?php echo $death_date_latin; ?></h5>             
                 <img class="animated anim_y" src="<?php echo get_template_directory_uri(); ?>/pictures/beskonacno.svg" alt="beskonacno">
             </article>
         </div>

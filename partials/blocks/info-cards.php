@@ -28,6 +28,7 @@ if( !empty($block['className']) ) {
                         $icon   = get_sub_field('icon_top');
                         $title  = get_sub_field('title');
                         $text   = get_sub_field('text');
+                        $link   = get_sub_field('link');
                 ?>
                     <li class="animated anim_y">
 
@@ -40,7 +41,11 @@ if( !empty($block['className']) ) {
                             <span class="num"><?php echo get_row_index(); ?>.</span>
 
                             <?php if ( $title ) : ?>
-                               <h4><?php echo $title; ?></h4>
+                               <h4>
+                                    <?php if( $link) : ?><a href="<?php echo $link['url']; ?>"><?php endif; ?>
+                                    <?php echo $title; ?>
+                                    <?php if( $link) : ?></a><?php endif; ?>
+                                </h4>
                             <?php endif; ?>
     
                             <?php if ( $text ) : ?>
