@@ -103,7 +103,7 @@ function custom_user_registration() {
     }
 }
 
-add_shortcode('custom_login_form', 'custom_registration_form_shortcode');
+add_shortcode('custom_registration_form', 'custom_registration_form_shortcode');
 function custom_registration_form_shortcode() {
     global $registration_errors, $username, $email, $phone_number, $subscribe_level, $first_name, $last_name;
 
@@ -201,6 +201,90 @@ function custom_registration_form_shortcode() {
     <?php
     return ob_get_clean();
 }
+
+// CUSTOM LOGIN //
+add_action('init', 'custom_user_login');
+function custom_user_login() {
+    global $login_errors, $username;
+    
+    $login_errors = new WP_Error();
+
+    if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['submit']) && isset($_POST['login_form'])) {
+        $username = sanitize_user($_POST['username']);
+        $password = $_POST['password'];
+
+        $credentials = array(
+            'user_login'    => $username,
+            'user_password' => $password,
+            'remember'      => true,
+        );
+
+        $user = wp_signon($credentials, false);
+
+        if (is_wp_error($user)) {
+            $login_errors->add('login', $user->get_error_message());
+        } else {
+            // Redirect to user profile page
+            wp_redirect(get_author_posts_url($user->ID));
+            exit;
+        }
+    }
+}
+
+add_shortcode('custom_login_form', 'custom_login_form_shortcode');
+function custom_login_form_shortcode() {
+    global $login_errors, $username;
+
+    // Redirect logged-in non-admin users to their profile page
+    if (is_user_logged_in() && !current_user_can('administrator')) {
+        wp_redirect(get_author_posts_url(get_current_user_id()));
+        exit;
+    }
+
+    ob_start();
+    ?>
+    <style>
+        .error-field {
+            border: 2px solid red;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+    <section class="form-holder">
+        <div class="wrapper">
+            <div class="holder">
+                <div class="login-form custom-forms">
+                    <form id="custom-login-form" action="" method="post">
+                        <input type="hidden" name="login_form" value="1">
+                        <p class=" animated anim_y">
+                            <label for="username">Username ili Email</label>
+                            <input type="text" name="username" id="username" class="<?php echo $login_errors->get_error_message('login') ? 'error-field' : ''; ?>" value="<?php echo isset($username) ? esc_attr($username) : ''; ?>" required>
+                            <?php if ($login_errors->get_error_message('login')): ?>
+                                <span class="error-message"><?php echo $login_errors->get_error_message('login'); ?></span>
+                            <?php endif; ?>
+                        </p>
+                        <p class=" animated anim_y">
+                            <label for="password">Šifra</label>
+                            <input type="password" name="password" id="password" class="<?php echo $login_errors->get_error_message('login') ? 'error-field' : ''; ?>" required>
+                        </p>
+                        <p class="btn-holder animated anim_y">
+                            <input class="btn" type="submit" name="submit" value="Login">
+                        </p>
+
+                        <p class="btn-holder animated anim_y">
+                            <a class="link" href="<?php echo wp_lostpassword_url(); ?>">Zaboravio sam šifru</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <?php
+    return ob_get_clean();
+}
+
 
 // EMAILS
 

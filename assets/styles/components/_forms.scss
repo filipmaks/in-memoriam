@@ -311,6 +311,18 @@ form{
             margin-bottom: p(20);
         }
 
+        .link{
+            font-size: p(22); color: $blue; text-decoration: underline;
+
+            @include breakpoint(max){
+                font-size: m(22);
+            }
+
+            @include breakpoint(640){
+                font-size: 22px;
+            }
+        }
+
         .additional-text{
             margin-bottom: 0;
         }
