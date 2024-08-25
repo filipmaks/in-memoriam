@@ -19,6 +19,30 @@ BUTTONS GLOBAL
         opacity: 0.8;
     }
 
+    &.small{
+        font-size: p(14);
+        padding: p(5) p(15);
+
+        @include breakpoint(max){
+            font-size: m(14);
+            padding: m(5) m(15);
+        }
+
+        @include breakpoint(1024){
+            font-size: 16px;
+            padding: 5px 15px;
+        }
+
+        @include breakpoint(768){
+            font-size: 16px;
+        }
+
+        @include breakpoint(640){
+            font-size: 14px; line-height: 1.2;
+            padding: 5px 15px;
+        }
+    }
+
     @include breakpoint(max){
         min-width: m(260);
         font-size: m(18);

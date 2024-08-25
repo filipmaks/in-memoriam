@@ -34,6 +34,8 @@ function enqueueStylesAndScripts() {
     wp_enqueue_script('device');
     wp_register_script('preloading', THEME_ASSETS . 'js/libs/jquery.preloading.js', FALSE, '1.11.0', TRUE);
     wp_enqueue_script('preloading');
+    wp_register_script('gtranslate', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit', FALSE, '1.11.0', TRUE);
+    wp_enqueue_script('gtranslate');
     wp_register_script('init', THEME_ASSETS . 'js/init.js', array(), false, true);
     wp_enqueue_script('init');
     

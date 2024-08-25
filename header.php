@@ -19,6 +19,64 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
 	<?php wp_head(); ?>
+    
+    <script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: '',
+            includedLanguages: 'sr,sh',
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+
+    function loadGoogleTranslate() {
+        if (!document.querySelector('#google_translate_element')) {
+            var googleTranslateElement = document.createElement('div');
+            googleTranslateElement.id = 'google_translate_element';
+            document.body.appendChild(googleTranslateElement);
+            
+            var googleTranslateScript = document.createElement('script');
+            googleTranslateScript.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+            document.body.appendChild(googleTranslateScript);
+        }
+    }
+
+    function triggerGoogleTranslate(language) {
+        loadGoogleTranslate();
+        setTimeout(function() {
+            var frame = document.querySelector('.goog-te-menu-frame.skiptranslate');
+            if (frame) {
+                var languageOption = Array.from(frame.contentWindow.document.querySelectorAll('.goog-te-menu2-item span.text')).find(function(span) {
+                    return span.textContent.includes(language);
+                });
+                if (languageOption) {
+                    languageOption.click();
+                }
+            }
+        }, 1000);
+    }
+
+    document.getElementById('latinica').addEventListener('click', function() {
+        if (this.classList.contains('current')) {
+            window.location.reload();
+        } else {
+            triggerGoogleTranslate('Serbian (Latin)');
+            this.classList.add('current');
+            document.getElementById('cirilica').classList.remove('current');
+        }
+    });
+
+    document.getElementById('cirilica').addEventListener('click', function() {
+        triggerGoogleTranslate('Serbian');
+        this.classList.add('current');
+        document.getElementById('latinica').classList.remove('current');
+    });
+});
+
+
+</script>
+
 
 </head>
 
@@ -81,3 +139,5 @@
     <div class="loading_holder"></div>
 
     <div id="main" class="main">
+
+	<div id="google_translate_element"></div>
