@@ -666,6 +666,11 @@
                     svg{
                         fill: black;
                     }
+                    &.v1{
+                        path{
+                            fill: black;
+                        }
+                    }
                 }
 
                 &:last-child{

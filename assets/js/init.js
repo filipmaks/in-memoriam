@@ -172,6 +172,34 @@
             });
         });
 
+        // Copy to clipboard Browser URL
+
+        $('.copy-to-clip').on('click', function(e){
+
+            e.preventDefault();
+
+            var tempInput = $("<input>");            
+            $("body").append(tempInput);
+            
+            tempInput.val(window.location.href).select();
+
+            document.execCommand("copy");
+            tempInput.remove();
+
+            alert("Link je kopiran");
+        });
+        
+        $('.toggle-password').on('click', function() {
+            let input = $($(this).attr('toggle'));
+            if (input.attr('type') === 'password') {
+                input.attr('type', 'text');
+                $(this).find('i').removeClass('fa-eye').addClass('fa-eye-slash');
+            } else {
+                input.attr('type', 'password');
+                $(this).find('i').removeClass('fa-eye-slash').addClass('fa-eye');
+            }
+        });
+
         /* Form members search */
         var $search_input = $('.search_page input[type="text"]'),
             $searchResults = $('.search_results ul'),

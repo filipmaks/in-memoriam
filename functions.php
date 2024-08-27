@@ -175,12 +175,12 @@ add_theme_support('post-thumbnails');
 		$args = array(
 			'author' => $user_id,
 			'post_type' => 'memorials',
-			'posts_per_page' => 1,
+			'posts_per_page' => -1, // Retrieve all posts to count them
 			'post_status' => 'any',
 		);
 		
 		$query = new WP_Query($args);
-		return $query->have_posts();
+		return ($query->found_posts >= 3);
 	}
 
 	// Remove "Add Memorial" button on the front end
@@ -191,14 +191,14 @@ add_theme_support('post-thumbnails');
 			if (user_has_memorials_post($user_id)) {
 				// Remove button by its class or ID
 				echo '<style>
-					.page-title-action, .menupop, #wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-top-secondary, #screen-meta-links, .author-other{
+					.page-title-action, .menupop, #wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-top-secondary, #screen-meta-links, .author-other, .check-column{
 						display: none !important;
 					}
 				</style>';
 			} else {
 				// Remove button by its class or ID
 				echo '<style>
-					#wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-top-secondary, #screen-meta-links, .author-other{
+					#wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-top-secondary, #screen-meta-links, .author-other, .check-column{
 						display: none !important;
 					}
 				</style>';
