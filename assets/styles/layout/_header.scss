@@ -94,6 +94,19 @@ header{
                         }
                     }
                 }
+                &.translate{
+                    a{
+                        opacity: .3;
+                        
+                        &.active {
+                            opacity: 1;
+                        }
+
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
+                }
                 a{
                     text-decoration: none;
                     color: $blue;
