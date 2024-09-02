@@ -293,11 +293,11 @@ add_theme_support('post-thumbnails');
 		$subscribe_level = get_field('subscribe_level', 'user_' . $current_user_id);
 		
 		// Determine the maximum number of rows based on subscription level
-		$max_rows = 6; // default to the highest level
+		$max_rows = 3; // default to the highest level
 		if ($subscribe_level === 'lvl3') {
-			$max_rows = 4;
+			$max_rows = 9;
 		} elseif ($subscribe_level === 'lvl2') {
-			$max_rows = 5;
+			$max_rows = 6;
 		}
 	
 		// Define the block limits based on subscription level
@@ -358,16 +358,16 @@ add_theme_support('post-thumbnails');
 		$subscribe_level = get_field('subscribe_level', 'user_' . $current_user_id);
 		
 		// Determine the maximum number of rows based on subscription level
-		$max_rows = 6; // default to the highest level
+		$max_rows = 3; // default to the highest level
 		if ($subscribe_level === 'lvl3') {
-			$max_rows = 4;
+			$max_rows = 9;
 		} elseif ($subscribe_level === 'lvl2') {
-			$max_rows = 5;
+			$max_rows = 6;
 		}
 	
 		// Check if the number of rows exceeds the maximum allowed
 		if (is_array($value) && count($value) > $max_rows) {
-			return sprintf('You are allowed to add up to %d rows based on your subscription level.', $max_rows);
+			return sprintf('Mozete da dodate do maksimalno %d redova na osnovu vase pretplate.', $max_rows);
 		}
 	
 		// Define the block limits based on subscription level
@@ -397,7 +397,7 @@ add_theme_support('post-thumbnails');
 							$block_counts[$block['acf_fc_layout']]++;
 							if ($block_counts[$block['acf_fc_layout']] > $max_blocks[$block['acf_fc_layout']]) {
 								return sprintf(
-									'You have exceeded the maximum number of %s blocks. You are allowed %d %s blocks based on your subscription level.',
+									'Dostigli ste maksimalan broj %s blokova. Dozvoljeno vam je %d %s blokova na osnovu vase pretplate.',
 									$block['acf_fc_layout'],
 									$max_blocks[$block['acf_fc_layout']],
 									$block['acf_fc_layout']
@@ -413,6 +413,37 @@ add_theme_support('post-thumbnails');
 	}
 	add_filter('acf/validate_value/name=row_content', 'validate_acf_rows_and_flexible_content_by_subscription_level', 10, 4);
 
+	// Limitiraj broj testimoanialsa
+	function validate_acf_testimonial_rows_by_subscription_level($valid, $value, $field, $input) {
+		if (!$valid) {
+			return $valid;
+		}
+	
+		// Get the current user ID
+		$current_user_id = get_current_user_id();
+	
+		// Get the user's subscription level
+		$subscribe_level = get_field('subscribe_level', 'user_' . $current_user_id);
+	
+		// Determine the maximum number of rows based on subscription level
+		$max_rows = 5;
+		if ($subscribe_level === 'lvl1') {
+			$max_rows = 5;
+		} elseif ($subscribe_level === 'lvl2') {
+			$max_rows = 10;
+		} elseif ($subscribe_level === 'lvl3') {
+			$max_rows = 20;
+		}
+	
+		// Check if the number of rows exceeds the maximum allowed
+		if (is_array($value) && count($value) > $max_rows) {
+			return sprintf('Mozete da dodate do maksimalno %d redova na osnovu vase pretplate.', $max_rows);
+		}
+	
+		return $valid;
+	}
+	
+	add_filter('acf/validate_value/name=testimonials', 'validate_acf_testimonial_rows_by_subscription_level', 10, 4);	
 
 	function disable_toolbar_for_non_admins() {
 		if ( ! current_user_can( 'administrator' ) && ! is_admin() ) {

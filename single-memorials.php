@@ -44,23 +44,22 @@
                 <h5 class="animated anim_y"><?php echo $birth_date_latin; ?> - <?php echo $death_date_latin; ?></h5>             
                 <img class="animated anim_y" src="<?php echo get_template_directory_uri(); ?>/pictures/beskonacno.svg" alt="beskonacno">
             </article>
-
-            <?php if( !empty($author_posts) ): ?>
-                <div class="author-posts">
-                    <h3>Povezane stranice</h3>
-                    <ul>
-                        <?php foreach($author_posts as $author_post): ?>
-                            <li>
-                                <a href="<?php echo get_permalink($author_post->ID); ?>"><?php echo $author_post->post_title; ?></a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-            <?php endif; ?>
-            
         </div>
     </div>
 </section><!-- Hero -->
+
+<?php if( !empty($author_posts) ): ?>
+    <div class="related-posts">
+        <p>Povezane stranice</p>
+        <ul>
+            <?php foreach($author_posts as $author_post): ?>
+                <li>
+                    <a href="<?php echo get_permalink($author_post->ID); ?>"><?php echo $author_post->post_title; ?></a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>
 
 <section class="single-memoriam-content">
     <div class="wrapper">

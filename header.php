@@ -19,18 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
 	<?php wp_head(); ?>
-
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            pageLanguage: 'sr',
-            includedLanguages: 'en,sr',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+    
 </head>
 
 <body <?php body_class(); ?>>
@@ -63,7 +52,7 @@
                     </li>
 
                     <li class="translate">
-                        <a href="#" class="active">Lat /</a> <a href="#">Cir</a>
+                        <a href="<?php echo site_url(); ?>" class="active lat">Lat /</a> <a href="https://1-in--memoriam-net.translate.goog/?_x_tr_enc=1&_x_tr_sl=zh-TW&_x_tr_tl=sr&_x_tr_hl=en&_x_tr_pto=wapp" class="cir">Ćir</a>
                     </li>
 
                     <li class="search">
@@ -98,15 +87,3 @@
 
     <div id="main" class="main">
 
-    <div id="google_translate_element" style="display:none;"></div>
-<button onclick="translateToEnglish()">Translate to English</button>
-
-<script type="text/javascript">
-function translateToEnglish() {
-  var combo = document.querySelector('.goog-te-combo');
-  if (combo) {
-    combo.value = 'en'; // Change this value to 'en' for English
-    combo.dispatchEvent(new Event('change'));
-  }
-}
-</script>

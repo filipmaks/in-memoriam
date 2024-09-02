@@ -361,3 +361,18 @@ header{
         }
     }
 }
+
+#gt-nvframe{
+    display: none !important;
+}
+
+.translated-ltr{
+    header .holder ul li.translate a{
+        &.lat{
+            opacity: 0.3;
+        }
+        &.cir{
+            opacity: 1;
+        }
+    }
+}

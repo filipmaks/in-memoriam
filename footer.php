@@ -1,16 +1,5 @@
 	</div>
 
-	<div class="floating-button translate-button">
-		<a class="btn small" href="#">Prevedi sajt</a>
-		<div class="translate">
-			<ul>
-				<li id="latinica" class="current">Latinica</li>
-				<li id="cirilica">Cirilica</li>
-			</ul>
-		</div>
-	</div>
-
-
 	<?php 
 		$prefooter_image 	= get_field('prefooter_image', 'option');
 		$prefooter_text 	= get_field('prefooter_text', 'option');

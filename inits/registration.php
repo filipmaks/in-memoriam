@@ -179,9 +179,9 @@ function custom_registration_form_shortcode() {
                         <p class="half animated anim_y">
                             <label for="subscribe_level">Nivo pretplate*</label>
                             <select name="subscribe_level" id="subscribe_level" class="<?php echo $registration_errors->get_error_message('subscribe_level') ? 'error-field' : ''; ?>" required>
-                                <option value="lvl1" <?php selected($subscribe_level, 'lvl1'); ?>>Level 1</option>
-                                <option value="lvl2" <?php selected($subscribe_level, 'lvl2'); ?>>Level 2</option>
-                                <option value="lvl3" <?php selected($subscribe_level, 'lvl3'); ?>>Level 3</option>
+                                <option value="lvl1" <?php selected($subscribe_level, 'lvl1'); ?>>Osnovni nivo</option>
+                                <option value="lvl2" <?php selected($subscribe_level, 'lvl2'); ?>>Drugostepeni nivo</option>
+                                <option value="lvl3" <?php selected($subscribe_level, 'lvl3'); ?>>Trecestepeni nivo</option>
                             </select>
                             <?php if ($registration_errors->get_error_message('subscribe_level')): ?>
                                 <span class="error-message"><?php echo $registration_errors->get_error_message('subscribe_level'); ?></span>
@@ -295,13 +295,13 @@ function generate_payment_instructions($username, $subscribe_level, $first_name,
     // Determine the price based on the subscription level
     switch ($subscribe_level) {
         case 'lvl1':
-            $price = 100;
+            $price = '6.000 dinara/50 eur';
             break;
         case 'lvl2':
-            $price = 200;
+            $price = '12.000 dinara/100 eur';
             break;
         case 'lvl3':
-            $price = 300;
+            $price = '18.000 dinara/150 eur';
             break;
         default:
             $price = 0;
