@@ -113,6 +113,10 @@ function custom_registration_form_shortcode() {
         exit;
     }
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registration_form'])) {
+        handle_custom_registration();
+    }
+
     // Retrieve the posted values or set defaults
     $first_name = isset($_POST['first_name']) ? esc_attr($_POST['first_name']) : '';
     $last_name = isset($_POST['last_name']) ? esc_attr($_POST['last_name']) : '';
@@ -135,6 +139,7 @@ function custom_registration_form_shortcode() {
                     <form id="custom-registration-form" action="" method="post">
         
                         <input type="hidden" name="registration_form" value="1">
+                        <input type="hidden" name="recaptcha_token" id="recaptcha_token">
                         
                         <p class="half animated anim_y">
                             <label for="first_name">Ime*</label>
@@ -194,12 +199,42 @@ function custom_registration_form_shortcode() {
                         <p class="additional-text animated anim_y">* Obavezna polja</p>
         
                     </form>
+                    <script src="https://www.google.com/recaptcha/api.js?render=6Lcpy24qAAAAAMN-KLiDLwCzIm95uRk504lzsoiq"></script>
+                    <script>
+                        grecaptcha.ready(function() {
+                            grecaptcha.execute('6Lcpy24qAAAAAMN-KLiDLwCzIm95uRk504lzsoiq', {action: 'register'}).then(function(token) {
+                                document.getElementById('recaptcha_token').value = token;
+                            });
+                        });
+                    </script>
                 </div>
             </div>
         </div>
     </section>
     <?php
     return ob_get_clean();
+}
+
+function handle_custom_registration() {
+    // Replace with your actual secret key
+    $recaptcha_secret = '6Lcpy24qAAAAAPzwMiOK6AVJ_Y7-UPT8TKVi6fh8';
+
+    // Verify the reCAPTCHA token
+    if (isset($_POST['recaptcha_token'])) {
+        $response = wp_remote_post("https://www.google.com/recaptcha/api/siteverify", [
+            'body' => [
+                'secret' => $recaptcha_secret,
+                'response' => $_POST['recaptcha_token'],
+            ],
+        ]);
+        $response_body = wp_remote_retrieve_body($response);
+        $result = json_decode($response_body);
+
+        if (!$result->success || $result->score < 0.5) {
+            wp_die('reCAPTCHA verification failed. Please try again.');
+        }
+    }
+
 }
 
 // CUSTOM LOGIN //
