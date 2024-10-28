@@ -5,7 +5,7 @@ ob_start();
 add_action('init', 'custom_user_registration');
 function custom_user_registration() {
     global $registration_errors, $username, $email, $phone_number, $subscribe_level, $first_name, $last_name;
-    
+
     $registration_errors = new WP_Error();
 
     if ('POST' == $_SERVER['REQUEST_METHOD'] && isset($_POST['submit']) && isset($_POST['registration_form'])) {
@@ -17,6 +17,13 @@ function custom_user_registration() {
         $subscribe_level = isset($_POST['subscribe_level']) ? sanitize_text_field($_POST['subscribe_level']) : '';
         $first_name = isset($_POST['first_name']) ? sanitize_text_field($_POST['first_name']) : '';
         $last_name = isset($_POST['last_name']) ? sanitize_text_field($_POST['last_name']) : '';
+
+        // Check for spammy first names:
+        // - Allow all lowercase, all uppercase, or a capitalized name.
+        // - Reject names with random capitalization patterns.
+        if (!empty($first_name) && !preg_match('/^([A-Z][a-z]+|[a-z]+|[A-Z]+)$/', $first_name)) {
+            $registration_errors->add('first_name', 'Ime nije validno.');
+        }
 
         // Validate username
         if (empty($username) || !validate_username($username) || username_exists($username)) {
