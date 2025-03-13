@@ -12,6 +12,11 @@ form{
         margin: 0 auto m(30) auto;
     }
 
+    @include breakpoint(640){
+        margin-bottom: 25px;
+        width: 100%;
+    }
+
     input{
 
         &.text_field{
@@ -29,15 +34,43 @@ form{
                 padding: m(20) m(30);
                 font-size: m(20);
             }
+
+            @include breakpoint(640){
+                font-size: 18px; line-height: 1;
+                padding: 5px 15px;    
+                height: 42px;
+            }
         }
 
         &.search_icon{
-            position: absolute;
-            top: 50%; right: p(20);
-            @include transform($y: -50%);
+            display: none;
+        }
+    }
+
+    .search_icon{
+        position: absolute;
+        top: 50%; right: p(20);
+        @include transform($y: -50%);
+        cursor: pointer;
+
+        @include breakpoint(max){
+            right: m(20);
+        }
+
+        @include breakpoint(640){
+            right: 10px;
+        }
+
+        svg{
+            width: p(20); height: p(20);
+            fill: $blue;
 
             @include breakpoint(max){
-                right: m(20);
+                width: m(20); height: m(20);
+            }
+
+            @include breakpoint(640){
+                width: 15px; height: 15px;
             }
         }
     }
@@ -57,8 +90,16 @@ form{
                     margin-bottom: m(50);
                 }
 
+                @include breakpoint(640){
+                    margin-bottom: 30px;
+                }
+
                 &.half{
                     width: 48%;
+
+                    @include breakpoint(640){
+                        width: 100%;
+                    }
                 }
 
                 label, span, textarea{
@@ -72,10 +113,10 @@ form{
                     @include breakpoint(max){
                         margin-top: m(15);
                     }
-                }
 
-                textarea{
-                    height: 200px;
+                    @include breakpoint(640){
+                        margin-top: 10px;
+                    }
                 }
 
                 textarea, input{
@@ -94,10 +135,34 @@ form{
                         padding: m(20) m(30);
                         font-size: m(20);
                     }
+
+                    @include breakpoint(768){
+                        padding: 20px; font-size: 20px;
+                    }
+
+                    @include breakpoint(640){
+                        font-size: 18px; line-height: 1;
+                        padding: 5px 15px;    
+                        height: 42px;
+                    }
+                }
+
+                textarea{
+                    height: p(180);
+
+                    @include breakpoint(max){
+                        height: m(180);
+                    }
+
+                    @include breakpoint(640){
+                        height: 80px;
+                    }
                 }
                 
                 .btn{
                     cursor: pointer;
+                    border: none;
+                    outline: none;
                 }
 
                 &.btn_holder{
@@ -107,8 +172,19 @@ form{
                         margin-bottom: m(20);
                     }
 
+                    @include breakpoint(640){
+                        margin-bottom: 20px;
+                    }
+
                     p{
                         text-align: center;
+                    }
+
+                    .btn {
+                        @include breakpoint(640) {
+                            height: auto;
+                            padding: 10px 30px;
+                        }
                     }
                 }
 
@@ -118,5 +194,186 @@ form{
                 }
             }
         }
+        .wpcf7-not-valid-tip{
+            font-size: p(16);
+            padding-left: p(12);
+
+            @include breakpoint(max){
+                font-size: m(16);
+                padding-left: m(12);
+            }
+        }
+
+        .wpcf7-response-output{
+            font-size: p(16);
+            font-family: Helvetica, Arial, sans-serif;
+
+            @include breakpoint(max){
+                font-size: m(16);
+            }
+        }
     }
+}
+
+.custom-forms{
+    
+    form{
+        @include flexbox();
+        flex-wrap: wrap;
+        @include justify(space-between);
+        position: relative;
+        width: p(1400);
+        padding: p(60);
+        @include box-sizing();
+        border-radius: 30px;
+        background-color: $bgr-color;
+    
+        @include breakpoint(max){
+            width: m(1000);
+            padding: m(60);
+        }
+    
+        @include breakpoint(768){
+            width: 100%;
+            padding: 30px 50px
+        }
+    
+        @include breakpoint(640){
+            padding: 30px 20px;
+        }
+
+        p{
+            position: relative;
+            width: 100%;
+            margin-bottom: p(50);
+
+            @include breakpoint(max){
+                margin-bottom: m(50);
+            }
+
+            &.half{
+                width: 48%;
+
+                @include breakpoint(640){
+                    width: 100%;
+                }
+            }
+        
+            .error-message{
+                display: inline-block;
+                position: relative;
+                margin-top: p(5);
+
+                @include breakpoint(max){
+                    margin-top: m(5);
+                }
+                // position: absolute;
+                // bottom: p(-30);
+
+                // @include breakpoint(max){
+                //     bottom: m(-30);
+                // }
+            }
+        }
+
+        textarea, input, select{
+            display: block;
+            width: 100%;
+            padding: p(13) p(20);
+            font-size: p(20);
+            @include box-sizing();
+            border: none;
+            border-radius: 30px; 
+            box-shadow: none;
+            outline: none;
+            appearance: none;
+            margin-top: p(15);
+
+            @include breakpoint(max){
+                padding: m(20) m(30);
+                font-size: m(20);
+                margin-top: m(15);
+            }
+
+            @include breakpoint(768){
+                padding: 20px; font-size: 20px;
+            }
+
+            @include breakpoint(640){
+                font-size: 18px; line-height: 1;
+                padding: 5px 15px;    
+                height: 42px;
+            }
+        }
+
+        select{
+            appearance: auto;
+            // background-color: #fff;
+            // background-image: url('path/to/your/icon.svg'); /* Your custom icon */
+            // background-repeat: no-repeat;
+            // background-position: calc(100% - 20px) center;
+        }
+
+        textarea{
+            height: p(180);
+
+            @include breakpoint(max){
+                height: m(180);
+            }
+
+            @include breakpoint(640){
+                height: 80px;
+            }
+        }
+
+        .btn-holder, .additional-text{
+            text-align: center;
+            margin-bottom: p(20);
+        }
+
+        .link{
+            font-size: p(22); color: $blue; text-decoration: underline;
+
+            @include breakpoint(max){
+                font-size: m(22);
+            }
+
+            @include breakpoint(640){
+                font-size: 19px;
+            }
+        }
+
+        .additional-text{
+            margin-bottom: 0;
+        }
+
+        .btn{
+            display: inline-block;
+            width: auto;
+            cursor: pointer;
+        }
+    }
+
+    &.login-form{
+        form{
+            width: p(600);
+
+            @include breakpoint(max){
+                width: m(600);
+            }
+
+            @include breakpoint(640){
+                width: 100%;
+            }
+        }
+    }
+
+    .error-field {
+        border: 2px solid red;
+    }
+    .error-message {
+        color: red;
+        font-size: 0.9em;
+    }
+
 }

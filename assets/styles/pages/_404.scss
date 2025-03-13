@@ -4,4 +4,16 @@
     @include breakpoint(max){
         padding: m(200) 0;
     }
+
+    .error_text{
+        h1{
+            a{
+                color: $blue;
+                // text-decoration: none;
+                // &:hover{
+                //     text-decoration: underline;
+                // }
+            }
+        }
+    }
 }

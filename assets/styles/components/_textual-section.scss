@@ -1,32 +1,75 @@
 .textual_section{
-    margin-bottom: p(30);
+    margin: p(30) 0;
 
     @include breakpoint(max){
-        margin-bottom: m(30);
+        margin: m(30) 0;
     }
+
+    @include breakpoint(1024){
+       margin: 30px 0;
+    }
+
+    @include breakpoint(640){
+        margin: 20px 0;
+    }
+
     .holder{
-        background-color: $bgr-color;
-        padding: p(60) p(120);
+        padding: p(60) p(320);
         @include box-sizing();
         border-radius: 30px;
 
         @include breakpoint(max){
-            padding: m(60) m(120);
+            padding: m(60) m(320);
+        }
+
+        @include breakpoint(1024){
+            padding: 60px 100px;
+        }
+    
+        @include breakpoint(640){
+            padding: 30px 0px;
         }
     }
     article{
+        text-align: justify;
+        color: $blue;
         @include all-text{
             margin-bottom: p(20);
-            line-height: 1.2;
+            line-height: 1.5;
 
             @include breakpoint(max){
                 margin-bottom: m(20);
             }
+
+            @include breakpoint(1024){
+                margin-bottom: 20px;
+            }
+        
+            @include breakpoint(640){
+                margin-bottom: 15px;
+                
+                br{
+                    display: none;
+                }
+            }
+        }
+        .aligncenter{
+            display: block;
+            margin: 0 auto;
         }
         p{
-            .aligncenter{
-                display: block;
-                margin: 0 auto;
+            font-size: p(18); line-height: 2;
+
+            @include breakpoint(max){
+                font-size: m(18);
+            }
+
+            @include breakpoint(1024){
+                font-size: 18px;
+            }
+        
+            @include breakpoint(640){
+                font-size: 16px; line-height: 1.3;
             }
         }
     }

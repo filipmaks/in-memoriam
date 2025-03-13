@@ -6,15 +6,59 @@
         padding: m(50) 0;
     }
 
+    @include breakpoint(640){
+        padding: 40px 0;  
+    }
+    
     .holder{
-        max-width: 80%;
+        max-width: 40%;
         text-align: center;
         margin: 0 auto;
+
+        @include breakpoint(1024){
+            max-width: 60%;
+        }
+    
+        @include breakpoint(640){
+            max-width: 100%;
+        }
 
         h3, img{
             margin-bottom: p(30);
             @include breakpoint(max){
                 margin-bottom: m(30);
+            }
+
+            @include breakpoint(640){
+                margin-bottom: 20px;
+            }
+        }
+
+        img{
+            width: p(100);
+
+            @include breakpoint(max){
+                width: m(100);
+            }
+
+            @include breakpoint(640){
+                width: 80px;
+            }
+        }
+
+        p{
+            font-size: p(18);
+
+            @include breakpoint(max){
+                font-size: m(18);
+            }
+
+            @include breakpoint(1024){
+                font-size: 18px
+            }
+        
+            @include breakpoint(640){
+                font-size: 16px
             }
         }
     }

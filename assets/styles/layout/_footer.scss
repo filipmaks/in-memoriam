@@ -9,6 +9,10 @@ FOOTER
         overflow: hidden;
         aspect-ratio: 16/5;
 
+        @include breakpoint(640){
+            aspect-ratio: 1/1;
+        }
+
         h3{
             color: $white;
             position: absolute;
@@ -20,18 +24,24 @@ FOOTER
             @include breakpoint(max){
                 padding-left: m(150);
             }
+
+            @include breakpoint(640){
+                padding-left: 30px; max-width: 90%;
+            }
         }
     }
 }
 
 footer{
     padding-top: p(150);
+    overflow: hidden;
 
     @include breakpoint(max){
         padding-top: m(150);
     }
 
     .holder{
+        position: relative;
         @include flexbox();
         align-items: center;
         flex-wrap: wrap;
@@ -39,10 +49,42 @@ footer{
         .copyright{
             width: 100%;
             text-align: center;
-            margin: p(100) 0 p(60) 0;
+            margin: p(100) 0 p(10) 0;
 
             @include breakpoint(max){
-                margin: m(100) 0 m(60) 0;
+                margin: m(100) 0 m(10) 0;
+            }
+
+            @include breakpoint(640){
+                margin: 50px 0 20px 0;
+            }
+
+            p{
+                font-family: $font-montserrat;
+                font-size: p(10);
+    
+                @include breakpoint(max){
+                    font-size: m(10);
+                }
+
+                @include breakpoint(640){
+                    font-size: 12px;
+                }
+            }
+
+        }
+
+        .bgr_logo{
+            width: p(550);
+            position: absolute;
+            top: 0; right: 0;
+            z-index: 1;
+            @include transform($x: p(20), $y: p(-20));
+            opacity: 0.5;
+
+            @include breakpoint(max){
+                width: m(550);
+                @include transform($x: m(20), $y: m(-20));
             }
         }
     }
@@ -50,39 +92,154 @@ footer{
 
 footer, .more_info{
 
-    .footer_logo, .phones, .emails{
-        width: 19%;
-
-    }   
-    
     .phones, .emails{
+        width: 20%;
+        position: relative;
+
+        @include breakpoint(1024){
+            width: calc(50% - 100px);
+        }
+
+        @include breakpoint(640){
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        &:before, &:after{
+            display: block;
+            content: "";
+            width: 1px; height: p(210);
+            position: absolute;
+            top: 0;
+            background-color: $blue;
+
+            @include breakpoint(max){
+                height: m(210);
+            }
+            
+            @include breakpoint(1024){
+                height: 100%;
+            }
+        }
+
+        &:before{
+            left: 0;
+        }
+
+        &:after{
+            right: 0;
+
+            @include breakpoint(640){
+                content: none;
+            }
+        }
+
         padding: 0 p(40);
-        @include box-sizing(border-box);
+        @include box-sizing();
         // border-left: 3px solid $blue;
 
         @include breakpoint(max){
             padding: 0 m(40);
         }
 
+        @include breakpoint(640){
+            padding: 0 20px;
+        }
+
         .col_title{
             margin-bottom: p(20);
+            color: $blue;
+            font-family: $font-montserrat;
+            font-size: p(14);
+
+            @include breakpoint(max){
+                font-size: m(14);
+            }
+
+            @include breakpoint(1024){
+                font-size: 16px;
+            }
+
+            @include breakpoint(640){
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
         }
 
         a{
             display: inline-block;
             color: $black;
+            font-family: $font-montserrat;
             text-decoration: none;
-            font-size: p(17);
-            margin-bottom: p(20);
+            font-size: p(14); font-weight: 400;
+            margin-bottom: p(12);
+            position: relative;
 
             @include breakpoint(max){
-                font-size: m(17);
-                margin-bottom: m(20);
+                font-size: m(14);
+                margin-bottom: m(12);
+            }
+
+            @include breakpoint(1024){
+                font-size: 14px; 
+                margin-bottom: 6px;
+            }
+
+            &:before{
+                content: "";
+                width: 0; height: 1px;
+                background-color: $blue;
+                position: absolute;
+                bottom: -1px; left: 0;
+                @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+            }
+
+            &:hover{
+                &:before{
+                    width: 100%;
+                }
+            }
+
+            @include breakpoint(max){
+                font-size: m(14);
+                margin-bottom: m(12);
             }
 
             &:last-child{
                 margin-bottom: 0;
             }
+        }
+
+    }  
+
+    .emails{
+        &:before, &:after{
+            content: none;
+        }
+
+        @include breakpoint(640){
+            &:before{
+                content: "";
+            }
+        }
+    }
+
+    .footer_logo{
+        width: 15%;
+        margin-right: 5%;
+
+        @include breakpoint(1024){
+            width: 140px;
+            margin-right: 20px;
+        }
+
+        @include breakpoint(640){
+            width: 70%;
+            margin-bottom: 30px; margin-right: 0;
+        }
+
+        img{
+            width: 100%;
         }
     }
 
@@ -92,11 +249,18 @@ footer, .more_info{
 
     .footer_nav{
         flex: 1;
+        position: relative;
+        z-index: 2;
+
+        @include breakpoint(1024){
+            margin-top: 30px
+        }
 
         .nav_holder{
             @include flexbox();
             @include justify(flex-end);
             flex-wrap: wrap;
+            overflow: hidden;
 
             li{
                 margin-right: p(30);
@@ -105,16 +269,80 @@ footer, .more_info{
                     margin-right: m(30);
                 }
 
+                @include breakpoint(1024){
+                    margin-right: 20px;
+                }
+
+                @include breakpoint(640){
+                    width: 100%;
+                    margin-right: 0; margin-bottom: 15px;
+                }
+
                 &:last-child{
                     margin-right: 0;
+                    @include breakpoint(640){
+                        margin-bottom: 0;
+                    }
                 }
 
                 a{
-                    color: $black;
+                    color: $blue;
                     text-decoration: none;
                     font-family: $font-montserrat;
+                    font-size: p(12); font-weight: 600;
+                    position: relative;
+
+                    @include breakpoint(max){
+                        font-size: m(12);
+                    }
+
+                    @include breakpoint(1024){
+                        font-size: 12px;
+                    }
+
+                    &:before{
+                        content: "";
+                        width: 0; height: 1px;
+                        background-color: $blue;
+                        position: absolute;
+                        bottom: -1px; left: 0;
+                        @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+                    }
+
+                    &:hover{
+                        &:before{
+                            width: 100%;
+                        }
+                    }
+
+                }
+
+                &.search{
+                    cursor: pointer;
+                    svg{
+                        width: p(16); height: p(16);
+                        fill: $blue;
+
+                        @include breakpoint(max){
+                            width: m(16); height: m(16);
+                        }
+
+                        @include breakpoint(1024){
+                            width: 16px; height: 16px;
+                        }
+                    }
+                }
+
+                &.hide{
+                    @include transition(all, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+                    opacity: 0; pointer-events: none;
                 }
             }
         }
     }
+}
+
+.floating-button{
+    position: fixed;
+    bottom: 50px; right: 50px;
 }

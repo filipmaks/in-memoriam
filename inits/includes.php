@@ -28,10 +28,14 @@ function enqueueStylesAndScripts() {
     wp_enqueue_script('jquery');
     wp_register_script('swiper', '//unpkg.com/swiper@8/swiper-bundle.min.js', FALSE, '1.11.0', TRUE);
     wp_enqueue_script('swiper');
+    wp_register_script('underscore', '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.12.1/underscore-min.js', FALSE, '1.11.0', TRUE);
+    wp_enqueue_script('underscore');
     wp_register_script('device', THEME_ASSETS . 'js/libs/jquery.device.js', array(), false, true);
     wp_enqueue_script('device');
     wp_register_script('preloading', THEME_ASSETS . 'js/libs/jquery.preloading.js', FALSE, '1.11.0', TRUE);
     wp_enqueue_script('preloading');
+    wp_register_script('gtranslate', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit', FALSE, '1.11.0', TRUE);
+    wp_enqueue_script('gtranslate');
     wp_register_script('init', THEME_ASSETS . 'js/init.js', array(), false, true);
     wp_enqueue_script('init');
     

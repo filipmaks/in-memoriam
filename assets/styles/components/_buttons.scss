@@ -4,24 +4,63 @@ BUTTONS GLOBAL
 
 .btn{
     display: inline-block;
-    min-width: p(280);
-    font-size: p(22); line-height: 1;
-    padding: p(15) p(50);
+    min-width: p(260);
+    font-size: p(18); line-height: 1; font-weight: 600;
+    padding: p(14) p(35);
     border-radius: 30px;
     background-color: $blue;
     text-decoration: none;
     color: $white;
     text-align: center;
     font-family: $font-montserrat;
+    @include transition(opacity, 0.5s, 0s, cubic-bezier(0.250, 0.460, 0.450, 0.940)); 
+
+    &:hover{
+        opacity: 0.8;
+    }
+
+    &.small{
+        font-size: p(14);
+        padding: p(5) p(15);
+
+        @include breakpoint(max){
+            font-size: m(14);
+            padding: m(5) m(15);
+        }
+
+        @include breakpoint(1024){
+            font-size: 16px;
+            padding: 5px 15px;
+        }
+
+        @include breakpoint(768){
+            font-size: 16px;
+        }
+
+        @include breakpoint(640){
+            font-size: 14px; line-height: 1.2;
+            padding: 5px 15px;
+        }
+    }
 
     @include breakpoint(max){
-        min-width: m(280);
-        font-size: m(22);
-        padding: m(15) m(50);
+        min-width: m(260);
+        font-size: m(18);
+        padding: m(14) m(35);
+    }
+
+    @include breakpoint(1024){
+        font-size: 22px;
+        padding: 14px 35px;
+    }
+
+    @include breakpoint(768){
+        font-size: 20px;
     }
 
     @include breakpoint(640){
-        font-size: 18px;
+        font-size: 16px; line-height: 1.2;
+        padding: 9px 25px;
     }
 }
 
@@ -32,6 +71,14 @@ BUTTONS GLOBAL
         margin-bottom: m(30);
     }
 
+    @include breakpoint(1024){
+        margin-bottom: 25px;
+    }
+
+    @include breakpoint(640){
+        margin-bottom: 20px;
+    }
+
     .holder{
         padding: p(60) 0;
         @include box-sizing();
@@ -39,6 +86,14 @@ BUTTONS GLOBAL
 
         @include breakpoint(max){
             padding: m(60) 0;
+        }
+
+        @include breakpoint(1024){
+            padding: 50px 0;
+        }
+    
+        @include breakpoint(640){
+            padding: 30px 0;
         }
     }
 
@@ -63,8 +118,19 @@ BUTTONS GLOBAL
                 margin-right: m(30);
             }
 
+            @include breakpoint(640){
+                margin-right: 0;
+                margin-bottom: 20px;
+                min-width: 60%;
+                text-align: center;
+            }
+
             &:last-child{
                 margin-right: 0;
+
+                @include breakpoint(640){
+                    margin-bottom: 0;
+                }
             }
         }
     }
