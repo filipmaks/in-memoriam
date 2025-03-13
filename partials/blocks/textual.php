@@ -17,11 +17,14 @@ if( !empty($block['className']) ) {
 
 $text       = get_field('text');
 $bgr_color  = get_field('card_background_color');
+$bgr_color  = get_field('card_background_color');
 if ( $text ) :
 ?>
 
 <section class="<?php echo esc_attr($className); ?>">
     <div class="wrapper">
+        <div class="holder" style="background-color: <?php echo $bgr_color; ?>">
+            <article class="animated anim_y">
         <div class="holder" style="background-color: <?php echo $bgr_color; ?>">
             <article class="animated anim_y">
                 <?php echo $text; ?>

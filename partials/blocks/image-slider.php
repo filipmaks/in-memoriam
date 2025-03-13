@@ -20,6 +20,7 @@ if( !empty($block['className']) ) {
 <section class="<?php echo esc_attr($className); ?>">
     <div class="wrapper">
         <div class="holder animated">
+        <div class="holder animated">
             <?php if( have_rows('gallery_slider') ): ?>
                 <div class="gallery_slider">
                     <ul class="slides swiper-wrapper">
@@ -30,6 +31,7 @@ if( !empty($block['className']) ) {
                         ?>
                         <li class="swiper-slide has_bgr" style="background-image: url(<?php echo $image['url']; ?>);">
                             <?php if ( $text ) : ?>
+                                <h5><?php echo $text; ?></h5>
                                 <h5><?php echo $text; ?></h5>
                             <?php endif; ?>
                         </li>

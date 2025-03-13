@@ -16,6 +16,7 @@ if( !empty($block['className']) ) {
 }
 
 $icon       = get_field('icon');
+$icon       = get_field('icon');
 $title      = get_field('title');
 $text       = get_field('text');
 ?>
@@ -23,6 +24,7 @@ $text       = get_field('text');
 <section class="<?php echo esc_attr($className); ?>">
     <div class="wrapper">
         <div class="holder">
+            <article class="animated anim_y">
             <article class="animated anim_y">
 
                 <?php if ( $icon ) : ?>

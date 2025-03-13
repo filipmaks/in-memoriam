@@ -31,15 +31,18 @@ if ( $image ) :
 
                 <?php if ( $title ) : ?>
                     <h1 class="animated anim_y"><?php echo $title; ?></h1>
+                    <h1 class="animated anim_y"><?php echo $title; ?></h1>
                 <?php endif; ?>
 
                 <?php if ( $text ) : ?>
+                    <p class="animated anim_y"><?php echo $text; ?></p>
                     <p class="animated anim_y"><?php echo $text; ?></p>
                 <?php endif; ?>
                 
             </article>
 
             <?php if ( $icon ) : ?>
+                <img class="animated anim_y" src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
                 <img class="animated anim_y" src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
             <?php endif; ?>
 

@@ -23,13 +23,16 @@ if( !empty($block['className']) ) {
 
             <?php if( have_rows('cards') ): ?>
                 <ul class="cards set_animation slower">
+                <ul class="cards set_animation slower">
                     <?php 
                     while( have_rows('cards') ): the_row(); 
                         $icon   = get_sub_field('icon_top');
                         $title  = get_sub_field('title');
                         $text   = get_sub_field('text');
                         $link   = get_sub_field('link');
+                        $link   = get_sub_field('link');
                 ?>
+                    <li class="animated anim_y">
                     <li class="animated anim_y">
 
                         <?php if ( $icon ) : ?>
@@ -40,6 +43,22 @@ if( !empty($block['className']) ) {
 
                             <span class="num"><?php echo get_row_index(); ?>.</span>
 
+                        <article>
+
+                            <span class="num"><?php echo get_row_index(); ?>.</span>
+
+                            <?php if ( $title ) : ?>
+                               <h4>
+                                    <?php if( $link) : ?><a href="<?php echo $link['url']; ?>"><?php endif; ?>
+                                    <?php echo $title; ?>
+                                    <?php if( $link) : ?></a><?php endif; ?>
+                                </h4>
+                            <?php endif; ?>
+    
+                            <?php if ( $text ) : ?>
+                               <p><?php echo $text; ?></p>
+                            <?php endif; ?>
+                        </article>
                             <?php if ( $title ) : ?>
                                <h4>
                                     <?php if( $link) : ?><a href="<?php echo $link['url']; ?>"><?php endif; ?>

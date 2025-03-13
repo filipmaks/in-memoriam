@@ -40,6 +40,12 @@ form{
                 padding: 5px 15px;    
                 height: 42px;
             }
+
+            @include breakpoint(640){
+                font-size: 18px; line-height: 1;
+                padding: 5px 15px;    
+                height: 42px;
+            }
         }
 
         &.search_icon{
@@ -64,8 +70,34 @@ form{
         svg{
             width: p(20); height: p(20);
             fill: $blue;
+            display: none;
+        }
+    }
+
+    .search_icon{
+        position: absolute;
+        top: 50%; right: p(20);
+        @include transform($y: -50%);
+        cursor: pointer;
+
+        @include breakpoint(max){
+            right: m(20);
+        }
+
+        @include breakpoint(640){
+            right: 10px;
+        }
+
+        svg{
+            width: p(20); height: p(20);
+            fill: $blue;
 
             @include breakpoint(max){
+                width: m(20); height: m(20);
+            }
+
+            @include breakpoint(640){
+                width: 15px; height: 15px;
                 width: m(20); height: m(20);
             }
 
@@ -96,6 +128,10 @@ form{
 
                 &.half{
                     width: 48%;
+
+                    @include breakpoint(640){
+                        width: 100%;
+                    }
 
                     @include breakpoint(640){
                         width: 100%;
@@ -157,10 +193,34 @@ form{
                     @include breakpoint(640){
                         height: 80px;
                     }
+
+                    @include breakpoint(768){
+                        padding: 20px; font-size: 20px;
+                    }
+
+                    @include breakpoint(640){
+                        font-size: 18px; line-height: 1;
+                        padding: 5px 15px;    
+                        height: 42px;
+                    }
+                }
+
+                textarea{
+                    height: p(180);
+
+                    @include breakpoint(max){
+                        height: m(180);
+                    }
+
+                    @include breakpoint(640){
+                        height: 80px;
+                    }
                 }
                 
                 .btn{
                     cursor: pointer;
+                    border: none;
+                    outline: none;
                     border: none;
                     outline: none;
                 }

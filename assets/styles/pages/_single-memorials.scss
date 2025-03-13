@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .single-memoriam-content{
     margin-bottom: p(30);
 
@@ -761,4 +762,764 @@
             }
         }
     }
+=======
+.single-memoriam-content{
+    margin-bottom: p(30);
+
+    @include breakpoint(max){
+        margin-bottom: m(30);
+    }
+
+    @include breakpoint(640){
+        margin-bottom: 15px;
+    }
+
+    .inner-content{
+        background-color: $bgr-color;
+        padding: p(30);
+        @include box-sizing();
+        border-radius: 25px;
+        overflow: hidden;
+
+        @include breakpoint(max){
+            padding: m(30);
+        }
+
+        @include breakpoint(640){
+            padding: 15px 15px 0 15px;
+        }
+    }
+
+    .row{
+        @include flexbox();
+        @include justify(space-between);
+        gap: p(30);
+        padding-bottom: p(30);
+        flex-wrap: wrap;
+
+        @include breakpoint(max){
+            gap: m(30);
+            padding-bottom: m(30);
+        }
+
+        @include breakpoint(1024){
+            &.two-columns, &.three-columns, &.four-columns, &.five-columns{
+                .card{
+                    flex-basis: calc(50% - p(30));
+                }
+            }
+            &.three-columns, &.five-columns{
+                .card{
+                    &:last-child{
+                        flex-basis: 100%;
+                    }
+                }
+            }
+        }
+
+        @include breakpoint(768){
+            &.two-columns, &.three-columns, &.four-columns, &.five-columns{
+                .card{
+                    flex-basis: 100%;
+                }
+            }
+        }
+
+        @include breakpoint(640){
+            gap: 0;
+            margin-bottom: 15px;
+        }
+
+        &:last-child{
+            padding-bottom: 0;
+        }
+
+        .card{
+            position: relative;
+            @include flexbox(); flex-wrap: wrap; flex: 1;
+            border-radius: 25px;
+            overflow: hidden;
+            background-color: $white;
+            -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+            -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+
+            .share-card{
+                position: absolute;
+                bottom: 0; left: 0;
+                // width: 100%; background-color: $white;
+                // bottom: p(7); left: p(10);
+
+                @include breakpoint(max){
+                    // bottom: m(7); left: m(10);
+                }
+
+
+            }
+
+            @include breakpoint(768){
+                flex-basis: 100%;
+                margin-bottom: 15px;
+            }
+
+            div{
+                width: 100%;
+            }
+
+            p{
+                font-family: $font-libre;
+                line-height: 1.5;
+            }
+
+            &.center{
+                blockquote, article{
+                    align-self: end;
+                }
+            }
+
+            &.image-card{
+                .memorials_image{
+                    display: block;
+                    width: 100%;
+                    img{
+                        display: block;
+                        width: 100%; height: auto; object-fit: cover;
+                        aspect-ratio: 1/1;
+                    }
+                }
+                &.full-card-height{
+                    .full-height-card-bottom{
+                        position: absolute;
+                        bottom: 0; left: 0;
+                        width: 100%;
+                        z-index: 1;
+                        color: $white;
+                    }
+                    .memorials_image{
+                        height: 100%;
+                        img{
+                            height: auto; aspect-ratio: unset;
+                        }
+                    }
+                }
+            }
+
+            &.full-card-height{
+                .share-card{
+                    .share-content{
+                        background-color: $white;
+                    }
+                }
+            }
+
+            &:last-child{
+                @include breakpoint(768){
+                    margin-bottom: 0;
+                }
+            }
+
+            &.long-text-card{
+                padding: p(60) p(60) p(90) p(60);
+
+                @include breakpoint(max){
+                    padding: m(60) m(60) m(90) m(60);
+                }
+
+                @include breakpoint(640){
+                    padding: 40px 20px 60px 20px;
+                }
+
+                .card-title{
+                    width: 100%;
+                    text-align: center; font-style: italic;
+                    margin-bottom: p(60);
+
+                    @include breakpoint(max){
+                        margin-bottom: m(60);
+                    }
+
+                    @include breakpoint(640){
+                        margin-bottom: 40px;
+                    }
+                }
+
+                article{
+                    text-align: justify;
+                    columns: 2; column-gap: p(30);
+
+                    @include breakpoint(max){
+                        column-gap: m(30);
+                    }
+
+                    @include breakpoint(640){
+                        columns: 1;
+                        column-gap: 0;
+                    }
+
+                    @include all-text{
+                        margin-bottom: p(30);
+
+                        @include breakpoint(max){
+                            margin-bottom: m(30);
+                        }
+
+                        @include breakpoint(640){
+                            margin-bottom: 20px;
+                        }
+                    }
+
+                    sup{
+                        &:first-child{
+                            font-size: p(40); font-style: italic; font-weight: bold; text-transform: capitalize; line-height: 0;
+    
+                            @include breakpoint(max){
+                                font-size: m(40);
+                            }
+    
+                            @include breakpoint(640){
+                                font-size: 30px;
+                            }
+                        }
+                    }
+
+                    p{
+                        @include breakpoint(640){
+                            font-size: 14px; line-height: 1.3;
+                        }
+                    }
+                }
+
+                .share-content{
+                    width: 99%;
+
+                    @include breakpoint(640){
+                        width: 93%;
+                    }
+                }
+            }
+        }
+
+        .share-card{
+    
+            .share-content{
+                opacity: 0; pointer-events: none;
+                width: calc(100% - p(10));
+                // position: absolute;
+                @include flexbox();
+                @include justify(space-between);
+                padding: 0 p(30); margin: 0 auto p(6) auto;
+                @include box-sizing();
+                -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+                -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+                box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+                border-radius: 30px;
+                @include transition(0.3s, 0s, ease);
+                transition-property: opacity;
+                
+                @include breakpoint(max){
+                    padding: 0 m(30); margin: 0 auto m(6) auto;
+                }
+            
+                @include breakpoint(640){
+                    width: 95%;
+                    left: 10px; bottom: 5px;
+                    padding: 0 20px; margin: 0 auto 5px auto;
+                    background-color: $white;
+                }
+        
+                p{
+                    font-size: p(13); line-height: 3;
+                    color: $num_color;
+        
+                    @include breakpoint(max){
+                        font-size: m(13);
+                    }
+        
+                    @include breakpoint(640){
+                        font-size: 10px;
+                    }
+
+                    &.share-row{
+                        @include flexbox();
+                        align-items: center;
+                        
+                        i{
+                            @include breakpoint(640){
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                .share-icon{
+                    display: inline-block;
+                    width: p(20); height: p(20);
+                    margin-left: p(10);
+
+                    @include breakpoint(max){
+                        width: m(20); height: m(20);
+                        margin-left: m(10);
+                    }
+
+                    @include breakpoint(640){
+                        width: 15px; height: 15px;
+                        margin-left: 10px;
+                    }
+                    svg{
+                        display: block;
+                        width: 100%; height: 100%;
+                        fill: $num_color;
+                        cursor: pointer;
+                        @include transition(all, 0.3s, 0s, ease);
+
+                    }
+                }
+            }
+
+            .three-dots{
+                position: absolute;
+                bottom: 0; right: p(30);
+                height: p(35);
+                cursor: pointer;
+                @include transition(opacity 0.3s 0s ease);
+                
+                @include breakpoint(max){
+                    height: m(35); 
+                    right: m(30);
+                }
+
+                @include breakpoint(1024){
+                    height: m(30); 
+                }
+
+                @include breakpoint(640){
+                    height: 40px;
+                    right: 20px;
+                }
+                span{
+                    display: inline-block;
+                    width: 5px; height: 5px;
+                    background-color: $num_color;
+                    border-radius: 50%;
+                    margin-right: 5px;
+    
+                    &:last-child{
+                        margin-right: 0;
+                    }
+                }
+            }
+
+            &.active{
+                .share-content{
+                    opacity: 1;
+                    pointer-events: all;
+                }
+                .three-dots{
+                    opacity: 0; 
+                    pointer-events: none;
+                }
+            }
+    
+        }
+
+        &.one-column{
+
+        }
+
+    }
+
+    .card-bottom{
+        width: 100%;
+        padding: p(30) p(30) p(60) p(30);
+        @include box-sizing();
+        align-self: flex-end;
+
+        @include breakpoint(max){
+            padding: m(30) m(30) m(60) m(30);
+        }
+
+        @include breakpoint(640){
+            padding: 20px 20px 50px 20px;
+        }
+    }
+
+    .quote-card, .text-card{
+        article, blockquote, .card-bottom{
+            padding: p(50) p(30) p(0) p(30);
+            @include box-sizing();
+    
+            @include breakpoint(max){
+                padding: m(50) m(30) m(0) m(30);
+            }
+    
+            @include breakpoint(640){
+                padding: 20px 20px 50px 20px;
+            }
+        }
+
+        .card-bottom{
+            padding-bottom: p(60);
+
+            @include breakpoint(max){
+                padding-bottom: m(60);
+            }
+
+            @include breakpoint(640){
+                padding: 20px 20px 50px 20px;
+            }
+        }
+    }
+    
+    .video-holder{
+        position: relative;
+        video{
+            display: block;
+            width: 100%; height: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+
+            @include breakpoint(640){
+                aspect-ratio: 1/1;
+            }
+        }
+
+        .play-btn{
+            position: absolute;
+            top: 50%; left: 50%;
+            @include transform($x: -50%, $y: -50%);
+            width: p(100) !important; height: p(100);
+            border-radius: 50%;
+            cursor: pointer;
+            border: 1px solid $white;
+            @include transition(all, 0.5s, 0s, ease);
+
+            @include breakpoint(max){
+                width: m(100) !important; height: m(100);
+            }
+
+            @include breakpoint(640){
+                width: 50px !important; height: 50px;
+            }
+
+            &:hover{
+                @include transform($sx: 1.1, $sy: 1.1, $x: -50%, $y: -50%);
+            }
+
+            @include breakpoint(max){
+                width: m(100); height: m(100);
+            }
+
+            @include breakpoint(640){
+                width: 50px; height: 50px;
+            }
+
+            span{
+                display: block;
+                position: absolute;
+                width: 0; height: 0;
+                top: 50%; left: 50%;
+                @include transform($x: -50%, $y: -50%);
+                @include transition(all, 0.3s, 0s, ease);
+
+                &.play{
+                    opacity: 1;
+                    border-left: p(20) solid $white;
+                    border-top: p(15) solid transparent;
+                    border-bottom: p(15) solid transparent;
+
+                    @include breakpoint(max){
+                        border-left: m(20) solid $white;
+                        border-top: m(15) solid transparent;
+                        border-bottom: m(15) solid transparent;
+                    }
+
+                    @include breakpoint(640){
+                        border-left: 10px solid $white;
+                        border-top: 7px solid transparent;
+                        border-bottom: 7px solid transparent;
+                    }
+                }
+                
+                &.pause{
+                    opacity: 0;
+                    width: p(18); height: p(30);
+
+                    @include breakpoint(max){
+                        width: m(18); height: m(30);
+                    }
+
+                    @include breakpoint(640){
+                        width: 10px; height: 15px;
+                    }
+
+                    &:before, &:after{
+                        content: '';
+                        width: p(5); height: p(30);
+                        background-color: $white;
+                        position: absolute;
+
+                        @include breakpoint(max){
+                            width: m(5); height: m(30);
+                        }
+
+                        @include breakpoint(640){
+                            width: 3px; height: 15px;
+                        }
+                    }
+
+                    &:before{
+                        left: 0;
+                    }
+
+                    &:after{
+                        right: 0;
+                    }
+                }
+            }
+        }
+
+        &.playing{
+            .play-btn{
+                span.play{
+                    opacity: 0;
+                }
+                span.pause{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .text-card{
+        &.center{
+            // align-self: flex-end;
+        }
+    }
+
+    .video-card, .image-card{
+        .share-card{
+            .share-content{
+                // width: 99%; left: 0.5%;
+            }
+        }
+    }
+
+}
+
+.single-memorials {
+    .hero {
+        margin-bottom: 15px;
+        .holder{
+            @include breakpoint(640){
+                min-height: 60vh;
+            }
+            &.left {
+                article{
+                    align-content: flex-end;
+                    margin-bottom: p(30);
+
+                    @include breakpoint(max){
+                        margin-bottom: m(30);
+                    }
+
+                    @include breakpoint(640){
+                        margin-bottom: 30px;
+                    }
+                    h5, p{
+                        width: 100%;
+                    }
+                    p{
+                        font-family: $font-libre;
+                        font-style: italic;
+                        margin-bottom: p(30);
+
+                        @include breakpoint(max){
+                            margin-bottom: m(30);
+                        }
+
+                        @include breakpoint(640){
+                            margin-bottom: 25px;
+                        }
+                    }
+                    h5{
+                        margin-bottom: p(40);
+
+                        @include breakpoint(max){
+                            margin-bottom: m(40);
+                        }
+
+                        @include breakpoint(640){
+                            margin-bottom: 30px;
+                        }
+                    }
+                    img{
+                        position: relative;
+                        top: auto; left: auto; right: auto; bottom: auto;
+                    }
+                }
+            }
+            img{
+                @include breakpoint(640){
+                    margin: 0;
+                }
+            }
+            h5{
+                @include breakpoint(640){
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    .post-share{
+        position: fixed;
+        top: 50%; right: 0;
+        @include transform($y: -50%, $x: 100%);
+        width: p(90); 
+        @include transition(transform, 0.3s, 0s, ease);
+        z-index: 999;
+
+        &.active{
+            @include transform($y: -50%, $x: 0%);
+        }
+        
+        @include breakpoint(max){
+            width: m(90);
+        }
+        
+        @include breakpoint(640){
+            width: 75px;
+        }
+        
+        .exit{
+            width: p(30); height: p(30);
+            position: absolute;
+            top: 0; right: 0;
+            cursor: pointer;
+            @include transform($y: -100%);
+            background-color: $black;
+
+            @include breakpoint(max){
+                width: m(30); height: m(30);
+            }
+
+            @include breakpoint(640){
+                width: 35px; height: 35px;
+            }
+
+            &:after, &:before{
+                content: "";
+                height: 1px; width: 60%;
+                position: absolute;
+                top: 50%; left: 50%;
+                @include transform($x: -50%, $y: -50%, $r: 45deg);
+                background-color: $white;
+            }
+
+            &:before{
+                @include transform($x: -50%, $y: -50%, $r: -45deg);
+            }
+        }
+
+        .social-sharing{
+            width: 100%;
+            @include flexbox();
+            flex-wrap: wrap;
+    
+            a{
+                @include flexbox(); align-items: center; @include justify(center);
+                width: 100%; height: p(40);
+                background-color: black;
+                border-bottom: 1px solid $white;
+                @include transition(all, 0.3s, 0s, ease);
+
+                &:hover{
+                    background-color: $white;
+                    svg{
+                        fill: black;
+                    }
+                    &.v1{
+                        path{
+                            fill: black;
+                        }
+                    }
+                }
+
+                &:last-child{
+                    border-bottom: 0;
+                }
+    
+                @include breakpoint(max){
+                    height: m(40);
+                }
+    
+                @include breakpoint(640){   
+                    height: 35px;
+                }
+            }
+    
+            svg{
+                fill: $bgr-color;
+                max-height: p(20); width: auto;
+                @include transition(all, 0.3s, 0s, ease);
+
+                @include breakpoint(max){
+                    max-height: m(20);
+                }
+
+                @include breakpoint(640){
+                    max-height: 15px;
+                }
+            }
+        }
+    }
+    .related-posts{
+        position: fixed;
+        bottom: p(30); right: p(15);
+        padding: p(15); border-radius: 15px;
+        text-align: center; background-color: $white;
+        z-index: 999;
+
+        @include breakpoint(max){
+            bottom: m(30); right: m(15);
+            padding: m(15);
+        }
+
+        @include breakpoint(640){
+            bottom: 15px; right: 15px;
+            padding: 10px;
+        }
+
+        ul{
+            @include flexbox(); gap: p(5); @include justify(center);
+
+            @include breakpoint(max){
+                gap: m(5);
+            }
+
+            @include breakpoint(640){
+                gap: 5px;
+            }
+
+            li{
+                a{
+                    font-size: p(10); line-height: 1.5; 
+                    color: $white; background-color: $blue;
+                    padding: p(5) p(10);
+                    text-decoration: none;
+                    border-radius: 6px;
+
+                    @include breakpoint(max){
+                        font-size: m(10);
+                        padding: m(5) m(10);
+                    }
+
+                    @include breakpoint(640){
+                        font-size: 8px;
+                        padding: 5px 10px;
+                    }
+                }
+            }
+        }
+    }
+>>>>>>> c47c1f350fa2450d2ca78a2aa50d7b83d2e39710
 }

@@ -29,11 +29,14 @@ $background_color = get_field('background_color');
 
             <?php if ( $text_above ) : ?>
                 <p class="text_above animated anim_y"><strong><?php echo $text_above; ?></strong></p>
+                <p class="text_above animated anim_y"><strong><?php echo $text_above; ?></strong></p>
             <?php endif; ?>
 
            <ul class="set_animation slower">
+           <ul class="set_animation slower">
 
                 <?php if ( $first_button ) : ?>
+                    <li class="animated anim_y">
                     <li class="animated anim_y">
                         <a href="<?php echo $first_button['url']; ?>" class="btn"><?php echo $first_button['title']; ?></a>
                     </li>
@@ -41,11 +44,13 @@ $background_color = get_field('background_color');
 
                 <?php if ( $second_button ) : ?>
                     <li class="animated anim_y">
+                    <li class="animated anim_y">
                         <a href="<?php echo $second_button['url']; ?>" class="btn"><?php echo $second_button['title']; ?></a>
                     </li>
                 <?php endif; ?>
 
                 <?php if ( $third_button ) : ?>
+                    <li class="animated anim_y">
                     <li class="animated anim_y">
                         <a href="<?php echo $third_button['url']; ?>" class="btn"><?php echo $third_button['title']; ?></a>
                     </li>
