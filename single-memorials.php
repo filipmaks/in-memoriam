@@ -5,6 +5,7 @@
     $subtitle   = get_field('subtitle');
     $birth_date = get_field('birth_date');
     $death_date = get_field('death_date');
+    $testimonials = get_field('testimonials');
     $locale = 'sr_RS';
 
     $formatter = new IntlDateFormatter($locale, IntlDateFormatter::LONG, IntlDateFormatter::NONE);
@@ -109,6 +110,34 @@
         ?>
     </div>
 </section>
+
+<?php if ( $testimonials ) : ?>
+<section class="testimonials">
+    <div class="wrapper">
+        <div class="holder animated">
+            <h1>Rekli su o <?php echo $page_title; ?></h1>
+            <?php if ($testimonials): ?>
+                <div class="testimonial_slider">
+                    <ul class="slides swiper-wrapper">
+                        <?php 
+                        foreach ($testimonials as $testimonial) {
+                            // Assuming testimonials is an ACF repeater or array with image and text fields
+                            $text = $testimonial['testimonial'];   // Adjust field names as needed
+                        ?>
+                            <li class="swiper-slide">
+                                <?php if ($text): ?>
+                                    <h5><?php echo esc_html($text); ?></h5>
+                                <?php endif; ?>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                    <div class="swiper-pagination"></div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</section><!-- /Testimonials -->
+<?php endif; ?>
 
 <section class="post-share">
     <div class="exit"></div>

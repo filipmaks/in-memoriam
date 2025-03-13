@@ -266,7 +266,20 @@ function custom_user_login() {
         if (is_wp_error($user)) {
             $login_errors->add('login', $user->get_error_message());
         } else {
-            // Redirect to user profile page
+            // Check if user is paid (unless they're an admin)
+            if (!current_user_can('administrator')) {
+                $user_is_paid = get_field('user_is_paid', 'user_' . $user->ID);
+                // If user_is_paid is not true
+                if ($user_is_paid !== true) {
+                    // Log out the user since they shouldn't be logged in
+                    wp_logout();
+                    // Add custom message to login_errors
+                    $login_errors->add('login', 'Molimo sačekajte dok admin odobri vaš nalog. Hvala.');
+                    return; // Stop execution, let the form redisplay with message
+                }
+            }
+            
+            // If we get here, either user is paid or is an admin
             wp_redirect(get_author_posts_url($user->ID));
             exit;
         }

@@ -188,6 +188,8 @@ add_theme_support('post-thumbnails');
 		if (is_user_logged_in() && current_user_can('contributor')) {
 			$user_id = get_current_user_id();
 			$user_select = get_field('subscribe_level', 'user_' . $user_id);
+			$broj_postova = get_field('broj_postova', 'user_' . $user_id);
+			
 			if (user_has_memorials_post($user_id)) {
 				// Remove button by its class or ID
 				echo '<style>
@@ -202,6 +204,18 @@ add_theme_support('post-thumbnails');
 						display: none !important;
 					}
 				</style>';
+			}
+	
+			// Check if user's memorial posts exceed or equal the allowed number
+			if (user_has_memorials_post($user_id) >= $broj_postova) {
+				echo '<script type="text/javascript">
+					document.addEventListener("DOMContentLoaded", function() {
+						var button = document.querySelector(".page-title-action");
+						if (button) {
+							button.remove();
+						}
+					});
+				</script>';
 			}
 		}
 	}
