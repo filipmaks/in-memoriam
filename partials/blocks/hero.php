@@ -30,17 +30,20 @@ if ( $image ) :
             <article>
 
                 <?php if ( $title ) : ?>
-                    <h1><?php echo $title; ?></h1>
+                    <h1 class="animated anim_y"><?php echo $title; ?></h1>
+                    <h1 class="animated anim_y"><?php echo $title; ?></h1>
                 <?php endif; ?>
 
                 <?php if ( $text ) : ?>
-                    <p><?php echo $title; ?></p>
+                    <p class="animated anim_y"><?php echo $text; ?></p>
+                    <p class="animated anim_y"><?php echo $text; ?></p>
                 <?php endif; ?>
                 
             </article>
 
             <?php if ( $icon ) : ?>
-                <img src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
+                <img class="animated anim_y" src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
+                <img class="animated anim_y" src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt']; ?>">
             <?php endif; ?>
 
         </div>

@@ -1,0 +1,11 @@
+.full_width_image{
+    img{
+        // width: 100%; height: auto;
+        width: 60%; max-width: 90%; min-width: 1024px; height: auto;
+        margin: 0 auto;
+        display: block;
+        @include breakpoint(1024){
+            min-width: 100%;
+        }
+    }
+}

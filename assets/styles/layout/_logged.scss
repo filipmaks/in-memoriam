@@ -1,0 +1,17 @@
+body.logged-in{
+    .for-log-off{
+        display: none;
+    }
+    .for-log-in{
+        display: inline-block;
+    }
+}
+
+body:not(.logged-in){
+    .for-log-off{
+        display: inline-block;
+    }
+    .for-log-in{
+        display: none;
+    }
+}

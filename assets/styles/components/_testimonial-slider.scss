@@ -1,0 +1,34 @@
+.testimonials {
+    h1 {
+        text-align: center;
+    }
+}
+
+.testimonial_slider {
+    position: relative;
+    padding: p(50) 0;
+
+    @include breakpoint(max){
+        padding: m(50) 0;
+    }
+
+    @include breakpoint(640){
+        padding: 30px 0;
+    }
+
+    h5 {
+        line-height: 1.3;
+        margin: p(20) auto;
+        width: p(1200); text-align: center;
+
+        @include breakpoint(max){
+            margin: m(20) auto;
+            width: m(1200);
+        }
+
+        @include breakpoint(640){
+            margin: 20px auto;
+            width: 90%;
+        }
+    }
+}

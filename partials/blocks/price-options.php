@@ -35,7 +35,8 @@ $note_link      = get_field('note_link');
         <div class="holder" style="background-color: <?php echo $bgr_color; ?>80; border: 3px solid <?php echo $bgr_color; ?>">
 
             <?php if ( $left_number ) : ?>
-                <div class="big_num">
+                <div class="big_num animated anim_y+">
+                <div class="big_num animated anim_y+">
                     <h3>
                         <?php echo $left_number; ?>.
                         <span style="background-color: <?php echo $bgr_color; ?>;"></span>
@@ -43,26 +44,35 @@ $note_link      = get_field('note_link');
                 </div>
             <?php endif; ?>
 
-            <div class="card_content">
+            <div class="card_content set_animation">
                 <?php if ( $title ) : ?>
-                    <h3><?php echo $title; ?></h3>
+                    <h3 class="animated anim_y"><?php echo $title; ?></h3>
+                    <h3 class="animated anim_y"><?php echo $title; ?></h3>
                 <?php endif; ?>
 
                 <?php if ( $first_text ) : ?>
-                    <article class="first_text"><?php echo $first_text; ?></article>
+                    <article class="animated anim_y first_text"><?php echo $first_text; ?></article>
+                    <article class="animated anim_y first_text"><?php echo $first_text; ?></article>
                 <?php endif; ?>
 
                 <?php if ( $second_text ) : ?>
-                    <article class="second_text"><?php echo $second_text; ?></article>
+                    <article class="animated anim_y second_text"><?php echo $second_text; ?></article>
+                    <article class="animated anim_y second_text"><?php echo $second_text; ?></article>
                 <?php endif; ?>
 
                 <?php if ( $link ) : ?>
-                    <a href="<?php echo $link['url']; ?>" class="btn"><?php echo $link['title']; ?></a>
+                    <div class="link_holder animated anim_y">
+                        <a href="<?php echo $link['url']; ?>" class="btn"><?php echo $link['title']; ?></a>
+                    </div>
+                    <div class="link_holder animated anim_y">
+                        <a href="<?php echo $link['url']; ?>" class="btn"><?php echo $link['title']; ?></a>
+                    </div>
                 <?php endif; ?>
             </div>
 
             <?php if ( $enable_note ) : ?>
-                <div class="note" style="background-color: <?php echo $bgr_color; ?>; border: 3px solid <?php echo $bgr_color; ?>">
+                <div class="note animated anim_y" style="background-color: <?php echo $bgr_color; ?>; border: 3px solid <?php echo $bgr_color; ?>">
+                <div class="note animated anim_y" style="background-color: <?php echo $bgr_color; ?>; border: 3px solid <?php echo $bgr_color; ?>">
 
                     <?php if ( $note_title ) : ?>
                         <p class="top_note"><strong><?php echo $note_title; ?></strong></p>

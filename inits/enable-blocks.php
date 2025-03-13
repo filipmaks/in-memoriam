@@ -7,6 +7,23 @@
     function all_allowed_block_types( $allowed_block_types, $post ) {
 
         return array(
+            'core/block',
+			'core/paragraph',
+            'core/list',
+            'core/list-item',
+			'core/media-text',
+			'core/image',
+			'core/heading',
+			'core/video',
+			'core/group',
+			'core/buttons',
+			'core/button',
+			'core/columns',
+			'core/column',
+			'core/shortcode',
+			'core/quote',
+			'core/cover',
+			'core/separator',
             'acf/hero',
             'acf/title-text',
             'acf/textual',

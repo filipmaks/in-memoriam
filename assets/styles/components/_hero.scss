@@ -8,17 +8,68 @@ HERO
     @include breakpoint(max){
         margin-bottom: m(30);
     }
+
+    @include breakpoint(640){
+        margin-bottom: 30px;    
+    }
+    
     .holder{
         aspect-ratio: 16/6;
         position: relative;
         border-radius: 30px;
         overflow: hidden;
 
+        @include breakpoint(1024){
+            aspect-ratio: 16/9;
+        }
+
+        @include breakpoint(640){
+            aspect-ratio: unset;
+            min-height: 70vh;
+            @include flexbox();
+            align-items: center;
+            @include justify(center);
+            flex-wrap: wrap;
+            align-content: flex-end;
+        }
+
         article{
             position: absolute;
             color: $white;
             width: 80%;
+            padding-left: p(60);
+
+            @include breakpoint(max){
+                padding-left: m(60);
+            }
+
+            @include breakpoint(640){
+                position: relative;
+                width: 100%;  
+                padding: 0 20px;  
+            }
             
+            h1{
+                margin-bottom: p(40);
+
+                @include breakpoint(max){
+                    margin-bottom: m(40);
+                }
+
+                @include breakpoint(640){
+                    margin-bottom: 30px;
+                    br{
+                        display: none;
+                    }
+                }
+            }
+            p{
+                @include breakpoint(640){
+                    br{
+                        display: none;
+                    }
+                }
+            }
         }
 
         img{
@@ -28,6 +79,14 @@ HERO
             @include breakpoint(max){
                 bottom: m(100);
                 max-width: m(100);
+            }
+
+            @include breakpoint(640){
+                position: relative;
+                bottom: auto; max-width: 50px;  
+                margin-left: 20px;  
+                margin-top: 30px;
+                margin-bottom: 40px;
             }
         }
 
@@ -42,6 +101,43 @@ HERO
             img{
                 top: 85%; left: 50%;
                 @include transform($x: -50%, $y: -50%);
+
+                @include breakpoint(640){
+                    top: auto; left: auto;
+                }
+            }
+        }
+
+        &.left{
+            @include flexbox();
+            align-content: center;
+
+            @include breakpoint(640){
+                flex-wrap: wrap;
+                align-content: flex-end;
+            }            
+
+            article{
+                position: relative;
+                @include flexbox();
+                flex-wrap: wrap;
+                align-content: center;
+
+                h1{
+                    width: 100%;
+                }
+            }
+
+            img{
+                left: p(60);
+
+                @include breakpoint(max){
+                    left: m(60);
+                }
+
+                @include breakpoint(640){
+                    left: auto;
+                }
             }
         }
     }

@@ -16,10 +16,10 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
 	<?php wp_head(); ?>
-
+    
 </head>
 
 <body <?php body_class(); ?>>
@@ -28,18 +28,62 @@
         <div class="wrapper">
             <div class="holder">
                 <?php 
+                    $current_user = wp_get_current_user();
+
                     $header_logo    = get_field('header_logo', 'option');
                     if( $header_logo ) :
                 ?>
                 <div class="logo">
-                    <img src="<?php echo $header_logo['url']; ?>" alt="Logo">
+                    <a href="<?php echo site_url(); ?>">
+                        <img src="<?php echo $header_logo['url']; ?>" alt="Logo">
+                    </a>
                 </div>
                 <?php endif; ?>
                 <ul class="main_nav">
                     <?php wp_nav_menu(array('menu' => 'Header Menu', 'container' => false, 'items_wrap' => '%3$s')); ?>
+                    
+                    <li class="my-profile for-log-in">
+                        <a href="<?php echo site_url(); ?>/author/<?php echo $current_user->display_name; ?>">
+                            <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon">
+                                <ellipse cx="8.99955" cy="7.57171" rx="5.64408" ry="5.71429" stroke="black" stroke-width="2"></ellipse>
+                                <path d="M1 20.9997C2.63828 18.9481 5.77641 18.1426 9 18.1426C12.2236 18.1426 15.3617 18.9481 17 20.9997" stroke="black" stroke-width="2"></path>
+                            </svg>
+                        </a>
+                    </li>
+
+                    <li class="translate">
+                        <a href="<?php echo site_url(); ?>" class="active lat">Lat /</a> <a href="https://1-in--memoriam-net.translate.goog/?_x_tr_enc=1&_x_tr_sl=zh-TW&_x_tr_tl=sr&_x_tr_hl=en&_x_tr_pto=wapp" class="cir">Ćir</a>
+                    </li>
+
+                    <li class="search">
+                        <?php echo file_get_contents(get_template_directory().'/assets/icons/lupa2.svg'); ?>
+                        <div class="mobile-form">
+                            <form action="/" method="get">
+                                <input type="text" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="Marko Markovic"/>
+                                <input type="submit" id="searchsubmit" value="Trazi" />
+                            </form>
+                        </div>
+                    </li>
                 </ul>
+
+                <div class="hamburger">
+                    <span></span><span></span><span></span>
+                </div>
+
+                <div class="aside_search_popup">
+                    <div class="search_holder">
+                        <form action="/" method="get">
+                            <input type="text" name="s" id="search" value="<?php the_search_query(); ?>" placeholder="Marko Markovic"/>
+                        </form>
+                        <div class="exit_popup"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </header>
 
-    <div id="main">
+    <div class="loading_holder"></div>
+
+    <div id="main" class="main">
+
