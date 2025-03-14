@@ -185,26 +185,40 @@ add_theme_support('post-thumbnails');
 
 	// Remove "Add Memorial" button on the front end
 	function remove_add_memorial_button() {
-		if (is_user_logged_in() && current_user_can('contributor')) {
-			$user_id = get_current_user_id();
-			$user_select = get_field('subscribe_level', 'user_' . $user_id);
-			if (user_has_memorials_post($user_id)) {
-				// Remove button by its class or ID
-				echo '<style>
-					.page-title-action, .menupop, #wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-top-secondary, #screen-meta-links, .author-other, .check-column{
-						display: none !important;
-					}
-				</style>';
-			} else {
-				// Remove button by its class or ID
-				echo '<style>
-					#wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-top-secondary, #screen-meta-links, .author-other, .check-column{
-						display: none !important;
-					}
-				</style>';
-			}
-		}
-	}
+        if (is_user_logged_in() && current_user_can('contributor')) {
+            $user_id = get_current_user_id();
+            $user_select = get_field('subscribe_level', 'user_' . $user_id);
+            $broj_postova = get_field('broj_postova', 'user_' . $user_id);
+            
+            if (user_has_memorials_post($user_id)) {
+                // Remove button by its class or ID
+                echo '<style>
+                    .page-title-action, .menupop, #wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-top-secondary, #screen-meta-links, .author-other, .check-column{
+                        display: none !important;
+                    }
+                </style>';
+            } else {
+                // Remove button by its class or ID
+                echo '<style>
+                    #wp-admin-bar-comments, #wp-admin-bar-new-content, #wp-admin-bar-top-secondary, #screen-meta-links, .author-other, .check-column{
+                        display: none !important;
+                    }
+                </style>';
+            }
+    
+            // Check if user's memorial posts exceed or equal the allowed number
+            if (user_has_memorials_post($user_id) >= $broj_postova) {
+                echo '<script type="text/javascript">
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var button = document.querySelector(".page-title-action");
+                        if (button) {
+                            button.remove();
+                        }
+                    });
+                </script>';
+            }
+        }
+    }
 	add_action('admin_menu', 'remove_add_memorial_button', 999);
 
 	// Remove "Add Memorial" from admin menu
